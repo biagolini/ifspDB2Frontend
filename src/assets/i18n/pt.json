@@ -1,0 +1,65 @@
+{
+  "application": {
+    "name": "ecommerce XYZ"
+  },
+  "toolbar": {
+    "announcement": "Você não pode perder nossas ofertas de hoje"
+  },
+  "menu": {
+    "dashboard": "Painel de controle",
+    "store": "Ofertas do dia",
+    "customer": "Painel de clientes",
+    "order": "Painel de vendas",
+    "login": "Acessar sua conta",
+    "logout": "Desconectar",
+    "darkMode": "Modo escuro",
+    "lightMode": "Modo claro"
+  },
+  "login": {
+    "login": "Login",
+    "username": "Usuário",
+    "password": "Senha",
+    "signIn": "Entrar",
+    "forgotPassword": "Esqueci a senha",
+    "error": {
+      "emailsIsInvalid": "Digite um e-mail válido",
+      "providePassword": "Insira a senha"
+    }
+  },
+  "general": {
+    "currentLanguange": "Português",
+    "login": "Login",
+    "logout": "Logout",
+    "search": "Busque um jogo",
+    "date": "Data",
+    "description": "Descrição",
+    "action": "Ação",
+    "register": "Cadastros",
+    "terms": "Termos e Condições",
+    "exit": "Sair",
+    "back": "Voltar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "close": "Fechar",
+    "filter": "Filtro",
+    "add": "Adicionar",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "view": "Visualizar",
+    "required": "é obrigatório",
+    "cantLoad": "Erro ao carregar os dados",
+    "activate": "Ativar",
+    "language": "Idioma",
+    "english": "Inglês",
+    "portuguese": "Português",
+    "send": "Enviar",
+    "yes": "Sim",
+    "no": "Não",
+    "confirm": "Confirmação",
+    "email": "E-mail",
+    "name": "Nome",
+    "year": "Ano",
+    "pageNotFound": "Página não encontrada",
+    "wellcome": "Bem vindo"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "application": {
+    "name": "ecommerce XYZ"
+  },
+  "toolbar": {
+    "announcement": "You don't want to miss our offers today"
+  },
+  "menu": {
+    "dashboard": "Control panel",
+    "store": "Deals of the day",
+    "customer": "Customer panel",
+    "order": "Orders dashboard",
+    "login": "Access your account",
+    "logout": "Disconnect",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode"
+  },
+  "login": {
+    "login": "Login",
+    "username": "Username",
+    "password": "Password",
+    "signIn": "Sign in",
+    "forgotPassword": "Forgot Password",
+    "error": {
+      "emailsIsInvalid": "Email is invalid",
+      "providePassword": "Provide a password"
+    }
+  },
+  "general": {
+    "currentLanguange": "English",
+    "login": "Login",
+    "logout": "Logout",
+    "search": "Search for a game",
+    "date": "Date",
+    "description": "Description",
+    "action": "Action",
+    "register": "Registrations",
+    "terms": "Terms and conditions",
+    "exit": "Exit",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "filter": "Filter",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "required": "is required",
+    "cantLoad": "Loading data error",
+    "activate": "Activate",
+    "send": "Send",
+    "language": "Language",
+    "english": "English",
+    "portuguese": "Portuguese",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirmation",
+    "email": "E-mail",
+    "name": "Name",
+    "year": "Year",
+    "pageNotFound": "Page not found",
+    "wellcome": "Wellcome"
+  }
+}

@@ -1,0 +1,49 @@
+<div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="space-around center">
+  <div
+    [matMenuTriggerFor]="userMenu"
+    class="button"
+    fxLayoutGap="10px"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div
+      class="user-menu"
+      fxLayoutGap="10px"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <mat-icon>person_outline</mat-icon>
+      {{ currentUser() }}
+      <mat-icon class="fc-white">keyboard_arrow_down</mat-icon>
+
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="/login">
+          <div>
+            <mat-icon>login</mat-icon>
+            {{ "general.login" | translate }}
+          </div>
+        </button>
+
+        <button class="houver-black" mat-menu-item (click)="changeLanguage()">
+          <div>
+            <mat-icon class="houver-black">language</mat-icon>
+            {{ "general.currentLanguange" | translate }}
+          </div>
+        </button>
+
+        <button mat-menu-item (click)="logout()">
+          <div>
+            <mat-icon>logout</mat-icon>
+            {{ "general.logout" | translate }}
+          </div>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <button mat-menu-item routerLink="/shopping_cart">
+    <div>
+      <mat-icon class="houver-black">shopping_cart</mat-icon>
+    </div>
+  </button>
+</div>

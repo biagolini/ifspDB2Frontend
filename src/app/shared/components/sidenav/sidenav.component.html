@@ -1,0 +1,104 @@
+<div class="toolbar-container">
+  <mat-toolbar color="primary" routerLink="/">
+    <button mat-button>{{ "toolbar.announcement" | translate }}</button>
+  </mat-toolbar>
+  <mat-toolbar
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    color="accent"
+  >
+    <div fxLayout="row" fxLayoutAlign="center center" routerLink="/">
+      <img
+        class="logo-size"
+        src="assets/images/ecommerce_logo_outlined.svg"
+        alt="Logo empresa"
+      />
+    </div>
+
+    <div fxFlex="50">
+      <mat-form-field fxFill appearance="legacy" class="search-box">
+        <mat-label><mat-icon>search</mat-icon> </mat-label>
+        <input matInput type="text" [formControl]="searchControl" id="Jogo" />
+      </mat-form-field>
+    </div>
+
+    <app-menu> </app-menu>
+  </mat-toolbar>
+</div>
+
+<div>
+  <mat-sidenav-container autosize class="navegation-container">
+    <mat-sidenav
+      #sidenav
+      position="start"
+      class="nave-container"
+      opened="true"
+      mode="side"
+      attr.role="navigation"
+      fixedInViewport="false"
+    >
+      <mat-nav-list>
+        <mat-list-item (click)="openClose()">
+          <button mat-icon-button>
+            <mat-icon *ngIf="!isOpen">chevron_right</mat-icon>
+            <mat-icon *ngIf="isOpen"> chevron_left</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item routerLink="/login">
+          <mat-icon mat-list-icon>account_circle</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.login" | translate }}</p>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/">
+          <mat-icon mat-list-icon>local_offer</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.store" | translate }}</p>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/dashboard">
+          <mat-icon mat-list-icon> dashboard</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.dashboard" | translate }}</p>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/customer">
+          <mat-icon mat-list-icon> supervised_user_circle</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.customer" | translate }}</p>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/order">
+          <mat-icon mat-list-icon>assessment</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.order" | translate }}</p>
+        </mat-list-item>
+
+        <mat-list-item (click)="logout()" routerLink="/login">
+          <mat-icon mat-list-icon>logout</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.logout" | translate }}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="changeLanguage()">
+          <mat-icon mat-list-icon>language</mat-icon>
+          <p matLine *ngIf="isOpen">
+            {{ "general.currentLanguange" | translate }}
+          </p>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item *ngIf="!isDark" (click)="setDarkTheme()">
+          <mat-icon mat-list-icon>dark_mode</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.darkMode" | translate }}</p>
+        </mat-list-item>
+
+        <mat-list-item *ngIf="isDark" (click)="setLigthTheme()">
+          <mat-icon mat-list-icon>light_mode</mat-icon>
+          <p matLine *ngIf="isOpen">{{ "menu.lightMode" | translate }}</p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
