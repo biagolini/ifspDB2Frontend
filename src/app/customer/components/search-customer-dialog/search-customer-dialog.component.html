@@ -1,0 +1,66 @@
+<div
+  fxLayoutGap="20px"
+  fxLayout="column"
+  fxLayoutAlign="space-between start"
+  class="full-width"
+>
+  <div class="full-width" fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>{{ "user.provideProfile" | translate }}</h1>
+  </div>
+
+  <div class="full-width">
+    <form [formGroup]="searchForm" fxLayout="column" class="full-width">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "user.state" | translate }}</mat-label>
+        <mat-select formControlName="state">
+          <mat-option [value]="1000">--</mat-option>
+          <mat-option *ngFor="let type of listState" [value]="type.id">
+            {{ type.description }} - {{ type.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "user.firstName" | translate }}</mat-label>
+        <input formControlName="firstName" name="firstName" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "user.lastName" | translate }}</mat-label>
+        <input formControlName="lastName" name="lastName" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "user.email" | translate }}</mat-label>
+        <input formControlName="email" name="email" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "user.cpf" | translate }}</mat-label>
+        <input formControlName="cpf" name="cpf" matInput />
+      </mat-form-field>
+    </form>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="end"
+    fxLayoutGap="15px"
+    class="full-width button-container"
+  >
+    <span class="spacer"></span>
+    <button
+      mat-stroked-button
+      class="button-size add-button-low-color"
+      mat-flat-button
+      mat-dialog-close
+    >
+      {{ "user.cancel" | translate }}
+    </button>
+    <button
+      mat-stroked-button
+      class="button-size add-button-color"
+      mat-flat-button
+      mat-dialog-close
+      (click)="setSearchProfile()"
+    >
+      {{ "user.search" | translate }}
+    </button>
+  </div>
+</div>

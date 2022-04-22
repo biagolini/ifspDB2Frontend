@@ -64,5 +64,22 @@
     "year": "Ano",
     "pageNotFound": "Página não encontrada",
     "wellcome": "Bem vindo"
+  },
+  "user": {
+    "user": "Usuário",
+    "users": "Usuários",
+    "provideProfile": "Descreva perfil do usuário",
+    "username": "Username",
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "email": "email",
+    "birthDate": "Data de nasemiento",
+    "cpf": "CPF",
+    "street": "Rua",
+    "city": "Cidade",
+    "state": "Estado",
+    "findDescription": "Pesquisa por perfil",
+    "cancel": "Cancelar pesquisa",
+    "search": "Pesquisar"
   }
 }

@@ -64,5 +64,22 @@
     "year": "Year",
     "pageNotFound": "Page not found",
     "wellcome": "Wellcome"
+  },
+  "user": {
+    "user": "User",
+    "users": "Users",
+    "provideProfile": "Provide an user profile",
+    "username": "Username",
+    "firstName": "Name",
+    "lastName": "Surname",
+    "email": "email",
+    "birthDate": "Birth date",
+    "cpf": "CPF",
+    "street": "Street",
+    "city": "City",
+    "state": "State",
+    "findDescription": "Find por profile",
+    "cancel": "Cancel",
+    "search": "Search"
   }
 }

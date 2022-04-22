@@ -56,4 +56,25 @@ export class TypeService {
     }
   }
 
+  getStateNameById(id:number){
+    if(this.listState.length==0){
+      this.updateListState().subscribe (typesList =>  {
+        this.listState = typesList
+      });
+    }    
+    return this.listState[id-1].name;
+  }
+
+  
+  getStateAbreviationById(id:number){
+    if(this.listState.length==0){
+      this.updateListState().subscribe (typesList =>  {
+        this.listState = typesList
+      });
+    }    
+    return this.listState[id-1].description;
+  }
+
+
+
 }
