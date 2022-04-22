@@ -26,5 +26,4 @@ export class ThemeService {
       return localStorage.getItem('theme') as string;
     }
   }
-
 }

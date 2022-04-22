@@ -39,12 +39,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authenticationService.authenticate(this.loginForm.value).subscribe({
         next: () => {
+          this.feedback.showMessage('login.message.loginSuccess').subscribe();
           this.activatedRoute.queryParams.subscribe((params) => {
             const path = params['path'] ? params['path'] : '';
             this.router.navigate([path]);
           });
         },
-        error: () => this.feedback.showMessage('login.failed').subscribe(),
+        error: () => this.feedback.showMessage('login.message.loginFail').subscribe(),
       });
     }
     

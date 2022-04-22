@@ -21,9 +21,12 @@
     "password": "Password",
     "signIn": "Sign in",
     "forgotPassword": "Forgot Password",
-    "error": {
-      "emailsIsInvalid": "Email is invalid",
-      "providePassword": "Provide a password"
+    "message": {
+      "provideLogin": "Provide an username/email",
+      "providePassword": "Provide a password",
+      "emailsIsInvalid": "Enter a valid email address",
+      "loginSuccess": "You are successfully logged in!",
+      "loginFail": "Access denied! Please check that your username and password are correct. Please be aware that usernames and passwords are case sensitive. If the problem persists, contact the administration."
     }
   },
   "general": {

@@ -1,66 +1,45 @@
 @import "/src/variables.scss";
 
-.title {
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+input[data-autocompleted] {
+  background-color: transparent !important;
+}
+
+h1 {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 4em;
+  letter-spacing: 2px;
   color: $primary;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
 }
 
-.subtitle {
-  font-family: Arial;
+h2 {
   font-weight: Semi bold;
-  font-size: 20px;
-  margin: -2% 0;
-  text-align: center;
-  font: bold italic 35px;
-  letter-spacing: 0px;
+  font-size: 2em;
   color: $primary;
-  opacity: 1;
 }
 
-.bg-accent {
-  background: $primary;
+button {
+  width: 100%;
+  height: 5vh;
 }
 
-.mb-2 {
-  margin-bottom: 2em;
+mat-form-field {
+  width: 100%;
 }
 
 .login-container-light-mode {
   background-color: rgb(235, 235, 235);
-  width: 480px;
-  height: 520px;
-  padding: 2em 4em;
-  div,
-  form {
-    width: 100%;
-  }
+  width: 60vh;
+  height: 50vh;
+  padding: 5rem 3rem;
 }
 
 .login-container-dark-mode {
-  background-color: rgb(235, 235, 235);
-  width: 480px;
-  height: 520px;
-  padding: 2em 4em;
-  div,
-  form {
-    width: 100%;
-  }
-}
-
-.mat-form-field,
-.mat-button {
-  width: 100%;
-}
-
-.logo {
-  max-height: 50px;
-}
-
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  background-color: white;
-  border-radius: 5px;
+  background-color: rgba(rgb(175, 175, 175), 0.8);
+  width: 60vh;
+  height: 50vh;
+  padding: 5rem 3rem;
 }

@@ -1,34 +1,37 @@
 <div
   class="mat-app-background"
   fxLayout="row"
-  fxLayoutAlign="center center"
+  fxLayoutAlign="space-around center"
   fxFill
 >
   <div
+    class="elements-container"
     fxLayout="column"
-    fxLayoutAlign="space-around center"
+    fxLayoutAlign="space-between center"
     [ngClass]="{
       'login-container-light-mode': !darkModeCondition,
       'login-container-dark-mode': darkModeCondition
     }"
   >
-    <div class="mb-2" fxFlex="100">
-      <h1 class="title">
-        {{ "application.name" | translate }}
-      </h1>
+    <h1 class="title">
+      {{ "application.name" | translate }}
+    </h1>
+    <h2>{{ "login.login" | translate }}</h2>
 
-      <h2 class="subtitle">{{ "login.login" | translate }}</h2>
-    </div>
-    <form [formGroup]="loginForm" (keyup)="EnterSubmit($event)" fxFlex="100">
-      <mat-form-field appearance="legacy">
+    <form
+      [formGroup]="loginForm"
+      (keyup)="EnterSubmit($event)"
+      class="full-width"
+    >
+      <mat-form-field appearance="outline">
         <mat-label>{{ "login.username" | translate }}</mat-label>
         <input formControlName="login" autocomplete="username" matInput />
         <mat-error *ngIf="loginForm.get('login')?.errors?.['required']">
-          {{ "login.error.emailsIsInvalid" | translate }}
+          {{ "login.message.emailsIsInvalid" | translate }}
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="legacy">
+      <mat-form-field appearance="outline">
         <mat-label>{{ "login.password" | translate }}</mat-label>
         <input
           formControlName="password"
@@ -37,26 +40,12 @@
           matInput
         />
         <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">
-          {{ "login.error.providePassword" | translate }}
+          {{ "login.message.providePassword" | translate }}
         </mat-error>
       </mat-form-field>
     </form>
-    <div class="mb-2" fxFlex="100" fxLayout="column" fxLayoutGap="1em">
-      <button
-        mat-flat-button
-        fxFlex="40"
-        color="primary"
-        (click)="login()"
-        routerLink="/"
-      >
-        {{ "login.signIn" | translate }}
-      </button>
-    </div>
-    <img
-      fxFlex="50px"
-      alt="logo da empresa "
-      class="logo"
-      src="/assets/images/ecommerce_logo_filled.svg"
-    />
+    <button mat-flat-button color="primary" (click)="login()" routerLink="/">
+      {{ "login.signIn" | translate }}
+    </button>
   </div>
 </div>
