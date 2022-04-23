@@ -26,21 +26,19 @@ export class SearchCustomerDialogComponent  implements OnInit {
     private typeService: TypeService,
     private form: FormBuilder,
     private dialogRef: MatDialogRef<SearchCustomerDialogComponent>,
-    @Inject (MAT_DIALOG_DATA) data: any)
-  {
-    //this.searchForm.reset;
+    @Inject (MAT_DIALOG_DATA) data: any){
+      console.log("abertura")
+      console.log(data.value);
 
-    /*
-    this.searchForm.patchValue(
-      firstName:  data.firstName.value(),
-      lastName: data.lastName.value(),
-      email:  data.email.value(),
-      cpf:  data.cpf.value(),
-      state:  data.cpf.value() 
-      );
-      */
-    
-  };  
+      this.searchForm.patchValue({
+        firstName: data.value.firstName,
+        lastName: data.value.lastName,
+        email: data.value.email,
+        cpf: data.value.cpf,
+        state: data.value.state,
+  
+      })
+    };  
 
   ngOnInit(): void {  
     // Pegar lista atualizada de estados
@@ -51,10 +49,12 @@ export class SearchCustomerDialogComponent  implements OnInit {
     });
   }
 
-    setSearchProfile() {
-      this.dialogRef.close({ data: this.searchForm  }) ;
+  save() {
+    this.dialogRef.close(this.searchForm.value);
+  }
 
-    }
-
+  close() {
+    this.dialogRef.close();
+  }
 
 }

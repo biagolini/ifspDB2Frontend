@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,9 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'pt',
     }),
+    NgxMaskModule.forRoot({
+      validation: true
+    })
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt'  },

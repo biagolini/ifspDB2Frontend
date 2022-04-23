@@ -10,7 +10,12 @@ import { environment } from 'src/environments/environment';
 export class CustomerService {
   constructor(private http: HttpClient) {}
 
-  findAllPaginated(pager: PageEvent,  sortBy:{field?: string,asc?: boolean}, selectedState: boolean|number, query?: string) {
+  findAllPaginated(
+    pager: PageEvent,  
+    sortBy: {field?: string,asc?: boolean}, 
+    selectedState: boolean|number, 
+    query?: string,
+    searchForm?: {firstName: string, lastName: string, email: string, cpf: string, state: number}) {
     let params = new HttpParams()
       .append('page', pager.pageIndex)
       .append('size', pager.pageSize);
@@ -18,8 +23,17 @@ export class CustomerService {
     if (query) params = params.append('query', query);
     if (sortBy.field&&sortBy.asc) params = params.append('sort', sortBy.field+',asc');   
     if (sortBy.field&&!sortBy.asc) params = params.append('sort', sortBy.field+',desc'); 
-    if (selectedState!=1000) params = params.append('state',selectedState);
-
+    if (selectedState!=null) params = params.append('state',selectedState);
+    if (searchForm){
+      if (searchForm.firstName !=null) params = params.append('firstName',searchForm.firstName);
+      if (searchForm.lastName !=null)params = params.append('lastName',searchForm.lastName);
+      if (searchForm.email !=null) params = params.append('email',searchForm.email);
+      if (searchForm.cpf !=null) params = params.append('cpf',searchForm.cpf);
+      if (searchForm.state !=null) {
+        params = params.delete('state');
+        params = params.append('state',searchForm.state);
+      } 
+    }
     return this.http.get<any>(`${environment.apiUrl}/api/customer`, { params });
   }
 

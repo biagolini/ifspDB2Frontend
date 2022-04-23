@@ -9,11 +9,17 @@
   </div>
 
   <div class="full-width">
-    <form [formGroup]="searchForm" fxLayout="column" class="full-width">
+    <form
+      [formGroup]="searchForm"
+      fxLayout="column"
+      class="full-width"
+      (keyup.enter)="save()"
+      mask="CPF_CNPJ"
+    >
       <mat-form-field appearance="outline">
         <mat-label>{{ "user.state" | translate }}</mat-label>
         <mat-select formControlName="state">
-          <mat-option [value]="1000">--</mat-option>
+          <mat-option [value]="">--</mat-option>
           <mat-option *ngFor="let type of listState" [value]="type.id">
             {{ type.description }} - {{ type.name }}
           </mat-option>
@@ -34,7 +40,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>{{ "user.cpf" | translate }}</mat-label>
-        <input formControlName="cpf" name="cpf" matInput />
+        <input formControlName="cpf" name="cpf" mask="CPF_CNPJ" matInput />
       </mat-form-field>
     </form>
   </div>
@@ -50,6 +56,7 @@
       class="button-size add-button-low-color"
       mat-flat-button
       mat-dialog-close
+      (click)="close()"
     >
       {{ "user.cancel" | translate }}
     </button>
@@ -58,7 +65,8 @@
       class="button-size add-button-color"
       mat-flat-button
       mat-dialog-close
-      (click)="setSearchProfile()"
+      type="submit"
+      (click)="save()"
     >
       {{ "user.search" | translate }}
     </button>

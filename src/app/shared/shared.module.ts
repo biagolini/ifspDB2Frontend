@@ -32,6 +32,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -74,6 +75,7 @@ var module = [
   MatRadioModule,
   CurrencyMaskModule,
   MatProgressSpinnerModule,
+  NgxMaskModule,
 ];
 
 @NgModule({

@@ -44,8 +44,7 @@ export class CustomerPanelComponent implements OnInit {
   });
 
 
-
-  selectedState = new FormControl(1000);
+  selectedState = new FormControl();
 
 
   totalLength!: number;
@@ -65,32 +64,26 @@ export class CustomerPanelComponent implements OnInit {
         dialogConfig.width = "75%";
         dialogConfig.data = this.searchForm
         let dialogRef = this.dialog.open(SearchCustomerDialogComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(res => {
+        dialogRef.afterClosed().subscribe(res => {    
           this.loadingTable = false;  
-            if( res.data){
-              const data = this.searchForm.value;
-
-              this.selectedState.valueChanges.pipe(debounceTime(1000)).subscribe(query => {
-                this.loadingTable = true;
-                this.customerService.findAllPaginated({
-                  pageIndex: this.page,
-                  pageSize: this.pageSize,
-                  length: this.totalLength,   
-                },
-                {field: this.sortBy.value, asc: this.asc.value}, 
-                this.selectedState.value,
-                this.filterControl.value
-                ).subscribe(response => {
-                  this.customerDataTable.data = response.content;
-                  this.loadingTable = false;
-                });
-              })
-
-
-
+            if(res){
+              this.searchForm.patchValue(res); // atualiza o formulario de pesquisa
+              console.log(this.searchForm.value)
+              this.customerService.findAllPaginated({
+                pageIndex: this.page,
+                pageSize: this.pageSize,
+                length: this.totalLength,   
+              },
+              {field: this.sortBy.value, asc: this.asc.value}, 
+              this.selectedState.value,
+              this.filterControl.value,
+              this.searchForm.value,
+              ).subscribe(response => {
+                this.customerDataTable.data = response.content;
+                this.loadingTable = false;
+              });
             }
         })
-
   }
 
   ngOnInit(): void {
