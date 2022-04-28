@@ -97,7 +97,7 @@ export class CustomerPanelComponent implements OnInit {
     });
 
     // Aplicação de filtro de estado    
-    this.selectedState.valueChanges.pipe(debounceTime(1000)).subscribe(query => {
+    this.selectedState.valueChanges.pipe(debounceTime(1000)).subscribe( () => {
       this.loadingTable = true;
       this.customerService.findAllPaginated({
         pageIndex: this.page,
@@ -115,7 +115,7 @@ export class CustomerPanelComponent implements OnInit {
     
 
     // Ordenação
-    this.sortBy.valueChanges.pipe(debounceTime(1000)).subscribe(query => {
+    this.sortBy.valueChanges.pipe(debounceTime(1000)).subscribe( () => {
       this.loadingTable = true;
       this.customerService.findAllPaginated({
         pageIndex: this.page,
@@ -131,7 +131,7 @@ export class CustomerPanelComponent implements OnInit {
     })
     
     // Direção da ordenação
-    this.asc.valueChanges.pipe(debounceTime(1000)).subscribe(query => {
+    this.asc.valueChanges.pipe(debounceTime(1000)).subscribe( () => {
       this.loadingTable = true;
       this.customerService.findAllPaginated({
         pageIndex: this.page,
@@ -168,12 +168,12 @@ export class CustomerPanelComponent implements OnInit {
     });
   }
 
-  deleteUser({ id, name }: any) {
-    this.feedback.requestConfirm('user.deletionConfirm',{ name }, result => {
+  deleteCustomer({ id, name }: any) {
+    this.feedback.requestConfirm('customer.deletionConfirm',{ name }, result => {
       if(result.confirm){
-        this.customerService.deleteUser(id).subscribe({
+        this.customerService.deleteCustomer(id).subscribe({
           next: () => {
-            this.feedback.showMessage('user.deleted').subscribe();
+            this.feedback.showMessage('customer.deleted').subscribe();
             this.pageChange({
               pageIndex: this.page,
               pageSize: this.pageSize,

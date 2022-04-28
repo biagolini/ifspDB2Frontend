@@ -65,10 +65,9 @@
     "pageNotFound": "Page not found",
     "wellcome": "Wellcome"
   },
-  "user": {
-    "user": "User",
-    "users": "Users",
-    "provideProfile": "Provide an user profile",
+  "customer": {
+    "customer": "Customer",
+    "customers": "Customers",
     "username": "Username",
     "firstName": "Name",
     "lastName": "Surname",
@@ -76,10 +75,25 @@
     "birthDate": "Birth date",
     "cpf": "CPF",
     "street": "Street",
+    "number": "Number",
     "city": "City",
     "state": "State",
+    "zip": "ZIP",
     "findDescription": "Find por profile",
     "cancel": "Cancel",
-    "search": "Search"
+    "search": "Search",
+    "edit": "Edit",
+    "new": "New",
+    "provideProfile": "Provide user profile",
+    "personal": "Personal data",
+    "contact": "Contact",
+    "success": {
+      "created": "Customer successfully created!",
+      "updated": "Customer successfully updated!"
+    },
+    "error": {
+      "create": "Error detected when saving customer in our database.",
+      "updated": "Error detected when updating customer in our database."
+    }
   }
 }

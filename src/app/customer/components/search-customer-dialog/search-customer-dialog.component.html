@@ -5,7 +5,7 @@
   class="full-width"
 >
   <div class="full-width" fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>{{ "user.provideProfile" | translate }}</h1>
+    <h1>{{ "customer.provideProfile" | translate }}</h1>
   </div>
 
   <div class="full-width">
@@ -17,7 +17,7 @@
       mask="CPF_CNPJ"
     >
       <mat-form-field appearance="outline">
-        <mat-label>{{ "user.state" | translate }}</mat-label>
+        <mat-label>{{ "customer.state" | translate }}</mat-label>
         <mat-select formControlName="state">
           <mat-option [value]="">--</mat-option>
           <mat-option *ngFor="let type of listState" [value]="type.id">
@@ -27,19 +27,19 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>{{ "user.firstName" | translate }}</mat-label>
+        <mat-label>{{ "customer.firstName" | translate }}</mat-label>
         <input formControlName="firstName" name="firstName" matInput />
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>{{ "user.lastName" | translate }}</mat-label>
+        <mat-label>{{ "customer.lastName" | translate }}</mat-label>
         <input formControlName="lastName" name="lastName" matInput />
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>{{ "user.email" | translate }}</mat-label>
+        <mat-label>{{ "customer.email" | translate }}</mat-label>
         <input formControlName="email" name="email" matInput />
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>{{ "user.cpf" | translate }}</mat-label>
+        <mat-label>{{ "customer.cpf" | translate }}</mat-label>
         <input formControlName="cpf" name="cpf" mask="CPF_CNPJ" matInput />
       </mat-form-field>
     </form>
@@ -58,7 +58,7 @@
       mat-dialog-close
       (click)="close()"
     >
-      {{ "user.cancel" | translate }}
+      {{ "customer.cancel" | translate }}
     </button>
     <button
       mat-stroked-button
@@ -68,7 +68,7 @@
       type="submit"
       (click)="save()"
     >
-      {{ "user.search" | translate }}
+      {{ "customer.search" | translate }}
     </button>
   </div>
 </div>

@@ -41,24 +41,24 @@ export class CustomerService {
     return this.http.get<any>(`${environment.apiUrl}/api/customer/${id}`);
   }
 
-  createUser(formData: Object) {
+  createCustomer(formData: Object) {
     return this.http.post<any>(`${environment.apiUrl}/api/customer/`, formData);
   }
 
-  updateUser(formData: Object, id: number) {
+  updateCustomer(formData: Object, id: number) {
     return this.http.put<any>(`${environment.apiUrl}/api/customer/${id}`, formData);
   }
 
-  deleteUser(id: number) {
+  deleteCustomer(id: number) {
     return this.http.delete<any>(`${environment.apiUrl}/api/customer/${id}`);
   }
 
-  findUserByUsername(username: string){
+  findCustomerByUsername(username: string){
     return this.http.get<any[]>(`${environment.apiUrl}/api/customer/findByName/${username}`).pipe(take(1))
   }
 
-  findUserByDescription(user: Object) {
-    return this.http.get<any>(`${environment.apiUrl}/api/customer/findByDescription/`, user);
+  findCustomerByDescription(customer: Object) {
+    return this.http.get<any>(`${environment.apiUrl}/api/customer/findByDescription/`, customer);
   }
 
 }

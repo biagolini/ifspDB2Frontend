@@ -1,6 +1,6 @@
 <div class="page" fxLayout="column" fxLayoutGap="30px">
   <div class="page-header">
-    <h1 class="page-title">{{ "user.users" | translate }}</h1>
+    <h1 class="page-title">{{ "customer.customers" | translate }}</h1>
   </div>
 
   <div
@@ -24,7 +24,7 @@
         (click)="searchCustomer()"
         style="width: 100%"
       >
-        {{ "user.findDescription" | translate }}
+        {{ "customer.findDescription" | translate }}
       </button>
     </div>
 
@@ -55,13 +55,15 @@
       mat-table
       [dataSource]="customerDataTable"
       class="full-width"
-      aria-describedby="List of users"
+      aria-describedby="List of customers"
       *ngIf="!loadingTable"
     >
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.username" | translate }}</span>
-          <button mat-button (click)="changeOrder('username')">
+          <span class="table-header">{{
+            "customer.username" | translate
+          }}</span>
+          <button mat-button (click)="changeOrder('customername')">
             <mat-icon>sort</mat-icon>
           </button>
         </th>
@@ -70,7 +72,9 @@
 
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.firstName" | translate }}</span>
+          <span class="table-header">{{
+            "customer.firstName" | translate
+          }}</span>
           <button mat-button (click)="changeOrder('firstName')">
             <mat-icon>sort</mat-icon>
           </button>
@@ -80,7 +84,9 @@
 
       <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.lastName" | translate }}</span>
+          <span class="table-header">{{
+            "customer.lastName" | translate
+          }}</span>
           <button mat-button (click)="changeOrder('lastName')">
             <mat-icon>sort</mat-icon>
           </button>
@@ -90,7 +96,7 @@
 
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.email" | translate }}</span>
+          <span class="table-header">{{ "customer.email" | translate }}</span>
           <button mat-button (click)="changeOrder('email')">
             <mat-icon>sort</mat-icon>
           </button>
@@ -100,7 +106,9 @@
 
       <ng-container matColumnDef="birthDate">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.birthDate" | translate }}</span>
+          <span class="table-header">{{
+            "customer.birthDate" | translate
+          }}</span>
         </th>
         <td mat-cell *matCellDef="let element">
           {{ element?.birthDate | date }}
@@ -109,7 +117,7 @@
 
       <ng-container matColumnDef="cpf">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.cpf" | translate }}</span>
+          <span class="table-header">{{ "customer.cpf" | translate }}</span>
         </th>
         <td mat-cell *matCellDef="let element">
           {{ element?.cpf | mask: "CPF_CNPJ" }}
@@ -118,14 +126,14 @@
 
       <ng-container matColumnDef="street">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.street" | translate }}</span>
+          <span class="table-header">{{ "customer.street" | translate }}</span>
         </th>
         <td mat-cell *matCellDef="let element">{{ element?.street }}</td>
       </ng-container>
 
       <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{ "user.city" | translate }}</span>
+          <span class="table-header">{{ "customer.city" | translate }}</span>
         </th>
         <td mat-cell *matCellDef="let element">{{ element?.city }}</td>
       </ng-container>
@@ -134,7 +142,7 @@
         <th mat-header-cell *matHeaderCellDef>
           <div fxLayout="row" fxLayoutAlign="start center">
             <span class="table-header">
-              {{ "user.state" | translate }}
+              {{ "customer.state" | translate }}
             </span>
             <button mat-button (click)="changeOrder('state')">
               <mat-icon>sort</mat-icon>
@@ -171,7 +179,7 @@
             mat-icon-button
             color="warn"
             [matTooltip]="'general.delete' | translate"
-            (click)="deleteUser(element)"
+            (click)="deleteCustomer(element)"
           >
             <mat-icon>delete</mat-icon>
           </button>

@@ -65,10 +65,9 @@
     "pageNotFound": "Página não encontrada",
     "wellcome": "Bem vindo"
   },
-  "user": {
-    "user": "Usuário",
-    "users": "Usuários",
-    "provideProfile": "Descreva perfil do usuário",
+  "customer": {
+    "customer": "Cliente",
+    "customers": "Clientes",
     "username": "Username",
     "firstName": "Nome",
     "lastName": "Sobrenome",
@@ -76,10 +75,25 @@
     "birthDate": "Data de nasemiento",
     "cpf": "CPF",
     "street": "Rua",
+    "number": "Número",
     "city": "Cidade",
     "state": "Estado",
+    "zip": "CEP",
     "findDescription": "Pesquisa por perfil",
     "cancel": "Cancelar pesquisa",
-    "search": "Pesquisar"
+    "search": "Pesquisar",
+    "edit": "Editar",
+    "new": "Novo",
+    "provideProfile": "Descreva perfil do usuário",
+    "personal": "Dados pessoais",
+    "contact": "Contato",
+    "success": {
+      "created": "Cliente criado com sucesso!",
+      "updated": "Cliente atualizado com sucesso!"
+    },
+    "error": {
+      "create": "Erro detectado ao salvar o cliente em nosso banco de dados.",
+      "updated": "Erro detectado ao atualizar o cliente em nosso banco de dados."
+    }
   }
 }
