@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { debounceTime, map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
 
 import { ThemeService } from '../../services/theme.service';
@@ -61,16 +61,11 @@ export class SidenavComponent implements OnInit {
 
   setLigthTheme(){
     this.isDark= ! this.isDark;
-    this.themeService.setTheme(false);
-   
+    this.themeService.setTheme(false);   
   }
 
 
   ngOnInit(): void {
-     this.searchControl.valueChanges.pipe(debounceTime(1000)).subscribe(x => {
-      console.log(x);
-    });
-
     this.isDark =  this.themeService.isDarkTheme();
   }
 
@@ -79,8 +74,4 @@ export class SidenavComponent implements OnInit {
     if(cl=="pt")  this.translateService.use("en");
     else  this.translateService.use("pt");
   }
-
-
-
-
 }

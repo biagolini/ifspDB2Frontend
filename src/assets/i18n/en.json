@@ -95,5 +95,9 @@
       "create": "Error detected when saving customer in our database.",
       "updated": "Error detected when updating customer in our database."
     }
+  },
+  "store": {
+    "releaseDate": "Release Date",
+    "price": "Price"
   }
 }

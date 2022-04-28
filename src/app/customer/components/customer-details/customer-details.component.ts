@@ -86,7 +86,6 @@ export class CustomerDetailsComponent implements OnInit {
 
   saveCustomer() {
     const data = this.customerForm.value;
-    console.log(data);
     this.customerService.createCustomer(data).subscribe({
       next: () => {
         this.feedback.showMessage('customer.success.created').subscribe();
@@ -100,7 +99,6 @@ export class CustomerDetailsComponent implements OnInit {
 
   createCustomer() {  
     const data = this.customerForm.value;
-    console.log(data);
     this.customerService.updateCustomer(data, this.customerId).subscribe({
       next: () => {
         this.feedback.showMessage('customer.success.updated').subscribe();

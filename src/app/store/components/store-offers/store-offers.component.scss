@@ -1,0 +1,45 @@
+.store-cover-img {
+  height: 95%;
+  width: auto;
+  max-width: 99%;
+  object-fit: cover;
+}
+
+.card-container-large {
+  padding: 1% 0;
+  margin: 0.5%;
+  height: auto;
+  width: 15%;
+  align-items: center;
+  background-color: transparent;
+  * {
+    font-size: medium;
+  }
+  .image-container {
+    height: 25vh;
+  }
+}
+
+.card-container-small {
+  padding: 2% 0;
+  margin: 2%;
+  height: 60%;
+  width: 40%;
+  align-items: center;
+  background-color: transparent;
+  * {
+    font-size: small;
+  }
+  .image-container {
+    height: 20vh;
+  }
+}
+
+.card-container:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+mat-paginator {
+  background-color: transparent;
+}

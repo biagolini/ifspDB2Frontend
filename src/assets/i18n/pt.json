@@ -95,5 +95,9 @@
       "create": "Erro detectado ao salvar o cliente em nosso banco de dados.",
       "updated": "Erro detectado ao atualizar o cliente em nosso banco de dados."
     }
+  },
+  "store": {
+    "releaseDate": "Data de lançamento",
+    "price": "Preço"
   }
 }

@@ -1,1 +1,67 @@
-<p>store-offers works!</p>
+<div
+  class="page full-width"
+  fxFlex
+  fxLayout="column"
+  fxLayoutAlign="space-around start"
+>
+  <div>
+    <div fxLayoutGap="2%" fxLayout="row wrap">
+      <mat-card
+        class="card-container"
+        [ngClass]="{
+          'card-container-small ': (isHandset$ | async),
+          'card-container-large': !(isHandset$ | async)
+        }"
+        *ngFor="let item of games"
+        fxLayout="column"
+        fxLayoutAlign="space-around center"
+        routerLink="details/{{ item?.id }}"
+      >
+        <div
+          class="image-container"
+          fxLayout="column"
+          fxLayoutAlign="space-around center"
+        >
+          <img
+            mat-card-image
+            src="{{ item?.cover }}"
+            alt="Game cover image"
+            class="store-cover-img"
+          />
+        </div>
+
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutAlign="start start"></div>
+          <h3>
+            {{ item?.name }}
+          </h3>
+
+          <p>
+            {{ resolveEnumDual(item?.genre, listGenre) }}
+          </p>
+
+          <p>{{ "store.releaseDate" | translate }} {{ item?.releaseDate }}</p>
+
+          <p>{{ "store.price" | translate }} {{ item?.releaseDate }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="details/{{ item?.id }}">
+            Conheça o jogo
+          </button>
+          <button mat-button>Comprar agora</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-paginator
+        [length]="totalLength"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 50, 100]"
+        aria-label="Select page"
+        (page)="pageChange($event)"
+        showFirstLastButtons
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>

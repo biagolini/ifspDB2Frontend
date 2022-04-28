@@ -1,7 +1,6 @@
-import { Component,  Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { StatesModel } from 'src/app/shared/models/models';
 import { TypeService } from 'src/app/shared/services/type.service';
 
@@ -27,18 +26,14 @@ export class SearchCustomerDialogComponent  implements OnInit {
     private form: FormBuilder,
     private dialogRef: MatDialogRef<SearchCustomerDialogComponent>,
     @Inject (MAT_DIALOG_DATA) data: any){
-      console.log("abertura")
-      console.log(data.value);
-
       this.searchForm.patchValue({
         firstName: data.value.firstName,
         lastName: data.value.lastName,
         email: data.value.email,
         cpf: data.value.cpf,
-        state: data.value.state,
-  
+        state: data.value.state,  
       })
-    };  
+    }
 
   ngOnInit(): void {  
     // Pegar lista atualizada de estados
