@@ -1,1 +1,146 @@
-<p>order-panel works!</p>
+<div class="page" fxLayout="column" fxLayoutGap="30px">
+  <div class="page-header">
+    <h1 class="page-title">{{ "order.orders" | translate }}</h1>
+  </div>
+
+  <div
+    class="full-width"
+    fxLayout="row"
+    fxLayoutGap="1em"
+    fxLayoutAlign=" center"
+    fxFlexFill
+  >
+    <div fxFlex="85">
+      <mat-form-field fxFill appearance="legacy">
+        <mat-label>{{ "general.filter" | translate }}</mat-label>
+        <input matInput type="text" [formControl]="filterControl" />
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="15">
+      <button
+        mat-flat-button
+        data-cy-company="add"
+        class="add-button-color"
+        (click)="searchOrder()"
+        style="width: 100%"
+      >
+        {{ "order.findDescription" | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      class="full-width table-loading"
+      *ngIf="loadingTable"
+    >
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <table
+      mat-table
+      [dataSource]="orderDataTable"
+      class="full-width"
+      aria-describedby="List of orders"
+      *ngIf="!loadingTable"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>
+          <span class="table-header">{{ "order.id" | translate }}</span>
+          <button mat-button (click)="changeOrder('id')">
+            <mat-icon>sort</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element?.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="idCustomer">
+        <th mat-header-cell *matHeaderCellDef>
+          <span class="table-header">{{ "order.idCustomer" | translate }}</span>
+          <button mat-button (click)="changeOrder('idCustomer')">
+            <mat-icon>sort</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element?.idCustomer }}</td>
+      </ng-container>
+
+      <ng-container
+        matColumnDef="idTypeStatusOrder"
+        style="text-align: center !important"
+      >
+        <th mat-header-cell *matHeaderCellDef>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <span class="table-header">
+              {{ "order.idTypeStatusOrder" | translate }}
+            </span>
+            <button mat-button (click)="changeOrder('idTypeStatusOrder')">
+              <mat-icon>sort</mat-icon>
+            </button>
+
+            <mat-select [formControl]="selectedStatus" fxFlex="10px">
+              <span class="table-header"> </span>
+              <mat-option [value]="">--</mat-option>
+              <mat-option
+                *ngFor="let type of listStatusOrder"
+                [value]="type.id"
+              >
+                {{ type.descriptionPt }}
+              </mat-option>
+            </mat-select>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ resolveEnumDual(element?.idTypeStatusOrder, listStatusOrder) }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="trackingCode">
+        <th mat-header-cell *matHeaderCellDef>
+          <span class="table-header">{{
+            "order.trackingCode" | translate
+          }}</span>
+          <button mat-button (click)="changeOrder('trackingCode')">
+            <mat-icon>sort</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let element">{{ element?.trackingCode }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="text-align: center !important"
+        >
+          <span class="table-header">{{ "general.action" | translate }}</span>
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="text-align: center !important"
+        >
+          <button
+            mat-icon-button
+            [matTooltip]="'general.edit' | translate"
+            [routerLink]="element.id"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [length]="totalLength"
+      [pageSize]="pageSize"
+      (page)="pageChange($event)"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>

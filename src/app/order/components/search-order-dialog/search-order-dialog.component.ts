@@ -1,22 +1,23 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
-import { StatesModel } from 'src/app/shared/models/models';
+import { TypesModelDual } from 'src/app/shared/models/models';
 import { TypeService } from 'src/app/shared/services/type.service';
 
-@Component({
-  selector: 'app-search-customer-dialog',
-  templateUrl: './search-customer-dialog.component.html',
-  styleUrls: ['./search-customer-dialog.component.scss']
-})
-export class SearchCustomerDialogComponent  implements OnInit {
 
+
+@Component({
+  selector: 'app-search-order-dialog',
+  templateUrl: './search-order-dialog.component.html',
+  styleUrls: ['./search-order-dialog.component.scss']
+})
+export class SearchOrderDialogComponent implements OnInit {
 
   constructor(    
     private typeService: TypeService,
     private form: FormBuilder,
-    private dialogRef: MatDialogRef<SearchCustomerDialogComponent>,
+    private dialogRef: MatDialogRef<SearchOrderDialogComponent>,
+
     @Inject (MAT_DIALOG_DATA) data: any){
       this.searchForm.patchValue({
         firstName: data.value.firstName,
@@ -25,24 +26,24 @@ export class SearchCustomerDialogComponent  implements OnInit {
         cpf: data.value.cpf,
         state: data.value.state,  
       })
-    }
+    }    
 
-    
+
   searchForm = this.form.group({
-    firstName: [],
-    lastName: [],
-    email: [],
+    idCustomer: [],
+    username: [],
     cpf: [],
-    state: [],
   });
 
-  listState: StatesModel [] = []; //  Lista de estados e seus codigos
+    // Options
+  listStatusOrder: TypesModelDual [] = []; //  Lista de estados e seus codigos
+
 
   ngOnInit(): void {  
     // Pegar lista atualizada de estados
-    this.typeService.updateListState().subscribe({
+    this.typeService.updateStatusOrder().subscribe({
       next: (response) =>{
-       this.listState = response;
+       this.listStatusOrder = response;
       }
     });
   }
