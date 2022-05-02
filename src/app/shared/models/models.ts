@@ -15,3 +15,33 @@ export interface StatesModel {
   description: string;
   name: string;
 }
+
+export interface GameOfferWrapper {
+  game: GameModel;
+  medias: Array<MediaModel>;
+  prices: Array<PriceModel>
+}
+
+export interface GameModel{
+  id: number;
+  name: string;
+  releaseDate: string;
+  genre: number;
+  publisher: number;
+  cover: string;
+  bestPrice: number;
+}
+
+export interface MediaModel{
+  id: number;
+  game: number;
+  isVideo: boolean;
+  url: string;  
+}
+
+export interface PriceModel{
+  id: number;
+  gamePlatform: number;
+  dateTimePublish: string;
+  value: number;  
+}

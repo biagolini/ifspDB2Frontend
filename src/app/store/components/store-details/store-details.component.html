@@ -1,1 +1,126 @@
-<p>store-details works!</p>
+<div
+  class="page full-width"
+  fxFlex
+  fxLayout="column"
+  fxLayoutAlign="space-around start"
+>
+  <div class="page-header full-width">
+    <h1 class="page-title">
+      {{ gameOfferWrappers?.game?.name }}
+    </h1>
+  </div>
+
+  <div fxLayout="row" class="full-width">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      class="image-container"
+      fxFlex="60"
+      *ngIf="disableMenu"
+    >
+      <img
+        *ngIf="!isVideoCurrentMedia"
+        src="{{ currentMedia }}"
+        alt="Display image"
+      />
+    </div>
+
+    <div
+      fxLayout="row"
+      class="image-container"
+      fxFlex="60"
+      *ngIf="!disableMenu"
+    >
+      <div fxFlex="10" fxLayout="column" class="select-image-container">
+        <div
+          *ngFor="let item of gameOfferWrappers?.medias"
+          (click)="selectMedia(item)"
+          class="option-icon-container"
+        >
+          <img
+            *ngIf="!item?.isVideo"
+            src="{{ item?.url }}"
+            alt="Game option image"
+            class="full-width"
+          />
+          <div
+            *ngIf="item?.isVideo"
+            fxLayout="column"
+            fxLayoutAlign="space-around center"
+          >
+            <mat-icon *ngIf="item?.isVideo">play_circle_filled</mat-icon>
+            <p>Video</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        fxFlex
+        class="highlight-image-container"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+        [ngClass]="{ 'youtube-link ': isVideoCurrentMedia }"
+      >
+        <img
+          *ngIf="!isVideoCurrentMedia"
+          class="full-width"
+          src="{{ currentMedia }}"
+          alt="Display image"
+        />
+
+        <a
+          class="youtube-image-size"
+          *ngIf="isVideoCurrentMedia"
+          href="{{ currentMedia }}"
+          target="_blank"
+        >
+          <img
+            class="full-width"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+            alt="Display image"
+          />
+        </a>
+      </div>
+    </div>
+    <div class="shop-options-container" fxFlex>
+      <h2 class="page-title">
+        {{ gameOfferWrappers?.game?.name }}
+      </h2>
+
+      <p>
+        Genero: {{ resolveEnumDual(gameOfferWrappers?.game?.genre, listGenre) }}
+      </p>
+
+      <p>
+        Data de lançamento:
+        {{ gameOfferWrappers?.game?.releaseDate | date }}
+      </p>
+
+      <p>
+        {{ gameOfferWrappers?.game?.bestPrice ? "A partir de:" : "" }}
+
+        {{
+          gameOfferWrappers?.game?.bestPrice
+            ? (gameOfferWrappers?.game?.bestPrice | currency: "BRL")
+            : "Fora de estoque"
+        }}
+      </p>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Plataforma</mat-label>
+        <mat-select [disabled]="false">
+          <mat-option value="option1" disabled>PlayStation 4</mat-option>
+          <mat-option value="option2">PlayStation 5</mat-option>
+          <mat-option value="option3">XBox</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button class="full-width" color="primary">
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          Adicionar ao carrinho
+          <mat-icon>shopping_cart</mat-icon>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

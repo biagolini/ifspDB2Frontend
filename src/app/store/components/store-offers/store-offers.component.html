@@ -42,7 +42,13 @@
 
           <p>{{ "store.releaseDate" | translate }} {{ item?.releaseDate }}</p>
 
-          <p>{{ "store.price" | translate }} {{ item?.releaseDate }}</p>
+          <p>
+            {{
+              item?.bestPrice
+                ? (item?.bestPrice | currency: "BRL")
+                : "Fora de estoque"
+            }}
+          </p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button routerLink="details/{{ item?.id }}">

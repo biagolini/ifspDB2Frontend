@@ -1,8 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime, map, Observable, shareReplay } from 'rxjs';
 import { TypesModelDual } from 'src/app/shared/models/models';
@@ -19,9 +18,6 @@ import { StoreService } from '../../services/store.service';
 export class StoreOffersComponent implements OnInit {
 
   constructor(    
-    private form: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
     private storeService: StoreService,
     private feedback: FeedbackService,    
     private typeService: TypeService,
@@ -30,13 +26,14 @@ export class StoreOffersComponent implements OnInit {
   ) { }
   
   totalLength!: number;
-  pageSize = 10;
+  pageSize = 100;
   page = 0;  
 
   filterControl = new FormControl('');
   asc = new FormControl(false);
   sortBy = new FormControl('');
   loadingPage:boolean = true;
+  // Lista de jogos
   games: any[] = [];
 
   // Options
@@ -87,7 +84,7 @@ export class StoreOffersComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.games = response.content;
-          console.log(this.games);
+          //console.log(this.games);
           this.games = response.content;
           this.loadingPage = false;
           this.totalLength = response.totalElements;

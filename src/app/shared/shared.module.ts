@@ -40,6 +40,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RequestConfirmDialogComponent } from './components/request-confirm-dialog/request-confirm-dialog.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SafePipe } from './pipe/safe.pipe';
 
 var module = [
   CommonModule,
@@ -86,14 +87,15 @@ var module = [
     MenuComponent,
     PageNotFoundComponent,
     RequestConfirmDialogComponent,
-    SidenavComponent
+    SidenavComponent,
+    SafePipe
   ],
   imports: [
     module,
     CommonModule
   ],
   exports: [
-    module,
+    module, SafePipe
   ]
 })
 export class SharedModule { }

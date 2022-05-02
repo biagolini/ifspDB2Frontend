@@ -25,4 +25,8 @@ export class StoreService {
     return this.http.get<any>(`${environment.apiUrl}/api/game`, { params });
   }
 
+  getGameProfile(id: number) {
+    return this.http.get<any>(`${environment.apiUrl}/api/price/profile/${id}`);
+  }
+
 }
