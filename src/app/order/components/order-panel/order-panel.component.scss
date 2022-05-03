@@ -1,0 +1,6 @@
+// override material paginator
+::ng-deep .mat-paginator {
+  .mat-paginator-container {
+    justify-content: center;
+  }
+}

@@ -62,7 +62,8 @@
     "name": "Nome",
     "year": "Ano",
     "pageNotFound": "Página não encontrada",
-    "wellcome": "Bem vindo"
+    "wellcome": "Bem vindo",
+    "review": "Rvisão"
   },
   "customer": {
     "customer": "Cliente",
@@ -98,5 +99,18 @@
   "store": {
     "releaseDate": "Data de lançamento",
     "price": "Preço"
+  },
+  "order": {
+    "order": "Ordem",
+    "orders": "Ordens",
+    "id": "Id",
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "email": "email",
+    "dateTimeOrder": "Data",
+    "totalValue": "Total (BRL)",
+    "idTypeStatusOrder": "Status",
+    "trackingCode": "Codigo de rastreio",
+    "findDescription": "Buscar por perfil"
   }
 }

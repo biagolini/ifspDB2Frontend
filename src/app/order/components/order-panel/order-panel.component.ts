@@ -49,7 +49,7 @@ export class OrderPanelComponent implements OnInit {
 
 
   orderDataTable = new MatTableDataSource();
-  displayedColumns = ['id', 'idCustomer', 'idTypeStatusOrder', 'trackingCode', 'action'];
+  displayedColumns = ['id', 'firstName', 'lastName', 'email', 'dateTimeOrder', 'totalValue','idTypeStatusOrder', 'trackingCode', 'action'];
   loadingTable:boolean = true;
 
 

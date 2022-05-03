@@ -62,7 +62,8 @@
     "name": "Name",
     "year": "Year",
     "pageNotFound": "Page not found",
-    "wellcome": "Wellcome"
+    "wellcome": "Wellcome",
+    "review": "Review"
   },
   "customer": {
     "customer": "Customer",
@@ -98,5 +99,18 @@
   "store": {
     "releaseDate": "Release Date",
     "price": "Price"
+  },
+  "order": {
+    "order": "Order",
+    "orders": "Orders",
+    "id": "Id",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "email",
+    "dateTimeOrder": "Date",
+    "totalValue": "Total (BRL)",
+    "idTypeStatusOrder": "Status",
+    "trackingCode": "trackingCode",
+    "findDescription": "Find by profile"
   }
 }
