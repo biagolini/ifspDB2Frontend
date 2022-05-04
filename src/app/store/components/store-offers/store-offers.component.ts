@@ -84,7 +84,6 @@ export class StoreOffersComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.games = response.content;
-          //console.log(this.games);
           this.games = response.content;
           this.loadingPage = false;
           this.totalLength = response.totalElements;

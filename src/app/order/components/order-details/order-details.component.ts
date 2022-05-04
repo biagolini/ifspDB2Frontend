@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ItenOrderModel, StatesModel, TypeModelSingle, TypesModelDual } from 'src/app/shared/models/models';
+import { ItenOrderModel, TypeModelSingle, TypesModelDual } from 'src/app/shared/models/models';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { TypeService } from 'src/app/shared/services/type.service';
+
 import { OrderService } from '../../services/order.service';
 
 
@@ -79,8 +80,6 @@ export class OrderDetailsComponent implements OnInit {
       next: (response) =>{
         this.orderForm.patchValue(response?.order);
         this.itensOrderDataTable.data = response?.itens;
-        //console.log(response);
-        //console.log(this.orderForm.value);
         console.log( this.itensOrderDataTable.data);
       }
     });
