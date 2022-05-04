@@ -22,6 +22,8 @@ export class OrderService {
       .append('size', pager.pageSize);
 
     if (query) params = params.append('query', query);
+     if (query) params = params.append('query', query);
+    
     if (sortBy.field&&sortBy.asc) params = params.append('sort', sortBy.field+',asc');   
     if (sortBy.field&&!sortBy.asc) params = params.append('sort', sortBy.field+',desc'); 
     if (selectedState!=null) params = params.append('state',selectedState);
@@ -32,4 +34,9 @@ export class OrderService {
     }
     return this.http.get<any>(`${environment.apiUrl}/api/order`, { params });
   }
+
+  getOrderProfileById(id: number) {
+    return this.http.get<any>(`${environment.apiUrl}/api/order/orderProfile/${id}`);
+  }
+
 }

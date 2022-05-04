@@ -110,7 +110,17 @@
     "dateTimeOrder": "Date",
     "totalValue": "Total (BRL)",
     "idTypeStatusOrder": "Status",
-    "trackingCode": "trackingCode",
-    "findDescription": "Find by profile"
+    "trackingCode": "TrackingCode",
+    "findDescription": "Find by profile",
+    "customer": "Customer",
+    "summary": "Order Summary",
+    "itens": {
+      "itens": "Itens",
+      "quantity": "Quantity",
+      "gameName": "Game name",
+      "typePlatformId": "Platform",
+      "unityValue": "Unity price",
+      "subTotal": "Sub-Total"
+    }
   }
 }

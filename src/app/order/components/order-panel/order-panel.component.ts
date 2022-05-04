@@ -32,8 +32,9 @@ export class OrderPanelComponent implements OnInit {
   filterControl = new FormControl('');
   asc = new FormControl(false);
   sortBy = new FormControl('');
+
   // Options
-  listStatusOrder: TypesModelDual [] = []; //  Lista de estados e seus codigos
+  listStatusOrder: TypesModelDual [] = []; 
 
   searchForm = this.form.group({
     idCustomer: [],

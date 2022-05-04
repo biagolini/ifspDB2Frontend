@@ -111,6 +111,16 @@
     "totalValue": "Total (BRL)",
     "idTypeStatusOrder": "Status",
     "trackingCode": "Codigo de rastreio",
-    "findDescription": "Buscar por perfil"
+    "findDescription": "Buscar por perfil",
+    "customer": "Cliente",
+    "summary": "Resumo do pedido",
+    "itens": {
+      "itens": "Itens",
+      "quantity": "Quantidade",
+      "gameName": "Nome do jogo",
+      "typePlatformId": "Plataforma",
+      "unityValue": "Valor unitário",
+      "subTotal": "Sub-Total"
+    }
   }
 }

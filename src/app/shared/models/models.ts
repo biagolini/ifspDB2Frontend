@@ -45,3 +45,31 @@ export interface PriceModel{
   dateTimePublish: string;
   value: number;  
 }
+
+export interface  OrderModel {
+  id?: number;
+  idCustomer: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  idTypeStatusOrder: number;
+  dateTimeOrder: Date;
+  totalValue: number;
+  trackingCode: string;
+}
+
+export interface  ItenOrderModel {
+  id?: number;
+  quantity: number;
+  gameName: string;
+  gameId: number;
+  typePlatformId: number;
+  gameCover: string;
+  unityValue: number;
+  subTotal: number;  
+}
+
+export interface  OrderWrapper {
+  medias: OrderModel;
+  prices: Array<ItenOrderModel>
+}
