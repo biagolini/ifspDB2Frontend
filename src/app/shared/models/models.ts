@@ -58,7 +58,7 @@ export interface  OrderModel {
   trackingCode: string;
 }
 
-export interface  ItenOrderModel {
+export interface  ItemOrderModel {
   id?: number;
   quantity: number;
   gameName: string;
@@ -71,5 +71,5 @@ export interface  ItenOrderModel {
 
 export interface  OrderWrapper {
   medias: OrderModel;
-  prices: Array<ItenOrderModel>
+  prices: Array<ItemOrderModel>
 }

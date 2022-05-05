@@ -49,4 +49,7 @@ export class OrderService {
     return this.http.get<any>(`${environment.apiUrl}/api/order/orderProfile/${id}`);
   }
 
+  reviewOrderValue(order: Object, id: number) {
+    return this.http.put<any>(`${environment.apiUrl}/api/order/reviewOrderValue/${id}`,order );
+  }
 }

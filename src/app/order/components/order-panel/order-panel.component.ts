@@ -3,6 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime } from 'rxjs/operators';
 import { TypesModelDual } from 'src/app/shared/models/models';
@@ -55,7 +56,7 @@ export class OrderPanelComponent implements OnInit {
 
 
   orderDataTable = new MatTableDataSource();
-  displayedColumns = ['id', 'firstName', 'lastName', 'email', 'dateTimeOrder', 'totalValue','idTypeStatusOrder', 'trackingCode', 'action'];
+  displayedColumns = ['id', 'firstName', 'lastName', 'email', 'dateTimeOrder', 'idTypeStatusOrder', 'trackingCode','totalValue', 'action'];
   loadingTable:boolean = true;
 
 
@@ -127,7 +128,6 @@ export class OrderPanelComponent implements OnInit {
       .findAllPaginated(pageEvent,{field: this.sortBy.value, asc: this.asc.value},this.selectedStatus.value, this.filterControl.value)
       .subscribe({
         next: (response) => {
-          console.log(response.content);
           this.orderDataTable.data = response.content;
           this.loadingTable = false;
           this.totalLength = response.totalElements;
@@ -162,4 +162,20 @@ export class OrderPanelComponent implements OnInit {
   }
 
 
+  reviewOrderValue(order: any){
+    let id = order?.id;
+    this.orderService.reviewOrderValue(order, id).subscribe({
+      next: () => {
+        this.feedback.showMessage('order.reviewRequested').subscribe({
+          next: () => {
+            this.ngOnInit();
+          },
+        });
+      },
+    });
+  }
+  
+  disableButton(order: any){    
+    return order?.totalValue != null;
+  }
 }

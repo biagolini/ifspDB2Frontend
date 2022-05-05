@@ -213,12 +213,8 @@ export class CustomerPanelComponent implements OnInit {
     } 
   }
 
-
   getStateNameById(id: number){
     return this.typeService.getStateNameById(id);
   }
-
-
-
 
 }

@@ -117,6 +117,8 @@
     "cpf": "CPF",
     "idOrder": "Número da ordem",
     "username": "Username",
+    "reviewRequested": "Solicitação de revisão de valor de ordem enviado ao servidor",
+    "clickReview": "Revisar",
     "itens": {
       "itens": "Itens",
       "quantity": "Quantidade",

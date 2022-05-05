@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ItenOrderModel, TypeModelSingle, TypesModelDual } from 'src/app/shared/models/models';
+import { ItemOrderModel, TypeModelSingle, TypesModelDual } from 'src/app/shared/models/models';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 
@@ -48,7 +48,7 @@ export class OrderDetailsComponent implements OnInit {
 });
 
   // Itens table
-  itensOrderDataTable = new MatTableDataSource<ItenOrderModel>();
+  itensOrderDataTable = new MatTableDataSource<ItemOrderModel>();
   displayedColumns = [ 'quantity', 'gameName', 'typePlatformId','unityValue','subTotal'];
 
 
@@ -79,6 +79,7 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.getOrderProfileById(this.orderId).subscribe({
       next: (response) =>{
         this.orderForm.patchValue(response?.order);
+        if(response?.order.trackingCode == null )  this.orderForm.patchValue({trackingCode: "--"})
         this.itensOrderDataTable.data = response?.itens;
         console.log( this.itensOrderDataTable.data);
       }
@@ -90,6 +91,19 @@ export class OrderDetailsComponent implements OnInit {
     return  typeModel.find( x=>x.id == id)?.description;
   }
 
+
+  reviewOrderValue(){
+    this.orderService.reviewOrderValue(this.orderForm.value, this.orderId).subscribe({
+      next: () => {
+        this.feedback.showMessage('order.reviewRequested').subscribe({
+          next: () => {
+            this.ngOnInit();
+          },
+        });
+      },
+    });
+
+  }
 
 }
 

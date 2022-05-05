@@ -155,7 +155,7 @@
                 }}</span>
               </th>
               <td mat-cell *matCellDef="let element">
-                {{ element?.unityValue }}
+                {{ element?.unityValue | currency: "BRL" }}
               </td>
             </ng-container>
 
@@ -166,7 +166,7 @@
                 }}</span>
               </th>
               <td mat-cell *matCellDef="let element">
-                {{ element?.subTotal }}
+                {{ element?.subTotal | currency: "BRL" }}
               </td>
             </ng-container>
 
@@ -185,12 +185,26 @@
               </mat-label>
               <form class="full-width" [formGroup]="orderForm">
                 <input
-                  type="text"
                   matInput
                   formControlName="totalValue"
                   readonly
+                  currencyMask
+                  [options]="{
+                    prefix: 'R$ ',
+                    thousands: '.',
+                    decimal: ',',
+                    align: 'left'
+                  }"
                 />
               </form>
+
+              <p
+                id="item-review"
+                *ngIf="!orderForm?.value.totalValue"
+                (click)="reviewOrderValue()"
+              >
+                {{ "order.clickReview" | translate }}
+              </p>
             </mat-form-field>
           </div>
           <div class="full-width">

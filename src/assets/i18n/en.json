@@ -119,6 +119,8 @@
     "cpf": "CPF",
     "idOrder": "Order Id",
     "username": "Username",
+    "reviewRequested": "Order total value review resquested",
+    "clickReview": "Review",
     "itens": {
       "itens": "Itens",
       "quantity": "Quantity",
