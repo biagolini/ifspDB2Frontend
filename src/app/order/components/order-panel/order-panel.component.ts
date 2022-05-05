@@ -37,8 +37,13 @@ export class OrderPanelComponent implements OnInit {
   listStatusOrder: TypesModelDual [] = []; 
 
   searchForm = this.form.group({
+    orderStatus: [],
+    idOrder: [],
     idCustomer: [],
     username: [],
+    firstName: [],
+    lastName: [],
+    email: [],
     cpf: [],
   });
 
@@ -65,7 +70,6 @@ export class OrderPanelComponent implements OnInit {
           this.loadingTable = false;  
             if(res){
               this.searchForm.patchValue(res); // atualiza o formulario de pesquisa
-              console.log(this.searchForm.value)
               this.orderService.findAllPaginated({
                 pageIndex: this.page,
                 pageSize: this.pageSize,
@@ -148,8 +152,8 @@ export class OrderPanelComponent implements OnInit {
   resolveEnumDual(id: number, typeModel: TypesModelDual [] ){
     let translation : string|undefined = ''   
     let cl = this.translateService.currentLang;
-    if(cl=="pt")  translation = typeModel.find( x=>x.id == id)?.descriptionPt;
-    else  translation = typeModel.find( x=>x.id == id)?.descriptionEn;   
+    if(cl=="en")   translation = typeModel.find( x=>x.id == id)?.descriptionEn; 
+    else   translation = typeModel.find( x=>x.id == id)?.descriptionPt;    
     
     if( translation == null) { 
       return 'error';    

@@ -16,6 +16,7 @@ export class CustomerService {
     selectedState: boolean|number, 
     query?: string,
     searchForm?: {firstName: string, lastName: string, email: string, cpf: string, state: number}) {
+      
     let params = new HttpParams()
       .append('page', pager.pageIndex)
       .append('size', pager.pageSize);

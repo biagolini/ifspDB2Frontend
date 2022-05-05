@@ -32,7 +32,7 @@
     "currentLanguange": "Português",
     "login": "Login",
     "logout": "Logout",
-    "search": "Busque um jogo",
+    "search": "Buscar",
     "date": "Data",
     "description": "Descrição",
     "action": "Ação",
@@ -63,7 +63,7 @@
     "year": "Ano",
     "pageNotFound": "Página não encontrada",
     "wellcome": "Bem vindo",
-    "review": "Rvisão"
+    "review": "Revisão"
   },
   "customer": {
     "customer": "Cliente",
@@ -80,8 +80,6 @@
     "state": "Estado",
     "zip": "CEP",
     "findDescription": "Pesquisa por perfil",
-    "cancel": "Cancelar pesquisa",
-    "search": "Pesquisar",
     "edit": "Editar",
     "new": "Novo",
     "provideProfile": "Descreva perfil do usuário",
@@ -114,6 +112,11 @@
     "findDescription": "Buscar por perfil",
     "customer": "Cliente",
     "summary": "Resumo do pedido",
+    "provideProfile": "Descreva perfil da ordem/cliente",
+    "idCustomer": "Número de cadastro do cliente",
+    "cpf": "CPF",
+    "idOrder": "Número da ordem",
+    "username": "Username",
     "itens": {
       "itens": "Itens",
       "quantity": "Quantidade",

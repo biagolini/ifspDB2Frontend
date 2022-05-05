@@ -175,18 +175,16 @@
         <button
           mat-stroked-button
           color="warn"
-          data-cy-company-button="cancel"
           routerLink=".."
           class="button-size"
         >
           {{ "general.cancel" | translate }}
         </button>
         <button
-          mat-flat-button
-          class="save-button-color button-size"
+          mat-stroked-button
+          color="accent"
+          class="button-size"
           [disabled]="customerForm.invalid"
-          data-cy-company-button="save"
-          [attr.data-cy-is-disabled]="customerForm.invalid"
           (click)="!isEdit ? saveCustomer() : createCustomer()"
         >
           {{ "general.save" | translate }}

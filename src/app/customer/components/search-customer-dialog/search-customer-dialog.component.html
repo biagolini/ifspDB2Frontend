@@ -53,22 +53,22 @@
     <span class="spacer"></span>
     <button
       mat-stroked-button
-      class="button-size add-button-low-color"
-      mat-flat-button
+      color="warn"
+      class="button-size"
       mat-dialog-close
       (click)="close()"
     >
-      {{ "customer.cancel" | translate }}
+      {{ "general.cancel" | translate }}
     </button>
     <button
       mat-stroked-button
-      class="button-size add-button-color"
-      mat-flat-button
+      class="button-size"
+      color="accent"
       mat-dialog-close
       type="submit"
       (click)="save()"
     >
-      {{ "customer.search" | translate }}
+      {{ "general.search" | translate }}
     </button>
   </div>
 </div>

@@ -98,8 +98,8 @@ export class StoreOffersComponent implements OnInit {
   resolveEnumDual(id: number, typeModel: TypesModelDual [] ){
     let translation : string|undefined = ''   
     let cl = this.translateService.currentLang;
-    if(cl=="pt")  translation = typeModel.find( x=>x.id == id)?.descriptionPt;
-    else  translation = typeModel.find( x=>x.id == id)?.descriptionEn;   
+    if(cl=="en")   translation = typeModel.find( x=>x.id == id)?.descriptionEn; 
+    else   translation = typeModel.find( x=>x.id == id)?.descriptionPt;  
     
     if( translation == null) { 
       return 'error';    

@@ -86,9 +86,7 @@ export class StoreDetailsComponent  {
   }
   
 
-  selectMedia(game: MediaModel){
-    //console.log(game.url);
-    //console.log(game.isVideo);    
+  selectMedia(game: MediaModel){  
     this.isVideoCurrentMedia= game.isVideo;
     this.currentMedia= game.url;  
   }
@@ -97,8 +95,8 @@ export class StoreDetailsComponent  {
 resolveEnumDual(id: any, typeModel: TypesModelDual [] ){
   let translation : string|undefined = ''   
   let cl = this.translateService.currentLang;
-  if(cl=="pt")  translation = typeModel.find( x=>x.id == id)?.descriptionPt;
-  else  translation = typeModel.find( x=>x.id == id)?.descriptionEn;   
+  if(cl=="en")   translation = typeModel.find( x=>x.id == id)?.descriptionEn; 
+  else   translation = typeModel.find( x=>x.id == id)?.descriptionPt;  
   
   if( translation == null) { 
     return 'error';    
