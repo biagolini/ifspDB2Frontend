@@ -1,10 +1,18 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable, shareReplay } from 'rxjs';
-import { GameOfferWrapper, MediaModel, TypeModelSingle, TypesModelDual } from 'src/app/shared/models/models';
-import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import {
+  DetailCartItensModel,
+  GameOfferWrapper,
+  MediaModel,
+  PricesModel,
+  TypeModelSingle,
+  TypesModelDual,
+} from 'src/app/shared/models/models';
+import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 
 import { StoreService } from '../../services/store.service';
@@ -18,13 +26,14 @@ import { StoreService } from '../../services/store.service';
 export class StoreDetailsComponent  {
 
   constructor(
-    private storeService: StoreService,
-    private feedback: FeedbackService,    
-    private typeService: TypeService,
-    private translateService: TranslateService,
     private breakpointObserver: BreakpointObserver,
-    private route: ActivatedRoute,
-
+    private route: ActivatedRoute,    
+    private translateService: TranslateService,
+    private shoppingCartService: ShoppingCartService,
+    private storeService: StoreService,  
+    private typeService: TypeService,
+    private router: Router,
+    private form: FormBuilder,
   ) { }
 
   // dados do jogo
@@ -41,8 +50,19 @@ export class StoreDetailsComponent  {
   listGenre: TypesModelDual[] = []; //  Lista de generos de jogos
   listPlatform: TypeModelSingle[] = []  //  Lista de plataformas
 
+
   // Monitor de carregamento
   processing: boolean = false;
+
+  
+  // Monitor de carregamento
+  outOfStock: boolean = false;
+
+  //  Game Info details
+  optionsToBuy: DetailCartItensModel[] = [];
+
+  // Preços
+  prices: PricesModel[] = []  //  Lista de plataformas
 
   // Monitor do tipo de tela
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -52,7 +72,19 @@ export class StoreDetailsComponent  {
     shareReplay()
   );
   
-  
+  // Iten order form
+  itemForm = this.form.group({
+    gameCover: [ ],
+    gameName: [],
+    idPrice:[null, Validators.required],
+    idPlatform: [],
+    quantity: [],
+    unityPrice: [],
+    subTotal: [],
+  });
+
+
+
   ngOnInit(): void {
     this.route.params.subscribe({
       next: (params) => {
@@ -71,6 +103,7 @@ export class StoreDetailsComponent  {
         this.listPlatform = response;        
       }
     });
+    
     this.patchGame();
   }
 
@@ -79,19 +112,31 @@ export class StoreDetailsComponent  {
       next: (response) =>{    
         this.gameOfferWrappers  = response ;
         this.currentMedia =response?.game.cover
+        this.itemForm.patchValue({
+          gameCover: response?.game.cover,
+          gameName: response?.game.name,
+        })
         if(response?.medias[0]!= null ) this.currentMedia = response?.medias[0].url;
-        else  this.disableMenu = true;      
+        else  this.disableMenu = true;            
+        if(response?.prices[0]!= null ) this.prices = response?.prices;   
+        if(response?.prices[0]== null ) this.outOfStock = true;
+        
       }
     });
   }
   
 
-  selectMedia(game: MediaModel){  
-    this.isVideoCurrentMedia= game.isVideo;
-    this.currentMedia= game.url;  
-  }
+selectMedia(game: MediaModel){  
+  this.isVideoCurrentMedia= game.isVideo;
+  this.currentMedia= game.url;  
+}
 
 
+resolveEnumSingle (id: number, typeModel: TypeModelSingle [] ){
+  return typeModel.find( x=>x.id == id)?.description;
+}
+
+  
 resolveEnumDual(id: any, typeModel: TypesModelDual [] ){
   let translation : string|undefined = ''   
   let cl = this.translateService.currentLang;
@@ -105,4 +150,18 @@ resolveEnumDual(id: any, typeModel: TypesModelDual [] ){
 }
 
 
+
+addToCart(){ 
+  let unityPrice = this.prices.find( x=>x.idPrice ==  this.itemForm.value.idPrice)?.value as number;  
+  let idPlatform = this.prices.find( x=>x.idPrice ==  this.itemForm.value.idPrice)?.idPlatform as number;  
+  this.itemForm.patchValue({
+    quantity: 1,
+    idPlatform: idPlatform,
+    unityPrice: unityPrice,
+    subTotal: unityPrice,
+  })
+
+  this.shoppingCartService.addToCart(this.itemForm.value); 
+  this.router.navigate(['./shopping_cart']);  
+}
 }

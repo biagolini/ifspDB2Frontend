@@ -6,7 +6,6 @@ import { StoreDetailsComponent } from './components/store-details/store-details.
 import { StorePanelComponent } from './components/store-panel/store-panel.component';
 import { StoreRoutingModule } from './store-routing.module';
 import { StoreOffersComponent } from './components/store-offers/store-offers.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 @NgModule({
@@ -14,7 +13,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     StoreDetailsComponent,
     StorePanelComponent,
     StoreOffersComponent,
-    ShoppingCartComponent
+   
   ],
   imports: [
     CommonModule,

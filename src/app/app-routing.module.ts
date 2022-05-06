@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { ShoppingCartComponent } from './shared/components/shopping-cart/shopping-cart.component';
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
         loadChildren: () =>
         import('./store/store.module').then((m) => m.StoreModule)
       }, 
+      { 
+        path: 'shopping_cart',
+        component: ShoppingCartComponent,  
+      },
       {
         path: 'customer',
         loadChildren: () =>

@@ -73,3 +73,30 @@ export interface  OrderWrapper {
   medias: OrderModel;
   prices: Array<ItemOrderModel>
 }
+
+export interface CartItensModel {
+  idPrice: number; 
+  quantity: number; 
+}
+
+export interface CartModel {
+  itens: Array<CartItensModel>;
+}
+
+
+export interface PricesModel {
+  idPrice: number; 
+  idPlatform: number; 
+  value: number;  
+}
+
+
+export interface DetailCartItensModel {
+  gameCover: string; 
+  gameName: string; 
+  idPrice: number; 
+  idPlatform: number; 
+  quantity: number; 
+  subTotal: number; 
+  unityPrice: number; 
+}

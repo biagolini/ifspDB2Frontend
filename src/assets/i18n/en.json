@@ -63,7 +63,9 @@
     "year": "Year",
     "pageNotFound": "Page not found",
     "wellcome": "Wellcome",
-    "review": "Review"
+    "review": "Review",
+    "decrease": "Decrease",
+    "increase": "Increase"
   },
   "customer": {
     "customer": "Customer",
@@ -129,5 +131,16 @@
       "unityValue": "Unity price",
       "subTotal": "Sub-Total"
     }
+  },
+  "cart": {
+    "cart": "Cart",
+    "highligths": "Highligths",
+    "itens": "Itens",
+    "gameCover": "Cover",
+    "gameName": "Game Name",
+    "idPlatform": "Platforma",
+    "quantity": "Quantity",
+    "unityPrice": "Unity price",
+    "subTotal": "Sub-total"
   }
 }

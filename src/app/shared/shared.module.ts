@@ -31,16 +31,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { TextMaskModule } from 'angular2-text-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { NgxMaskModule } from 'ngx-mask';
-import { TextMaskModule } from 'angular2-text-mask';
-
 
 import { MenuComponent } from './components/menu/menu.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RequestConfirmDialogComponent } from './components/request-confirm-dialog/request-confirm-dialog.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SafePipe } from './pipe/safe.pipe';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+
 
 var module = [
   CommonModule,
@@ -88,7 +89,8 @@ var module = [
     PageNotFoundComponent,
     RequestConfirmDialogComponent,
     SidenavComponent,
-    SafePipe
+    SafePipe,
+    ShoppingCartComponent
   ],
   imports: [
     module,

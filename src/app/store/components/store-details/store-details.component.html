@@ -106,21 +106,38 @@
         }}
       </p>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Plataforma</mat-label>
-        <mat-select [disabled]="false">
-          <mat-option value="option1" disabled>PlayStation 4</mat-option>
-          <mat-option value="option2">PlayStation 5</mat-option>
-          <mat-option value="option3">XBox</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <form [formGroup]="itemForm" fxLayout="column" class="full-width">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label *ngIf="!outOfStock">Plataforma - Preço</mat-label>
 
-      <button mat-raised-button class="full-width" color="primary">
+          <mat-label *ngIf="outOfStock"> Fora de estoque </mat-label>
+
+          <mat-select formControlName="idPrice">
+            <mat-option *ngFor="let item of prices" [value]="item.idPrice">
+              {{ resolveEnumSingle(item.idPlatform, listPlatform) }} -
+              {{ item.value | currency: "BRL" }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+
+      <button
+        (click)="addToCart()"
+        mat-raised-button
+        class="full-width"
+        color="primary"
+        [disabled]="!itemForm.valid"
+      >
         <div fxLayout="row" fxLayoutAlign="space-evenly center">
           Adicionar ao carrinho
           <mat-icon>shopping_cart</mat-icon>
         </div>
       </button>
     </div>
+  </div>
+  <div class="full-width back-button">
+    <button mat-raised-button color="primary" class="full-width" routerLink="/">
+      Voltar a loja
+    </button>
   </div>
 </div>

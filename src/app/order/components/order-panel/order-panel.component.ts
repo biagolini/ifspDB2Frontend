@@ -24,7 +24,7 @@ export class OrderPanelComponent implements OnInit {
     private typeService: TypeService,
     private orderService: OrderService,
     private feedback: FeedbackService,
-    private  dialog: MatDialog,
+    private dialog: MatDialog,
     private form: FormBuilder,
     private translateService: TranslateService,
   

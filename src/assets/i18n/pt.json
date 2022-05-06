@@ -63,7 +63,9 @@
     "year": "Ano",
     "pageNotFound": "Página não encontrada",
     "wellcome": "Bem vindo",
-    "review": "Revisão"
+    "review": "Revisão",
+    "decrease": "Diminuir",
+    "increase": "Aumentar"
   },
   "customer": {
     "customer": "Cliente",
@@ -127,5 +129,16 @@
       "unityValue": "Valor unitário",
       "subTotal": "Sub-Total"
     }
+  },
+  "cart": {
+    "cart": "Carrinho",
+    "highligths": "Veja também",
+    "itens": "Pedido",
+    "gameCover": "Capa",
+    "gameName": "Nome do Jogo",
+    "idPlatform": "Plataforma",
+    "quantity": "Quantidade",
+    "unityPrice": "Preço unitário",
+    "subTotal": "Sub-total"
   }
 }
