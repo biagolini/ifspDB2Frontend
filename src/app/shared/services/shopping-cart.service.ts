@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { take } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { Injectable } from '@angular/core';
 
 import { DetailCartItensModel } from '../models/models';
 import { FeedbackService } from './feedback.service';
@@ -111,32 +109,7 @@ export class ShoppingCartService {
   }
     
 
-
-
-
-  changeItemQuantity(id:number, n:number){
-   /* if(id>=this.cart.length) console.log("Error in changeItemQuantity: out of bounds");
-    else this.cart[id].quantity = n;
-    */
-  }
-
-
 }
 
-  /*
-    addToCart(idPrice: number) {    
 
-   // this.cart = [...this.cart, {idPrice:idPrice,uantity:1} ];   
-  }
-  
-  submmitOrder() {
-    return this.http.post<any>(`${environment.apiUrl}/api/order/`, this.cart);
-  }
-  
-  getCart() {
-    return this.cart;
-  }
 
-}
-
-*/
