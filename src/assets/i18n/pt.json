@@ -92,7 +92,7 @@
       "updated": "Cliente atualizado com sucesso!"
     },
     "error": {
-      "create": "Erro detectado ao salvar o cliente em nosso banco de dados.",
+      "created": "Erro detectado ao salvar o cliente em nosso banco de dados.",
       "updated": "Erro detectado ao atualizar o cliente em nosso banco de dados."
     }
   },
@@ -100,7 +100,10 @@
     "releaseDate": "Data de lançamento",
     "price": "Preço",
     "highlight": "Destaques",
-    "allGames": "Todos os jogos"
+    "allGames": "Todos os jogos",
+    "discover": "Conheça",
+    "buyNow": "Compre agora",
+    "backStore": "Voltar a loja"
   },
   "order": {
     "order": "Ordem",

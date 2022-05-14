@@ -35,6 +35,11 @@
   }
 }
 
+card-container {
+  padding: 0;
+  margin: 0;
+}
+
 .card-container:hover {
   cursor: pointer;
   transform: scale(1.02);
@@ -68,4 +73,10 @@ mat-paginator {
 .check-container {
   width: 100%;
   margin-bottom: 1%;
+}
+
+.offer-item-container {
+  button {
+    width: 100%;
+  }
 }

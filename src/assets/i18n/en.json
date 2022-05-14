@@ -94,7 +94,7 @@
       "updated": "Customer successfully updated!"
     },
     "error": {
-      "create": "Error detected when saving customer in our database.",
+      "created": "Error detected when saving customer in our database.",
       "updated": "Error detected when updating customer in our database."
     }
   },
@@ -102,7 +102,10 @@
     "releaseDate": "Release Date",
     "price": "Price",
     "highlight": "Highlight",
-    "allGames": "All games"
+    "allGames": "All games",
+    "discover": "Discover",
+    "buyNow": "Buy now",
+    "backStore": "Back to store"
   },
   "order": {
     "order": "Order",

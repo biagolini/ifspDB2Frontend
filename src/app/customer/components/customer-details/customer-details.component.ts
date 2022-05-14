@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -31,8 +32,8 @@ export class CustomerDetailsComponent implements OnInit {
   processing: boolean = false;
 
   //MASK
-  cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/, '.', '-', /\d/, /\d/];
-  cepMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/];
+  cpfMask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.',/\d/, /\d/, /\d/,  '-', /\d/, /\d/];
+  cepMask = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/,  /\d/, /\d/];
 
   // Options
   listState: StatesModel [] = []; //  Lista de estados e seus codigos
@@ -77,27 +78,48 @@ export class CustomerDetailsComponent implements OnInit {
   patchCustomer(){
     this.customerService.getCustomerById(this.customerId).subscribe({
       next: (response) =>{
-        this.customerForm.patchValue(response);
+        this.customerForm.patchValue(response);       
       }
     });
 
   }
 
 
-  saveCustomer() {
+  formatForm(){
+    let formattedDt = formatDate(this.customerForm.value.birthDate, 'yyyy-MM-dd', 'en_US');
+    this.customerForm.patchValue({birthDate: formattedDt})
+
+    if(this.customerForm.value.cpf.length==14){
+      let arrayElements = this.customerForm.value.cpf;
+      arrayElements = arrayElements.substring(0, 11) + arrayElements.substring(12, arrayElements.length);
+      arrayElements = arrayElements.substring(0, 7) + arrayElements.substring(8, arrayElements.length);
+      arrayElements = arrayElements.substring(0, 3) + arrayElements.substring(4, arrayElements.length);
+      this.customerForm.patchValue({cpf: arrayElements})
+    }    
+    if(this.customerForm.value.zip.length==9){
+      let arrayElements = this.customerForm.value.zip;
+      arrayElements = arrayElements.substring(0, 5) + arrayElements.substring(6, arrayElements.length);
+      this.customerForm.patchValue({zip: arrayElements})
+    }    
+  }
+
+ saveCustomer() {  
+    this.formatForm();   
     const data = this.customerForm.value;
     this.customerService.createCustomer(data).subscribe({
       next: () => {
         this.feedback.showMessage('customer.success.created').subscribe();
         this.router.navigate(['/customer']);
       },
-      error: () => {
+      error: error => {
+        console.log(error);
         this.feedback.showMessage('customer.error.created').subscribe();
       }
     });
   }
 
   createCustomer() {  
+    this.formatForm();
     const data = this.customerForm.value;
     this.customerService.updateCustomer(data, this.customerId).subscribe({
       next: () => {

@@ -7,89 +7,98 @@
   <mat-toolbar color="primary">
     <h1>{{ "store.highlight" | translate }}</h1>
   </mat-toolbar>
-
-  <div
-    class="highlight-item"
-    fxLayout="row"
-    fxLayoutAlign="center stretch"
-    fxLayoutGap="1%"
-  >
+  <div fxLayout="column" fxLayoutAlign="space-between center">
     <div
-      class="highlight-move"
-      fxFlex="5"
-      fxLayout="column"
+      class="highlight-item"
+      fxLayout="row"
       fxLayoutAlign="center stretch"
-      (click)="previusHighlight()"
+      fxLayoutGap="1%"
     >
-      <button mat-button *ngIf="showPreviusButton">
-        <mat-icon>arrow_back_ios</mat-icon>
-      </button>
-    </div>
-
-    <div
-      class="highlight-cover"
-      fxFlex="45"
-      fxLayout="column"
-      fxLayoutAlign="center stretch"
-    >
-      <img
-        src="{{ highlight[highlightItem]?.cover }}"
-        alt="Game cover image"
-        class="highlight-cover-img"
-      />
-    </div>
-    <div
-      class="highlight-description"
-      fxLayout="column"
-      fxLayoutAlign="start stretch"
-      fxFlex="45"
-    >
-      <h1>{{ highlight[highlightItem]?.header }}</h1>
-      <p>
-        {{ highlight[highlightItem]?.description }}
-      </p>
-
-      <button
-        mat-raised-button
-        color="primary"
-        class="full-width"
-        routerLink="/details/{{ highlight[highlightItem]?.game }}"
+      <div
+        class="highlight-move"
+        fxFlex="5"
+        fxLayout="column"
+        fxLayoutAlign="center stretch"
+        (click)="previusHighlight()"
       >
-        Veja a pagina do jogo
-      </button>
+        <button mat-button *ngIf="showPreviusButton">
+          <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+      </div>
+
+      <div
+        class="highlight-cover"
+        fxFlex="45"
+        fxLayout="column"
+        fxLayoutAlign="center stretch"
+      >
+        <img
+          src="{{ highlight[highlightItem]?.cover }}"
+          alt="Game cover image"
+          class="highlight-cover-img"
+        />
+      </div>
+      <div
+        class="highlight-description"
+        fxLayout="column"
+        fxLayoutAlign="start stretch"
+        fxFlex="45"
+      >
+        <h1>{{ highlight[highlightItem]?.header }}</h1>
+        <p>
+          {{ highlight[highlightItem]?.description }}
+        </p>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="full-width"
+          routerLink="/details/{{ highlight[highlightItem]?.game }}"
+        >
+          Veja a pagina do jogo
+        </button>
+      </div>
+      <div
+        class="highlight-move"
+        fxFlex="5"
+        fxLayout="column"
+        fxLayoutAlign="center stretch"
+        (click)="nextHighlight()"
+      >
+        <button mat-button *ngIf="showNextButton">
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
+      </div>
     </div>
-    <div
-      class="highlight-move"
-      fxFlex="5"
-      fxLayout="column"
-      fxLayoutAlign="center stretch"
-      (click)="nextHighlight()"
-    >
-      <button mat-button *ngIf="showNextButton">
-        <mat-icon>arrow_forward_ios</mat-icon>
-      </button>
+    <div class="check-container" fxLayout="row" fxLayoutAlign="center stretch">
+      <mat-icon>{{
+        highlightItem == 0 ? "radio_button_checked" : "radio_button_unchecked"
+      }}</mat-icon>
+      <mat-icon>{{
+        highlightItem == 1 ? "radio_button_checked" : "radio_button_unchecked"
+      }}</mat-icon>
+      <mat-icon>{{
+        highlightItem == 2 ? "radio_button_checked" : "radio_button_unchecked"
+      }}</mat-icon>
+      <mat-icon>{{
+        highlightItem == 3 ? "radio_button_checked" : "radio_button_unchecked"
+      }}</mat-icon>
+      <mat-icon>{{
+        highlightItem == 4 ? "radio_button_checked" : "radio_button_unchecked"
+      }}</mat-icon>
     </div>
-  </div>
-  <div class="check-container" fxLayout="row" fxLayoutAlign="center stretch">
-    <mat-icon *ngIf="!show0()">radio_button_unchecked</mat-icon>
-    <mat-icon *ngIf="show0()">radio_button_checked</mat-icon>
-    <mat-icon *ngIf="!show1()">radio_button_unchecked</mat-icon>
-    <mat-icon *ngIf="show1()">radio_button_checked</mat-icon>
-    <mat-icon *ngIf="!show2()">radio_button_unchecked</mat-icon>
-    <mat-icon *ngIf="show2()">radio_button_checked</mat-icon>
-    <mat-icon *ngIf="!show3()">radio_button_unchecked</mat-icon>
-    <mat-icon *ngIf="show3()">radio_button_checked</mat-icon>
-    <mat-icon *ngIf="!show4()">radio_button_unchecked</mat-icon>
-    <mat-icon *ngIf="show4()">radio_button_checked</mat-icon>
   </div>
 
   <mat-toolbar color="primary">
     <h1>{{ "store.allGames" | translate }}</h1>
   </mat-toolbar>
 
-  <div>
+  <div
+    class="offer-item-container"
+    style="padding: 0; margin: 0; line-height: 1em"
+  >
     <div fxLayoutGap="2%" fxLayout="row wrap">
-      <mat-card
+      <div
         class="card-container"
         [ngClass]="{
           'card-container-small ': (isHandset$ | async),
@@ -106,18 +115,17 @@
           fxLayoutAlign="space-around center"
         >
           <img
-            mat-card-image
             src="{{ item?.cover }}"
             alt="Game cover image"
             class="store-cover-img"
           />
         </div>
 
-        <mat-card-content>
+        <div>
           <div fxLayout="column" fxLayoutAlign="start start"></div>
-          <h3>
+          <h2>
             {{ item?.name }}
-          </h3>
+          </h2>
 
           <p>
             {{ resolveEnumDual(item?.genre, listGenre) }}
@@ -132,14 +140,22 @@
                 : "Fora de estoque"
             }}
           </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button routerLink="details/{{ item?.id }}">
-            Conheça o jogo
+        </div>
+        <div>
+          <button
+            mat-flat-button
+            routerLink="details/{{ item?.id }}"
+            color="primary"
+          >
+            {{ "store.discover" | translate }}
+            <mat-icon>videogame_asset</mat-icon>
           </button>
-          <button mat-button>Comprar agora</button>
-        </mat-card-actions>
-      </mat-card>
+          <button mat-flat-button color="accent">
+            {{ "store.buyNow" | translate }}
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center">
       <mat-paginator
