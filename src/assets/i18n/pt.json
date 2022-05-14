@@ -98,7 +98,9 @@
   },
   "store": {
     "releaseDate": "Data de lançamento",
-    "price": "Preço"
+    "price": "Preço",
+    "highlight": "Destaques",
+    "allGames": "Todos os jogos"
   },
   "order": {
     "order": "Ordem",

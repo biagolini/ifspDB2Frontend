@@ -100,7 +100,9 @@
   },
   "store": {
     "releaseDate": "Release Date",
-    "price": "Price"
+    "price": "Price",
+    "highlight": "Highlight",
+    "allGames": "All games"
   },
   "order": {
     "order": "Order",

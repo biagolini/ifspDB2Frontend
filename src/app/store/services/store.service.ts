@@ -29,4 +29,8 @@ export class StoreService {
     return this.http.get<any>(`${environment.apiUrl}/api/price/profile/${id}`);
   }
 
+  getHighlight() {
+    return this.http.get<any>(`${environment.apiUrl}/api/game/hl`);
+  }
+
 }

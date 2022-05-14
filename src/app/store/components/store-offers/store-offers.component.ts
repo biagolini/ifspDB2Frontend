@@ -26,8 +26,12 @@ export class StoreOffersComponent implements OnInit {
   ) { }
   
   totalLength!: number;
-  pageSize = 100;
+  pageSize = 10;
   page = 0;  
+  highlightItem = 0; 
+  showPreviusButton = false;
+  showNextButton= true;
+
 
   filterControl = new FormControl('');
   asc = new FormControl(false);
@@ -35,6 +39,7 @@ export class StoreOffersComponent implements OnInit {
   loadingPage:boolean = true;
   // Lista de jogos
   games: any[] = [];
+  highlight: any [] = [];
 
   // Options
   listGenre: TypesModelDual[] = []; //  Lista de estados e seus codigos
@@ -53,6 +58,11 @@ export class StoreOffersComponent implements OnInit {
           this.listGenre = response;        
         }
       });
+
+      this.storeService.getHighlight()
+                        .subscribe( response =>  {
+                          this.highlight = response.content;                      
+                      });      
     
     this.filterControl.valueChanges.pipe(debounceTime(1000)).subscribe( () => {
       this.loadingPage = true;
@@ -68,8 +78,7 @@ export class StoreOffersComponent implements OnInit {
       });
     })
 
-    
-    this.pageChange({
+      this.pageChange({      
       pageIndex: this.page,
       pageSize: this.pageSize,
       length: this.totalLength,
@@ -106,5 +115,44 @@ export class StoreOffersComponent implements OnInit {
     }
     return translation;
   }
+
+  nextHighlight(){
+    if(this.highlightItem!=4) {
+      this.highlightItem++;
+      this.showNextButton=true;
+    }
+    if(this.highlightItem==4) this.showNextButton=false;     
+    this.showPreviusButton=true;    
+  }
+
+  previusHighlight(){
+    if(this.highlightItem!=0) {
+      this.highlightItem--;
+      this.showPreviusButton=true;
+    }
+      if(this.highlightItem==0) this.showPreviusButton=false;
+      this.showNextButton=true;    
+  }
+  show0(){
+    if(this.highlightItem==0) return true;
+    else return false;
+  }
+  show1(){
+    if(this.highlightItem==1) return true;
+    else return false;
+  }
+  show2(){
+    if(this.highlightItem==2) return true;
+    else return false;
+  }
+  show3(){
+    if(this.highlightItem==3) return true;
+    else return false;
+  }
+  show4(){
+    if(this.highlightItem==4) return true;
+    else return false;
+  }
+
 
 }

@@ -43,3 +43,29 @@
 mat-paginator {
   background-color: transparent;
 }
+
+.highlight-item {
+  height: 35vh;
+  padding: 1%;
+
+  .highlight-move:hover {
+    background-color: rgb(225, 225, 225, 0.5);
+    cursor: pointer;
+  }
+
+  .highlight-cover {
+    width: 50%;
+  }
+
+  .highlight-cover-img {
+    width: 100%;
+  }
+
+  .highlight-description {
+    width: 50%;
+  }
+}
+.check-container {
+  width: 100%;
+  margin-bottom: 1%;
+}
