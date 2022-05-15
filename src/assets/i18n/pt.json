@@ -144,6 +144,14 @@
     "idPlatform": "Plataforma",
     "quantity": "Quantidade",
     "unityPrice": "Preço unitário",
-    "subTotal": "Sub-total"
+    "subTotal": "Sub-total",
+    "totalValue": "valorTotal",
+    "placeOrder": "Finalizar pedido",
+    "backStore": "Voltar para loja",
+    "success": {
+      "created": "Pedido realizado com sucesso!"
+    },
+    "error": {
+      "created": "Erro detectado ao realizado pedido, tente novamene mais tarde."    }
   }
 }

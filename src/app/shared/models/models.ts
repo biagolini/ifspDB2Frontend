@@ -36,14 +36,14 @@ export interface MediaModel{
   id: number;
   game: number;
   isVideo: boolean;
-  url: string;  
+  url: string;
 }
 
 export interface PriceModel{
   id: number;
   gamePlatform: number;
   dateTimePublish: string;
-  value: number;  
+  value: number;
 }
 
 export interface  OrderModel {
@@ -66,7 +66,7 @@ export interface  ItemOrderModel {
   typePlatformId: number;
   gameCover: string;
   unityValue: number;
-  subTotal: number;  
+  subTotal: number;
 }
 
 export interface  OrderWrapper {
@@ -75,28 +75,22 @@ export interface  OrderWrapper {
 }
 
 export interface CartItensModel {
-  idPrice: number; 
-  quantity: number; 
+  idPrice: number;
+  quantity: number;
 }
-
-export interface CartModel {
-  itens: Array<CartItensModel>;
-}
-
 
 export interface PricesModel {
-  idPrice: number; 
-  idPlatform: number; 
-  value: number;  
+  idPrice: number;
+  idPlatform: number;
+  value: number;
 }
 
-
 export interface DetailCartItensModel {
-  gameCover: string; 
-  gameName: string; 
-  idPrice: number; 
-  idPlatform: number; 
-  quantity: number; 
-  subTotal: number; 
-  unityPrice: number; 
+  gameCover: string;
+  gameName: string;
+  idPrice: number;
+  idPlatform: number;
+  quantity: number;
+  subTotal: number;
+  unityPrice: number;
 }

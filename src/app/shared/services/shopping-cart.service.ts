@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 import { DetailCartItensModel } from '../models/models';
-import { FeedbackService } from './feedback.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +10,12 @@ import { FeedbackService } from './feedback.service';
 
 export class ShoppingCartService {
   constructor(
-    private http: HttpClient,
-    private feedback: FeedbackService
+    private http: HttpClient
     ) {  }
 
-  // public cart: DetailCartItensModel[] = [];
+   public cart: DetailCartItensModel[] = [];
 
-  public cart: DetailCartItensModel[] = [
-
+  /*public cart: DetailCartItensModel[] = [
     {
         "gameCover": "https://upload.wikimedia.org/wikipedia/en/a/a3/Spider-Man_Miles_Morales.jpeg",
         "gameName": "Spider-Man: Miles Morales",
@@ -55,59 +52,63 @@ export class ShoppingCartService {
       "subTotal": 431.84,
       "idPlatform": 2
   }
-]
-  
+]*/
 
-  addToCart(newItem: DetailCartItensModel) {  
+  cleanCart() {
+    this.cart = [];
+  }
+
+  addToCart(newItem: DetailCartItensModel) {
     let newItemPriceId = newItem?.idPrice;
     let testConflict: boolean = this.cart.find( x=>x.idPrice == newItemPriceId) != null;
     if( testConflict) console.log("Repeted item");
-    else this.cart = [...this.cart, newItem ];   
+    else this.cart = [...this.cart, newItem ];
   }
 
 
   dropCartItem(dropItem: DetailCartItensModel) {
     let dropItemPriceId = dropItem?.idPrice;
     var itemId: number =0;
-    this.cart.forEach(element => {    
+    this.cart.forEach(element => {
       if(element?.idPrice == dropItemPriceId) {
-        this.cart.splice(itemId,1)                
+        this.cart.splice(itemId,1)
       }
       itemId++;
     })
   }
 
-
-    
   increaseQuantity (item: DetailCartItensModel ){
     let idPrice = item?.idPrice;
     let newQuantity = item.quantity+1;
     let newSubTotal =  newQuantity* item.unityPrice;
     var itemId: number =0;
-    this.cart.forEach(element => {    
+    this.cart.forEach(element => {
       if(element?.idPrice == idPrice) {
         this.cart[itemId].quantity = newQuantity;
-        this.cart[itemId].subTotal = newSubTotal;            
+        this.cart[itemId].subTotal = newSubTotal;
       }
       itemId++;
-    })  
+    })
   }
-    
+
   decreaseQuantity (item: DetailCartItensModel ){
     let idPrice = item?.idPrice;
     let newQuantity = item.quantity-1;
     if(newQuantity==0) this.dropCartItem(item);
     let newSubTotal =  newQuantity* item.unityPrice;
     var itemId: number =0;
-    this.cart.forEach(element => {    
+    this.cart.forEach(element => {
       if(element?.idPrice == idPrice) {
         this.cart[itemId].quantity = newQuantity;
-        this.cart[itemId].subTotal = newSubTotal;            
+        this.cart[itemId].subTotal = newSubTotal;
       }
       itemId++;
-    })  
+    })
   }
-    
+
+  placeOrder(formData: Object) {
+    return this.http.post<any>(`${environment.apiUrl}/api/order/`, formData);
+  }
 
 }
 

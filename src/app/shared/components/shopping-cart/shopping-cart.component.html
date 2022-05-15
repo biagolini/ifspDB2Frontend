@@ -130,7 +130,7 @@
       <div class="total-container" fxLayout="row" fxLayoutAlign="end center">
         <mat-form-field fxFlex="35%" appearance="outline">
           <mat-label>
-            {{ "order.totalValue" | translate }}
+            {{ "cart.totalValue" | translate }}
           </mat-label>
 
           <input
@@ -150,8 +150,11 @@
     </div>
   </div>
   <div class="full-width back-button">
+    <button mat-raised-button color="accent" class="full-width" (click)="placeOrder()">
+      {{ "cart.placeOrder" | translate }}
+    </button>
     <button mat-raised-button color="primary" class="full-width" routerLink="/">
-      Voltar a loja
+      {{ "cart.backStore" | translate }}
     </button>
   </div>
 </div>

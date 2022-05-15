@@ -146,6 +146,14 @@
     "idPlatform": "Platforma",
     "quantity": "Quantity",
     "unityPrice": "Unity price",
-    "subTotal": "Sub-total"
+    "subTotal": "Sub-total",
+    "totalValue": "Total",
+    "placeOrder": "Place order",
+    "backStore": "Back to store",
+    "success": {
+      "created": "Order successfully placed!"
+    },
+    "error": {
+      "created": "Error detected when placing order, please try again later." }
   }
 }

@@ -16,7 +16,7 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./order-details.component.scss']
 })
 export class OrderDetailsComponent implements OnInit {
-  
+
   constructor(
     private form: FormBuilder,
     private route: ActivatedRoute,
@@ -31,9 +31,9 @@ export class OrderDetailsComponent implements OnInit {
   processing: boolean = false;
 
   // Options
-  listStatusOrder: TypesModelDual [] = []; 
+  listStatusOrder: TypesModelDual [] = [];
 
-  listPlatform: TypeModelSingle [] = []; 
+  listPlatform: TypeModelSingle [] = [];
 
   orderForm = this.form.group({
     id: [],
@@ -69,7 +69,7 @@ export class OrderDetailsComponent implements OnInit {
 
     this.route.params.subscribe({
       next: (params) => {
-        this.orderId = params['id'];        
+        this.orderId = params['id'];
       },
     });
     this.patchOrder();
@@ -81,12 +81,11 @@ export class OrderDetailsComponent implements OnInit {
         this.orderForm.patchValue(response?.order);
         if(response?.order.trackingCode == null )  this.orderForm.patchValue({trackingCode: "--"})
         this.itensOrderDataTable.data = response?.itens;
-        console.log( this.itensOrderDataTable.data);
       }
     });
   }
 
-  
+
   resolveEnumSingle (id: number, typeModel: TypeModelSingle [] ){
     return  typeModel.find( x=>x.id == id)?.description;
   }

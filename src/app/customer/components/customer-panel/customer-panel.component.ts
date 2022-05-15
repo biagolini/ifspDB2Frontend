@@ -25,7 +25,7 @@ export class CustomerPanelComponent implements OnInit {
     private feedback: FeedbackService,
     private  dialog: MatDialog,
     private form: FormBuilder,
-  
+
   ) {}
 
   filterControl = new FormControl('');
@@ -49,7 +49,7 @@ export class CustomerPanelComponent implements OnInit {
 
   totalLength!: number;
   pageSize = 10;
-  page = 0;  
+  page = 0;
 
 
   customerDataTable = new MatTableDataSource();
@@ -64,17 +64,16 @@ export class CustomerPanelComponent implements OnInit {
         dialogConfig.width = "75%";
         dialogConfig.data = this.searchForm
         let dialogRef = this.dialog.open(SearchCustomerDialogComponent, dialogConfig);
-        dialogRef.afterClosed().subscribe(res => {    
-          this.loadingTable = false;  
+        dialogRef.afterClosed().subscribe(res => {
+          this.loadingTable = false;
             if(res){
               this.searchForm.patchValue(res); // atualiza o formulario de pesquisa
-              console.log(this.searchForm.value)
               this.customerService.findAllPaginated({
                 pageIndex: this.page,
                 pageSize: this.pageSize,
-                length: this.totalLength,   
+                length: this.totalLength,
               },
-              {field: this.sortBy.value, asc: this.asc.value}, 
+              {field: this.sortBy.value, asc: this.asc.value},
               this.selectedState.value,
               this.filterControl.value,
               this.searchForm.value,
@@ -96,15 +95,15 @@ export class CustomerPanelComponent implements OnInit {
       }
     });
 
-    // Aplicação de filtro de estado    
+    // Aplicação de filtro de estado
     this.selectedState.valueChanges.pipe(debounceTime(1000)).subscribe( () => {
       this.loadingTable = true;
       this.customerService.findAllPaginated({
         pageIndex: this.page,
         pageSize: this.pageSize,
-        length: this.totalLength,   
+        length: this.totalLength,
       },
-      {field: this.sortBy.value, asc: this.asc.value}, 
+      {field: this.sortBy.value, asc: this.asc.value},
       this.selectedState.value,
       this.filterControl.value
       ).subscribe(response => {
@@ -112,7 +111,7 @@ export class CustomerPanelComponent implements OnInit {
         this.loadingTable = false;
       });
     })
-    
+
 
     // Ordenação
     this.sortBy.valueChanges.pipe(debounceTime(1000)).subscribe( () => {
@@ -120,23 +119,23 @@ export class CustomerPanelComponent implements OnInit {
       this.customerService.findAllPaginated({
         pageIndex: this.page,
         pageSize: this.pageSize,
-        length: this.totalLength,   
+        length: this.totalLength,
       },
-      {field: this.sortBy.value, asc: this.asc.value}, 
+      {field: this.sortBy.value, asc: this.asc.value},
       this.selectedState.value,
       this.filterControl.value).subscribe(response => {
         this.customerDataTable.data = response.content;
         this.loadingTable = false;
       });
     })
-    
+
     // Direção da ordenação
     this.asc.valueChanges.pipe(debounceTime(1000)).subscribe( () => {
       this.loadingTable = true;
       this.customerService.findAllPaginated({
         pageIndex: this.page,
         pageSize: this.pageSize,
-        length: this.totalLength,   
+        length: this.totalLength,
       },
       {field: this.sortBy.value, asc: this.asc.value},
        this.selectedState.value,
@@ -207,10 +206,10 @@ export class CustomerPanelComponent implements OnInit {
   changeOrder(collumName: string) {
     if(collumName!=this.sortBy.value){
       this.sortBy.setValue(collumName);
-    }    
+    }
     if(collumName==this.sortBy.value){
       this.asc.setValue(!this.asc.value);
-    } 
+    }
   }
 
   getStateNameById(id: number){
