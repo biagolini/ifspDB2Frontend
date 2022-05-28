@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -38,9 +39,10 @@ import { NgxMaskModule } from 'ngx-mask';
 import { MenuComponent } from './components/menu/menu.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RequestConfirmDialogComponent } from './components/request-confirm-dialog/request-confirm-dialog.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SafePipe } from './pipe/safe.pipe';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+
 
 
 var module = [
@@ -49,6 +51,7 @@ var module = [
   FormsModule,
   HttpClientModule,
   MatAutocompleteModule,
+  MatBadgeModule,
   MatButtonModule,
   MatDatepickerModule,
   MatDialogModule,

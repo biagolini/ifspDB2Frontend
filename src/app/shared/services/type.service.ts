@@ -15,19 +15,19 @@ export class TypeService {
   public listStatusOrder : TypesModelDual[] = [];
 
   updateListGenre() {
-    return this.http.get<any>(`${environment.apiUrl}/api/types/getGenre`).pipe(take(1));
+    return this.http.get<any>(`${environment.apiUrl}/types/getGenre`).pipe(take(1));
   }
 
   updateListPlatform() {
-    return this.http.get<any>(`${environment.apiUrl}/api/types/getPlatform`).pipe(take(1));
+    return this.http.get<any>(`${environment.apiUrl}/types/getPlatform`).pipe(take(1));
   }
 
   updateListState() {
-    return this.http.get<any>(`${environment.apiUrl}/api/types/getState`).pipe(take(1));
+    return this.http.get<any>(`${environment.apiUrl}/types/getState`).pipe(take(1));
   }
 
   updateStatusOrder() {
-    return this.http.get<any>(`${environment.apiUrl}/api/types/getStatusOrder`).pipe(take(1));
+    return this.http.get<any>(`${environment.apiUrl}/types/getStatusOrder`).pipe(take(1));
   }
 
   fillTypesIfEmpty(){

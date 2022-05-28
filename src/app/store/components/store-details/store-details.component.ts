@@ -149,19 +149,19 @@ resolveEnumDual(id: any, typeModel: TypesModelDual [] ){
   return translation;
 }
 
+  addToCart(){ 
+    let unityPrice = this.prices.find( x=>x.idPrice ==  this.itemForm.value.idPrice)?.value as number;  
+    let idPlatform = this.prices.find( x=>x.idPrice ==  this.itemForm.value.idPrice)?.idPlatform as number;  
+    this.itemForm.patchValue({
+      quantity: 1,
+      idPlatform: idPlatform,
+      unityPrice: unityPrice,
+      subTotal: unityPrice,
+    })
 
+    this.shoppingCartService.addToCart(this.itemForm.value); 
+    this.router.navigate(['./shopping_cart']);  
+  }
+  
 
-addToCart(){ 
-  let unityPrice = this.prices.find( x=>x.idPrice ==  this.itemForm.value.idPrice)?.value as number;  
-  let idPlatform = this.prices.find( x=>x.idPrice ==  this.itemForm.value.idPrice)?.idPlatform as number;  
-  this.itemForm.patchValue({
-    quantity: 1,
-    idPlatform: idPlatform,
-    unityPrice: unityPrice,
-    subTotal: unityPrice,
-  })
-
-  this.shoppingCartService.addToCart(this.itemForm.value); 
-  this.router.navigate(['./shopping_cart']);  
-}
 }

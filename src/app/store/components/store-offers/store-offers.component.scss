@@ -50,6 +50,7 @@ mat-paginator {
 }
 
 .highlight-item {
+  position: static;
   height: 35vh;
   padding: 1%;
 
@@ -63,15 +64,20 @@ mat-paginator {
   }
 
   .highlight-cover-img {
-    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .highlight-description {
     width: 50%;
   }
 }
+
 .check-container {
   width: 100%;
+}
+
+.highlight-container {
   margin-bottom: 1%;
 }
 

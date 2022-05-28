@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { take, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { JwtResponse } from 'src/app/shared/models/jwt-response.model';
+import { map, Observable } from 'rxjs';
 
 interface PasswordInfo {
   email: string;
   password: string;
   setPasswordToken: string;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -18,47 +19,26 @@ export class AuthenticationService {
   }
 
 
-  authenticate(loginInfo: { login: string; password: string }) {
+  authenticate(loginInfo: { email: string; password: string }): Observable<void> {
     return this.http
-      .post<string>(`${environment.apiUrl}/authentication/login`, loginInfo, {
-        responseType: 'text' as 'json',
-      })
-
-      .pipe(
-        take(1),
-        tap((token) => {
-          this.currentLogin = loginInfo.login;
-
-          this.bearerToken = token;
-
-          this.http
-            .get(`${environment.apiUrl}/api/self/group`)
-            .subscribe((roleId) => {
-              this.roleId = roleId as string;
-            });
-        }),
-
+      .post<JwtResponse>(`${environment.apiUrl}/auth`, loginInfo)
+      .pipe<void>(
+        map((response) => {         
+          this.currentEmail = loginInfo.email;
+          this.bearerToken = response.token;
+          this.userProfile = response.scope;
+          this.userName = response.name; 
+          return;
+        })
       );
   }
 
-  doFirstAccess(passwordInfo: PasswordInfo) {
-    return this.http
-      .put<any>(
-        `${environment.apiUrl}/authentication/first-access`,
-        passwordInfo
-      )
-  }
-
-  resetPassword(email: string) {
-    return this.http
-      .post<any>(`${environment.apiUrl}/authentication/reset-password/${email}`,{})
-      .pipe(take(1));
-  }
 
   logout() {
-    localStorage.removeItem('currentLogin');
+    localStorage.removeItem('currentEmail');
     localStorage.removeItem('bearerToken');
-    localStorage.removeItem('roleId');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userProfile');
   }
 
   refreshToken() {
@@ -75,31 +55,39 @@ export class AuthenticationService {
   isRole(role: string): boolean {
     switch (role) {
       case 'admin':
-        return localStorage.getItem('roleId') === '1';
-      case 'analyst':
-        return localStorage.getItem('roleId') === '2';
+        return localStorage.getItem('userProfile') === 'admin';     
       default:
-        return localStorage.getItem('roleId') === '3';
+        return localStorage.getItem('userProfile') === 'customer';
     }
   }
 
-  set currentLogin(currentLogin) {
-    localStorage.setItem('currentLogin', currentLogin );
+  set currentEmail(currentEmail) {
+    localStorage.setItem('currentEmail', currentEmail );
   }
 
 
-  get currentLogin() {
-    if( localStorage.getItem('currentLogin') == null ){
+  get currentEmail() {
+    if( localStorage.getItem('currentEmail') == null ){
         return 'kn'
   } else {
-         return (localStorage.getItem('currentLogin') as string).substring(0,1);
+         return (localStorage.getItem('currentEmail') as string).substring(0,1);
     }
   }
 
 
-  set roleId(roleId: string) {
-    localStorage.setItem('roleId', roleId);
+  set userProfile(userProfile: string) {
+    localStorage.setItem('userProfile', userProfile);
   }
+
+
+  get beareuserNamerToken() {
+    return localStorage.getItem('bearerToken');
+  }
+
+  set userName(userName: string) {
+    localStorage.setItem('userName', userName as string);
+  }
+
 
   get bearerToken() {
     return localStorage.getItem('bearerToken');
@@ -112,4 +100,24 @@ export class AuthenticationService {
   get isAuthenticated(): boolean {
     return !!this.bearerToken;
   }
+
+  
+  get userFirstName(){    
+    if( localStorage.getItem('userName') == null ){
+      return 'Entrar';
+    } else {
+
+      var str =(localStorage.getItem('userName') as string)
+      var firstName = str.split(" "); 
+
+      return firstName[0].toUpperCase();
+    }
+  }
+
+  statusLogin():boolean {  
+    if(this.bearerToken) return true; 
+    return false;
+  }
+
+  
 }

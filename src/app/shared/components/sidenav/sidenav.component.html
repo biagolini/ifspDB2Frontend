@@ -15,13 +15,6 @@
       />
     </div>
 
-    <div fxFlex="50">
-      <mat-form-field fxFill appearance="legacy" class="search-box">
-        <mat-label><mat-icon>search</mat-icon> </mat-label>
-        <input matInput type="text" [formControl]="searchControl" id="Jogo" />
-      </mat-form-field>
-    </div>
-
     <app-menu> </app-menu>
   </mat-toolbar>
 </div>
@@ -45,34 +38,47 @@
           </button>
         </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item routerLink="/login">
-          <mat-icon mat-list-icon>account_circle</mat-icon>
-          <p matLine *ngIf="isOpen">{{ "menu.login" | translate }}</p>
-        </mat-list-item>
-
         <mat-list-item routerLink="/">
-          <mat-icon mat-list-icon>local_offer</mat-icon>
+          <mat-icon mat-list-icon matTooltip="{{ 'menu.store' | translate }}">
+            local_offer</mat-icon
+          >
           <p matLine *ngIf="isOpen">{{ "menu.store" | translate }}</p>
         </mat-list-item>
 
-        <mat-list-item routerLink="/customer">
-          <mat-icon mat-list-icon> supervised_user_circle</mat-icon>
+        <mat-list-item routerLink="/customer" *ngIf="isRole('admin')">
+          <mat-icon
+            mat-list-icon
+            matTooltip="{{ 'menu.customer' | translate }}"
+          >
+            supervised_user_circle</mat-icon
+          >
           <p matLine *ngIf="isOpen">{{ "menu.customer" | translate }}</p>
         </mat-list-item>
 
-        <mat-list-item routerLink="/order">
-          <mat-icon mat-list-icon>assessment</mat-icon>
+        <mat-list-item routerLink="/order" *ngIf="isRole('admin')">
+          <mat-icon mat-list-icon matTooltip="{{ 'menu.order' | translate }}">
+            assessment</mat-icon
+          >
           <p matLine *ngIf="isOpen">{{ "menu.order" | translate }}</p>
         </mat-list-item>
 
         <mat-list-item (click)="logout()" routerLink="/login">
-          <mat-icon mat-list-icon>logout</mat-icon>
+          <mat-icon
+            mat-list-icon
+            [matTooltip]="statusLogin() ? 'Logout' : 'Login'"
+            >{{ statusLogin() ? "logout" : "login" }}</mat-icon
+          >
           <p matLine *ngIf="isOpen">{{ "menu.logout" | translate }}</p>
         </mat-list-item>
         <mat-divider></mat-divider>
 
         <mat-list-item (click)="changeLanguage()">
-          <mat-icon mat-list-icon>language</mat-icon>
+          <mat-icon
+            mat-list-icon
+            matTooltip="{{ 'menu.changeLanguage' | translate }}"
+          >
+            language</mat-icon
+          >
           <p matLine *ngIf="isOpen">
             {{ "general.currentLanguange" | translate }}
           </p>
@@ -81,12 +87,22 @@
         <mat-divider></mat-divider>
 
         <mat-list-item *ngIf="!isDark" (click)="setDarkTheme()">
-          <mat-icon mat-list-icon>dark_mode</mat-icon>
+          <mat-icon
+            mat-list-icon
+            matTooltip="{{ 'menu.changeTheme' | translate }}"
+          >
+            dark_mode</mat-icon
+          >
           <p matLine *ngIf="isOpen">{{ "menu.darkMode" | translate }}</p>
         </mat-list-item>
 
         <mat-list-item *ngIf="isDark" (click)="setLigthTheme()">
-          <mat-icon mat-list-icon>light_mode</mat-icon>
+          <mat-icon
+            mat-list-icon
+            matTooltip="{{ 'menu.changeTheme' | translate }}"
+          >
+            light_mode</mat-icon
+          >
           <p matLine *ngIf="isOpen">{{ "menu.lightMode" | translate }}</p>
         </mat-list-item>
       </mat-nav-list>

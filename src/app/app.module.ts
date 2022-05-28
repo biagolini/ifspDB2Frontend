@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +10,7 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthenticationInterceptor } from './authentication/interceptors/authentication.interceptor';
 import { SharedModule } from './shared/shared.module';
 
 
@@ -44,6 +45,11 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true,
+    },
     {provide: LOCALE_ID, useValue: 'pt'  },
   ],
   bootstrap: [AppComponent],

@@ -25,8 +25,8 @@
     >
       <mat-form-field appearance="outline">
         <mat-label>{{ "login.username" | translate }}</mat-label>
-        <input formControlName="login" autocomplete="username" matInput />
-        <mat-error *ngIf="loginForm.get('login')?.errors?.['required']">
+        <input formControlName="email" autocomplete="username" matInput />
+        <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">
           {{ "login.message.emailsIsInvalid" | translate }}
         </mat-error>
       </mat-form-field>

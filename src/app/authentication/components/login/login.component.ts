@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   loginForm = this.builder.group({
-    login: ['', Validators.required],
+    email: ['', Validators.required],
     password: ['', Validators.required],
   });
 
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.darkModeCondition = this.themeService.isDarkTheme();
+    alert("TESTE ESTA APLICAÇÃO USANDO OS USUARIOS: \nADMIN:\nadmin\nCLIENTES\ni) arthur.santos@email.com\nii) heloisa.oliveira@email.com\nSENHA\n123456")
   }
 
   login(): void {    

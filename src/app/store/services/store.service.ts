@@ -22,15 +22,15 @@ export class StoreService {
     if (query) params = params.append('query', query);
     if (sortBy.field&&sortBy.asc) params = params.append('sort', sortBy.field+',asc');   
     if (sortBy.field&&!sortBy.asc) params = params.append('sort', sortBy.field+',desc'); 
-    return this.http.get<any>(`${environment.apiUrl}/api/game`, { params });
+    return this.http.get<any>(`${environment.apiUrl}/game`, { params });
   }
 
   getGameProfile(id: number) {
-    return this.http.get<any>(`${environment.apiUrl}/api/price/profile/${id}`);
+    return this.http.get<any>(`${environment.apiUrl}/price/profile/${id}`);
   }
 
   getHighlight() {
-    return this.http.get<any>(`${environment.apiUrl}/api/game/hl`);
+    return this.http.get<any>(`${environment.apiUrl}/game/hl`);
   }
 
 }

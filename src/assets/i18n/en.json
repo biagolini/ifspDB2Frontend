@@ -12,7 +12,9 @@
     "login": "Access your account",
     "logout": "Disconnect",
     "darkMode": "Dark mode",
-    "lightMode": "Light mode"
+    "lightMode": "Light mode",
+    "changeLanguage": "Change language",
+    "changeTheme": "Change theme"
   },
   "login": {
     "login": "Login",
@@ -150,10 +152,12 @@
     "totalValue": "Total",
     "placeOrder": "Place order",
     "backStore": "Back to store",
+    "makeLogin": "Do login to complete your order",
     "success": {
       "created": "Order successfully placed!"
     },
     "error": {
-      "created": "Error detected when placing order, please try again later." }
+      "created": "Error detected when placing order, please try again later."
+    }
   }
 }

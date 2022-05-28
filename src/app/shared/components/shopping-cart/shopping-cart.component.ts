@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 
 import { DetailCartItensModel, TypeModelSingle, TypesModelDual } from '../../models/models';
@@ -23,6 +24,7 @@ export class ShoppingCartComponent implements OnInit {
     private form: FormBuilder,
     private router: Router,
     private feedback: FeedbackService,
+    private authenticationService: AuthenticationService,
   ) {}
 
 
@@ -48,8 +50,7 @@ export class ShoppingCartComponent implements OnInit {
       next: (response) =>{
         this.listPlatform = response;
       }
-    });
-
+    }); 
   }
 
   resolveEnumSingle (id: number, typeModel: TypeModelSingle [] ){
@@ -107,6 +108,15 @@ export class ShoppingCartComponent implements OnInit {
         this.feedback.showMessage('cart.error.created').subscribe();
       }
     });
+  }
+
+  
+  statusLogin():boolean {
+    return this.authenticationService.statusLogin();
+  }
+
+  goToLogin(){
+    this.router.navigate(['/login']);
   }
 
 }

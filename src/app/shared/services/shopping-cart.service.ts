@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { DetailCartItensModel } from '../models/models';
@@ -15,7 +16,9 @@ export class ShoppingCartService {
 
    public cart: DetailCartItensModel[] = [];
 
-  /*public cart: DetailCartItensModel[] = [
+   /* // FOR DEV TESTS
+
+  public cart: DetailCartItensModel[] = [
     {
         "gameCover": "https://upload.wikimedia.org/wikipedia/en/a/a3/Spider-Man_Miles_Morales.jpeg",
         "gameName": "Spider-Man: Miles Morales",
@@ -52,17 +55,26 @@ export class ShoppingCartService {
       "subTotal": 431.84,
       "idPlatform": 2
   }
-]*/
+]
+*/
 
   cleanCart() {
     this.cart = [];
   }
+
+  public nCartSize: number = 0 ;
+
+  updateCartSize() {
+    this.nCartSize = this.cart.length;
+  }
+
 
   addToCart(newItem: DetailCartItensModel) {
     let newItemPriceId = newItem?.idPrice;
     let testConflict: boolean = this.cart.find( x=>x.idPrice == newItemPriceId) != null;
     if( testConflict) console.log("Repeted item");
     else this.cart = [...this.cart, newItem ];
+    this.updateCartSize();
   }
 
 
@@ -75,6 +87,7 @@ export class ShoppingCartService {
       }
       itemId++;
     })
+    this.updateCartSize();
   }
 
   increaseQuantity (item: DetailCartItensModel ){
@@ -89,6 +102,7 @@ export class ShoppingCartService {
       }
       itemId++;
     })
+    this.updateCartSize();
   }
 
   decreaseQuantity (item: DetailCartItensModel ){
@@ -104,9 +118,11 @@ export class ShoppingCartService {
       }
       itemId++;
     })
+    this.updateCartSize();
   }
 
   placeOrder(formData: Object) {
+    this.updateCartSize();
     return this.http.post<any>(`${environment.apiUrl}/api/order/`, formData);
   }
 

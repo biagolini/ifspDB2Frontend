@@ -25,7 +25,7 @@ export class SidenavComponent implements OnInit {
     private themeService: ThemeService,
   ) {}
 
-  searchControl = new FormControl('');
+
   isOpen = false;
   
   isDark = false;
@@ -41,13 +41,17 @@ export class SidenavComponent implements OnInit {
     openClose() {
       this.isOpen = !this.isOpen;
     }
-
     
 
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
   }
+
+  statusLogin():boolean {
+    return this.authenticationService.statusLogin();
+  }
+
 
   isRole(role: string): boolean {
     return this.authenticationService.isRole(role);

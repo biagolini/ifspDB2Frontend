@@ -12,7 +12,9 @@
     "login": "Acessar sua conta",
     "logout": "Desconectar",
     "darkMode": "Modo escuro",
-    "lightMode": "Modo claro"
+    "lightMode": "Modo claro",
+    "changeLanguage": "Alterar idioma",
+    "changeTheme": "Alterar tema"
   },
   "login": {
     "login": "Login",
@@ -148,10 +150,12 @@
     "totalValue": "valorTotal",
     "placeOrder": "Finalizar pedido",
     "backStore": "Voltar para loja",
+    "makeLogin": "Faça login para finalizar seu pedido",
     "success": {
       "created": "Pedido realizado com sucesso!"
     },
     "error": {
-      "created": "Erro detectado ao realizado pedido, tente novamene mais tarde."    }
+      "created": "Erro detectado ao realizado pedido, tente novamene mais tarde."
+    }
   }
 }
