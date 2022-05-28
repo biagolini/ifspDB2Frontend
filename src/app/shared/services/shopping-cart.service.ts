@@ -14,7 +14,9 @@ export class ShoppingCartService {
     private http: HttpClient
     ) {  }
 
-   public cart: DetailCartItensModel[] = [];
+  public nCartSize: number = 0 ;
+
+  public cart: DetailCartItensModel[] = [];
 
    /* // FOR DEV TESTS
 
@@ -60,9 +62,10 @@ export class ShoppingCartService {
 
   cleanCart() {
     this.cart = [];
+    this.updateCartSize();
   }
 
-  public nCartSize: number = 0 ;
+
 
   updateCartSize() {
     this.nCartSize = this.cart.length;
