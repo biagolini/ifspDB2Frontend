@@ -23,8 +23,12 @@ export class LoginComponent implements OnInit {
     private themeService: ThemeService,
   ) {}
 
+  hidePassword = true;
+  processingRequest = false;
+
+
   loginForm = this.builder.group({
-    email: ['', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required],
   });
 
@@ -32,21 +36,27 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.hidePassword = true;
+    this.processingRequest = false;
+
     this.darkModeCondition = this.themeService.isDarkTheme();
-    alert("TESTE ESTA APLICAÇÃO USANDO OS USUARIOS: \nADMIN:\nadmin\nCLIENTES\ni) arthur.santos@email.com\nii) heloisa.oliveira@email.com\nSENHA\n123456")
+   // alert("TESTE ESTA APLICAÇÃO USANDO OS USUARIOS: \nADMIN:\nadmin\nCLIENTES\ni) arthur.santos@email.com\nii) heloisa.oliveira@email.com\nSENHA\n123456")
   }
 
   login(): void {    
+    this.processingRequest = true;
+
     if (this.loginForm.valid) {
       this.authenticationService.authenticate(this.loginForm.value).subscribe({
         next: () => {
           this.feedback.showMessage('login.message.loginSuccess').subscribe();
-          this.activatedRoute.queryParams.subscribe((params) => {
-            const path = params['path'] ? params['path'] : '';
-            this.router.navigate([path]);
-          });
+          this.router.navigate(['./']);
         },
-        error: () => this.feedback.showMessage('login.message.loginFail').subscribe(),
+        error: (response) => {
+        console.log(response);
+        this.processingRequest = false;
+        this.feedback.showMessage('login.message.loginFail').subscribe();
+      }
       });
     }
     

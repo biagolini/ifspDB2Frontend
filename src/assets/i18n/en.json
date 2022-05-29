@@ -9,6 +9,7 @@
     "store": "Deals of the day",
     "customer": "Customer panel",
     "order": "Orders dashboard",
+    "warehouse": "Warehouse",
     "login": "Access your account",
     "logout": "Disconnect",
     "darkMode": "Dark mode",
@@ -18,6 +19,8 @@
   },
   "login": {
     "login": "Login",
+    "enter": "Enter",
+    "processing": "Processing...",
     "username": "Username",
     "password": "Password",
     "signIn": "Sign in",

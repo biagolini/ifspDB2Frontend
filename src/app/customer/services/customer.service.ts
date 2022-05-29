@@ -54,10 +54,6 @@ export class CustomerService {
     return this.http.delete<any>(`${environment.apiUrl}/api/customer/${id}`);
   }
 
-  findCustomerByUsername(username: string){
-    return this.http.get<any[]>(`${environment.apiUrl}/api/customer/findByName/${username}`).pipe(take(1))
-  }
-
   findCustomerByDescription(customer: Object) {
     return this.http.get<any>(`${environment.apiUrl}/api/customer/findByDescription/`, customer);
   }

@@ -62,6 +62,16 @@
           <p matLine *ngIf="isOpen">{{ "menu.order" | translate }}</p>
         </mat-list-item>
 
+        <mat-list-item routerLink="/warehouse" *ngIf="isRole('admin')">
+          <mat-icon
+            mat-list-icon
+            matTooltip="{{ 'menu.warehouse' | translate }}"
+          >
+            warehouse</mat-icon
+          >
+          <p matLine *ngIf="isOpen">{{ "menu.warehouse" | translate }}</p>
+        </mat-list-item>
+
         <mat-list-item (click)="logout()" routerLink="/login">
           <mat-icon
             mat-list-icon

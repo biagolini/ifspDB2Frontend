@@ -25,8 +25,8 @@
     >
       <mat-form-field appearance="outline">
         <mat-label>{{ "login.username" | translate }}</mat-label>
-        <input formControlName="email" autocomplete="username" matInput />
-        <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">
+        <input formControlName="username" autocomplete="username" matInput />
+        <mat-error *ngIf="loginForm.get('username')?.errors?.['required']">
           {{ "login.message.emailsIsInvalid" | translate }}
         </mat-error>
       </mat-form-field>
@@ -35,17 +35,35 @@
         <mat-label>{{ "login.password" | translate }}</mat-label>
         <input
           formControlName="password"
-          type="password"
+          [type]="hidePassword ? 'password' : 'text'"
           autocomplete="current-password"
           matInput
         />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+        >
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
         <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">
           {{ "login.message.providePassword" | translate }}
         </mat-error>
       </mat-form-field>
     </form>
-    <button mat-stroked-button color="primary" (click)="login()" routerLink="/">
-      {{ "login.signIn" | translate }}
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="login()"
+      [disabled]="!loginForm.valid || processingRequest"
+    >
+      {{
+        processingRequest
+          ? ("login.processing" | translate)
+          : ("login.enter" | translate)
+      }}
     </button>
   </div>
 </div>

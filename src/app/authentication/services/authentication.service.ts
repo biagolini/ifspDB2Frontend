@@ -18,16 +18,15 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
   }
 
-
-  authenticate(loginInfo: { email: string; password: string }): Observable<void> {
+  authenticate(loginInfo: { username: string; password: string }): Observable<void> {
     return this.http
       .post<JwtResponse>(`${environment.apiUrl}/auth`, loginInfo)
       .pipe<void>(
         map((response) => {         
-          this.currentEmail = loginInfo.email;
+          this.currentUsername = loginInfo.username;
           this.bearerToken = response.token;
           this.userProfile = response.scope;
-          this.userName = response.name; 
+          this.nickName = response.name; 
           return;
         })
       );
@@ -35,9 +34,9 @@ export class AuthenticationService {
 
 
   logout() {
-    localStorage.removeItem('currentEmail');
+    localStorage.removeItem('currentUsername');
     localStorage.removeItem('bearerToken');
-    localStorage.removeItem('userName');
+    localStorage.removeItem('nickName');
     localStorage.removeItem('userProfile');
   }
 
@@ -61,16 +60,16 @@ export class AuthenticationService {
     }
   }
 
-  set currentEmail(currentEmail) {
-    localStorage.setItem('currentEmail', currentEmail );
+  set currentUsername(currentUsername) {
+    localStorage.setItem('currentUsername', currentUsername );
   }
 
 
-  get currentEmail() {
-    if( localStorage.getItem('currentEmail') == null ){
-        return 'kn'
+  get currentUsername() {
+    if( localStorage.getItem('currentUsername') == null ){
+        return 'email'
   } else {
-         return (localStorage.getItem('currentEmail') as string).substring(0,1);
+         return (localStorage.getItem('currentUsername') as string);
     }
   }
 
@@ -84,8 +83,8 @@ export class AuthenticationService {
     return localStorage.getItem('bearerToken');
   }
 
-  set userName(userName: string) {
-    localStorage.setItem('userName', userName as string);
+  set nickName(nickName: string) {
+    localStorage.setItem('nickName', nickName as string);
   }
 
 
@@ -103,11 +102,11 @@ export class AuthenticationService {
 
   
   get userFirstName(){    
-    if( localStorage.getItem('userName') == null ){
+    if( localStorage.getItem('nickName') == null ){
       return 'Entrar';
     } else {
 
-      var str =(localStorage.getItem('userName') as string)
+      var str =(localStorage.getItem('nickName') as string)
       var firstName = str.split(" "); 
 
       return firstName[0].toUpperCase();

@@ -19,7 +19,6 @@ export class OrderService {
       orderStatus: number,
       idOrder: number,
       idCustomer: number,
-      username: string,
       firstName: string,
       lastName: string,
       email: string,
@@ -36,7 +35,6 @@ export class OrderService {
       if (searchForm.orderStatus !=null) params = params.append('orderStatus',searchForm.orderStatus);
       if (searchForm.idOrder !=null) params = params.append('idOrder',searchForm.idOrder);
       if (searchForm.idCustomer !=null) params = params.append('idCustomer',searchForm.idCustomer);
-      if (searchForm.username !=null) params = params.append('username',searchForm.username);
       if (searchForm.firstName !=null) params = params.append('firstName',searchForm.firstName);
       if (searchForm.lastName !=null) params = params.append('lastName',searchForm.lastName);
       if (searchForm.email !=null) params = params.append('email',searchForm.email);

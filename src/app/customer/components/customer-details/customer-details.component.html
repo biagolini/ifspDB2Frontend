@@ -58,25 +58,11 @@
             <div fxLayout="row" fxLayoutGap="1%" id="row2">
               <mat-form-field fxFlex="49.5%" appearance="outline">
                 <mat-label>
-                  {{ "customer.username" | translate }}
-                </mat-label>
-
-                <input
-                  type="text"
-                  matInput
-                  formControlName="username"
-                  placeholder="ex.: ABC Transportation"
-                />
-              </mat-form-field>
-
-              <mat-form-field fxFlex="49.5%" appearance="outline">
-                <mat-label>
                   {{ "customer.email" | translate }}
                 </mat-label>
                 <input type="text" matInput formControlName="email" />
               </mat-form-field>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1%" id="row3">
+
               <mat-form-field fxFlex="49.5%" appearance="outline">
                 <mat-label>
                   {{ "customer.cpf" | translate }}
@@ -87,7 +73,8 @@
                   [textMask]="{ mask: cpfMask }"
                 />
               </mat-form-field>
-
+            </div>
+            <div fxLayout="row" fxLayoutGap="1%" id="row3">
               <mat-form-field fxFlex="49.5%" appearance="outline">
                 <mat-label>{{ "customer.birthDate" | translate }}</mat-label>
                 <input
@@ -115,12 +102,7 @@
                   {{ "customer.street" | translate }}
                 </mat-label>
 
-                <input
-                  type="text"
-                  matInput
-                  formControlName="street"
-                  placeholder="ex.: ABC Transportation"
-                />
+                <input type="text" matInput formControlName="street" />
               </mat-form-field>
 
               <mat-form-field fxFlex="20%" appearance="outline">

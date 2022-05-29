@@ -13,6 +13,7 @@ export class TypeService {
   public listPlatform: TypeModelSingle[] = [];
   public listState: StatesModel[] = [];
   public listStatusOrder : TypesModelDual[] = [];
+  public listWarehouseMovement : TypesModelDual[] = [];
 
   updateListGenre() {
     return this.http.get<any>(`${environment.apiUrl}/types/getGenre`).pipe(take(1));
@@ -28,6 +29,10 @@ export class TypeService {
 
   updateStatusOrder() {
     return this.http.get<any>(`${environment.apiUrl}/types/getStatusOrder`).pipe(take(1));
+  }
+  
+  updateListWarehouseMovement() {
+    return this.http.get<any>(`${environment.apiUrl}/types/getWarehouseMovement`).pipe(take(1));
   }
 
   fillTypesIfEmpty(){
@@ -54,6 +59,12 @@ export class TypeService {
         this.listStatusOrder = typesList
       });
     }
+    if(this.listWarehouseMovement.length==0){
+      this.updateListWarehouseMovement().subscribe (typesList =>  {
+        this.listWarehouseMovement = typesList
+      });
+    }
+    
   }
 
   getStateNameById(id:number){

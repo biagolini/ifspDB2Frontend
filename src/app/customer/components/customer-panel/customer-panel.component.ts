@@ -53,7 +53,7 @@ export class CustomerPanelComponent implements OnInit {
 
 
   customerDataTable = new MatTableDataSource();
-  displayedColumns = ['username', 'firstName', 'lastName', 'email', 'birthDate', 'cpf', 'street', 'city','state', 'action'];
+  displayedColumns = ['firstName', 'lastName', 'email', 'birthDate', 'cpf', 'street', 'city','state', 'action'];
   loadingTable:boolean = true;
 
 

@@ -39,7 +39,6 @@ export class CustomerDetailsComponent implements OnInit {
   listState: StatesModel [] = []; //  Lista de estados e seus codigos
 
   customerForm = this.form.group({
-    username: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],

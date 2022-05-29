@@ -9,6 +9,7 @@
     "store": "Ofertas do dia",
     "customer": "Painel de clientes",
     "order": "Painel de vendas",
+    "warehouse": "Estoque",
     "login": "Acessar sua conta",
     "logout": "Desconectar",
     "darkMode": "Modo escuro",
@@ -18,6 +19,8 @@
   },
   "login": {
     "login": "Login",
+    "enter": "Entrar",
+    "processing": "Processando...",
     "username": "Usuário",
     "password": "Senha",
     "signIn": "Entrar",
@@ -157,5 +160,11 @@
     "error": {
       "created": "Erro detectado ao realizado pedido, tente novamene mais tarde."
     }
+  },
+  "warehouse": {
+    "warehouse": "Estoque",
+    "balance": "Balanco",
+    "enters": "Entradas",
+    "exits": "Saridas"
   }
 }

@@ -56,18 +56,6 @@
       aria-describedby="List of customers"
       *ngIf="!loadingTable"
     >
-      <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef>
-          <span class="table-header">{{
-            "customer.username" | translate
-          }}</span>
-          <button mat-button (click)="changeOrder('customername')">
-            <mat-icon>sort</mat-icon>
-          </button>
-        </th>
-        <td mat-cell *matCellDef="let element">{{ element?.username }}</td>
-      </ng-container>
-
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>
           <span class="table-header">{{

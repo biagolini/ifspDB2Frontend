@@ -22,8 +22,7 @@ export class SearchOrderDialogComponent implements OnInit {
       this.searchForm.patchValue({
         orderStatus: data.value.orderStatus,
         idOrder: data.value.idOrder,
-        idCustomer: data.value.idCustomer,
-        username: data.value.username,
+        idCustomer: data.value.idCustomer,   
         firstName: data.value.firstName,
         lastName: data.value.lastName,
         email: data.value.email,
@@ -35,7 +34,6 @@ export class SearchOrderDialogComponent implements OnInit {
     orderStatus: [],
     idOrder: [],
     idCustomer: [],
-    username: [],
     firstName: [],
     lastName: [],
     email: [],

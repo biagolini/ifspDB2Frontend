@@ -41,7 +41,6 @@ export class OrderPanelComponent implements OnInit {
     orderStatus: [],
     idOrder: [],
     idCustomer: [],
-    username: [],
     firstName: [],
     lastName: [],
     email: [],
