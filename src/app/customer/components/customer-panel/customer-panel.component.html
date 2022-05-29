@@ -185,6 +185,7 @@
     <mat-paginator
       [length]="totalLength"
       [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 50, 100]"
       (page)="pageChange($event)"
       showFirstLastButtons
     >

@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <button mat-menu-item routerLink="/shopping_cart" *ngIf="!isRole('admin')">
+  <button mat-menu-item routerLink="/shopping_cart" *ngIf="isRole('customer')">
     <div>
       <mat-icon matBadge="{{ getCartSize() }}" class="houver-black"
         >shopping_cart</mat-icon

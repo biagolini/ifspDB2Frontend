@@ -163,8 +163,19 @@
   },
   "warehouse": {
     "warehouse": "Estoque",
-    "balance": "Balanco",
-    "enters": "Entradas",
-    "exits": "Saridas"
+    "balance": "Balanço",
+    "backBalance": "Voltar para balanço de estoque",
+    "entries": "Entradas",
+    "exits": "Saídas",
+    "findDescription": "Bucar por jogo",
+    "gameCover": "Capa",
+    "gameName": "Título",
+    "idPlatform": "Plataforma",
+    "quantity": "Quantidade no estoque",
+    "lastUpdate": "Ultima atualização",
+    "quantityMovement": "Quantidade movimentada",
+    "entranceMovement": "Origem da entrada",
+    "exitMovement": "Origem da saída",
+    "timeMovement": "Horario da movimentação"
   }
 }

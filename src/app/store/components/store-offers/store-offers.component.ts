@@ -91,8 +91,7 @@ export class StoreOffersComponent implements OnInit {
     this.loadingPage = true;
     this.storeService.findAllPaginated(pageEvent,{field: this.sortBy.value, asc: this.asc.value},this.filterControl.value)
       .subscribe({
-        next: (response) => {
-          this.games = response.content;
+        next: (response) => {   
           this.games = response.content;
           this.loadingPage = false;
           this.totalLength = response.totalElements;

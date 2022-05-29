@@ -55,6 +55,8 @@ export class AuthenticationService {
     switch (role) {
       case 'admin':
         return localStorage.getItem('userProfile') === 'admin';     
+      case 'estoque':
+          return localStorage.getItem('userProfile') === 'estoque';   
       default:
         return localStorage.getItem('userProfile') === 'customer';
     }

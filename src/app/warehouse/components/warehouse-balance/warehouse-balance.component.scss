@@ -1,0 +1,28 @@
+img {
+  width: auto;
+  height: 50px;
+}
+
+.altura-item {
+  height: 50px;
+}
+.action-button {
+  margin: 10px 0;
+}
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir="rtl"] .example-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.nav-warehouse-entrance {
+  color: green;
+}
+.nav-warehouse-exit {
+  color: red;
+}

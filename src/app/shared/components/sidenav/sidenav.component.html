@@ -38,7 +38,7 @@
           </button>
         </mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item routerLink="/">
+        <mat-list-item routerLink="/" *ngIf="!isRole('estoque')">
           <mat-icon mat-list-icon matTooltip="{{ 'menu.store' | translate }}">
             local_offer</mat-icon
           >
@@ -62,7 +62,10 @@
           <p matLine *ngIf="isOpen">{{ "menu.order" | translate }}</p>
         </mat-list-item>
 
-        <mat-list-item routerLink="/warehouse" *ngIf="isRole('admin')">
+        <mat-list-item
+          routerLink="/warehouse"
+          *ngIf="isRole('admin') || isRole('estoque')"
+        >
           <mat-icon
             mat-list-icon
             matTooltip="{{ 'menu.warehouse' | translate }}"

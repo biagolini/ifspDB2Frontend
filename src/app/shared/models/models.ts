@@ -94,3 +94,9 @@ export interface DetailCartItensModel {
   subTotal: number;
   unityPrice: number;
 }
+
+export interface GameSummaryModel {
+  id: number;
+  name: string;
+  cover: string;
+}

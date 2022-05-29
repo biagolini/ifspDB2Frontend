@@ -162,5 +162,18 @@
     "error": {
       "created": "Error detected when placing order, please try again later."
     }
+  },
+  "warehouse": {
+    "warehouse": "Warehouse",
+    "balance": "Balance",
+    "backBalance": "Back to warehouse balance",
+    "entries": "Entries",
+    "exits": "Exits",
+    "findDescription": "Find by game",
+    "gameCover": "Cover",
+    "gameName": "Title",
+    "idPlatform": "Platform",
+    "quantity": "Available quantity",
+    "lastUpdate": "Last update"
   }
 }

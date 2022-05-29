@@ -43,7 +43,6 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart.data = this.shoppingCartService.cart;
-    console.log(this.cart.data);
        this.calcTotalOrder();
 
     this.typeService.updateListPlatform().subscribe({

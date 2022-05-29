@@ -191,7 +191,6 @@ export class CustomerPanelComponent implements OnInit {
       .findAllPaginated(pageEvent,{field: this.sortBy.value, asc: this.asc.value},this.selectedState.value, this.filterControl.value)
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.customerDataTable.data = response.content;
           this.loadingTable = false;
           this.totalLength = response.totalElements;

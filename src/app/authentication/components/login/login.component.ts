@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private builder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private feedback: FeedbackService,
     private themeService: ThemeService,
@@ -40,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.processingRequest = false;
 
     this.darkModeCondition = this.themeService.isDarkTheme();
-   // alert("TESTE ESTA APLICAÇÃO USANDO OS USUARIOS: \nADMIN:\nadmin\nCLIENTES\ni) arthur.santos@email.com\nii) heloisa.oliveira@email.com\nSENHA\n123456")
+    alert("TESTE ESTA APLICAÇÃO USANDO OS USUARIOS: \nADMINS:\n*   admin\n*   estoque\nCLIENTES\n*   helena@email.com\n*   miguel@email.com\nSENHA\n123456")
   }
 
   login(): void {    
@@ -53,7 +52,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['./']);
         },
         error: (response) => {
-        console.log(response);
         this.processingRequest = false;
         this.feedback.showMessage('login.message.loginFail').subscribe();
       }

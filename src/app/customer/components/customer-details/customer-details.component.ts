@@ -111,7 +111,6 @@ export class CustomerDetailsComponent implements OnInit {
         this.router.navigate(['/customer']);
       },
       error: error => {
-        console.log(error);
         this.feedback.showMessage('customer.error.created').subscribe();
       }
     });
