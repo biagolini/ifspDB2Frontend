@@ -24,6 +24,13 @@
           </div>
         </button>
 
+        <button class="houver-black" mat-menu-item routerLink="./about">
+          <div>
+            <mat-icon class="houver-black">apartment</mat-icon>
+            {{ "general.aboutUs" | translate }}
+          </div>
+        </button>
+
         <button mat-menu-item routerLink="/login" *ngIf="!statusLogin()">
           <div>
             <mat-icon>login</mat-icon>
@@ -35,6 +42,14 @@
           <div>
             <mat-icon>logout</mat-icon>
             {{ "general.logout" | translate }}
+          </div>
+        </button>
+
+        <mat-divider></mat-divider>
+        <button class="houver-black" mat-menu-item routerLink="./map">
+          <div>
+            <mat-icon class="houver-black">map</mat-icon>
+            {{ "general.siteMap" | translate }}
           </div>
         </button>
       </mat-menu>

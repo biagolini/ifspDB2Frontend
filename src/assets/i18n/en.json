@@ -70,7 +70,9 @@
     "wellcome": "Wellcome",
     "review": "Review",
     "decrease": "Decrease",
-    "increase": "Increase"
+    "increase": "Increase",
+    "aboutUs": "About us",
+    "siteMap": "Site map"
   },
   "customer": {
     "customer": "Customer",

@@ -70,7 +70,9 @@
     "wellcome": "Bem vindo",
     "review": "Revisão",
     "decrease": "Diminuir",
-    "increase": "Aumentar"
+    "increase": "Aumentar",
+    "aboutUs": "Sobre nós",
+    "siteMap": "Mapa do site"
   },
   "customer": {
     "customer": "Cliente",

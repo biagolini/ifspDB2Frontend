@@ -42,6 +42,8 @@ import { RequestConfirmDialogComponent } from './components/request-confirm-dial
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SafePipe } from './pipe/safe.pipe';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { SiteMapComponent } from './components/site-map/site-map.component';
 
 
 
@@ -93,7 +95,9 @@ var module = [
     RequestConfirmDialogComponent,
     SidenavComponent,
     SafePipe,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AboutUsComponent,
+    SiteMapComponent
   ],
   imports: [
     module,
