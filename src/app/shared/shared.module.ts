@@ -44,6 +44,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SafePipe } from './pipe/safe.pipe';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SiteMapComponent } from './components/site-map/site-map.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 
@@ -97,7 +98,8 @@ var module = [
     SafePipe,
     ShoppingCartComponent,
     AboutUsComponent,
-    SiteMapComponent
+    SiteMapComponent,
+    ContactComponent
   ],
   imports: [
     module,

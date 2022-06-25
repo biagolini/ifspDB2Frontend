@@ -31,6 +31,13 @@
           </div>
         </button>
 
+        <button class="houver-black" mat-menu-item routerLink="./contact">
+          <div>
+            <mat-icon class="houver-black">support_agent</mat-icon>
+            {{ "general.contactUs" | translate }}
+          </div>
+        </button>
+
         <button mat-menu-item routerLink="/login" *ngIf="!statusLogin()">
           <div>
             <mat-icon>login</mat-icon>

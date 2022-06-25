@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminAuthenticatedGuard } from './authentication/guards/admin-authentication.guard';
 import { AboutUsComponent } from './shared/components/about-us/about-us.component';
+import { ContactComponent } from './shared/components/contact/contact.component';
 
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { ShoppingCartComponent } from './shared/components/shopping-cart/shopping-cart.component';
@@ -58,7 +59,10 @@ const routes: Routes = [
         path: 'map',
         component: SiteMapComponent,  
       },
-
+      { 
+        path: 'contact',
+        component: ContactComponent,  
+      }, 
     ],
   },
   { path: '**', component: PageNotFoundComponent },
