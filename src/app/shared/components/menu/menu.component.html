@@ -12,9 +12,35 @@
       fxLayout="row"
       fxLayoutAlign="space-between center"
     >
-      <mat-icon>person_outline</mat-icon>
-      {{ currentUser() }}
-      <mat-icon class="fc-white">keyboard_arrow_down</mat-icon>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        *ngIf="isDisplay('Web')"
+      >
+        <mat-icon>person_outline</mat-icon>
+        {{ currentUser() }}
+        <mat-icon class="fc-white">keyboard_arrow_down</mat-icon>
+      </div>
+
+      <button
+        mat-menu-item
+        routerLink="/shopping_cart"
+        *ngIf="isRole('customer')"
+      >
+        <div>
+          <mat-icon matBadge="{{ getCartSize() }}" class="houver-black"
+            >shopping_cart</mat-icon
+          >
+        </div>
+      </button>
+
+      <div
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        *ngIf="!isDisplay('Web')"
+      >
+        <mat-icon class="fc-white">settings</mat-icon>
+      </div>
 
       <mat-menu #userMenu="matMenu">
         <button class="houver-black" mat-menu-item (click)="changeLanguage()">
@@ -62,12 +88,4 @@
       </mat-menu>
     </div>
   </div>
-
-  <button mat-menu-item routerLink="/shopping_cart" *ngIf="isRole('customer')">
-    <div>
-      <mat-icon matBadge="{{ getCartSize() }}" class="houver-black"
-        >shopping_cart</mat-icon
-      >
-    </div>
-  </button>
 </div>

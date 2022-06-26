@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { TranslateService } from '@ngx-translate/core';
-import { debounceTime, map, Observable, shareReplay } from 'rxjs';
+import { debounceTime, map, Observable, shareReplay, Subject, takeUntil } from 'rxjs';
 import { TypesModelDual } from 'src/app/shared/models/models';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 import { TypeService } from 'src/app/shared/services/type.service';
@@ -23,7 +23,64 @@ export class StoreOffersComponent implements OnInit {
     private typeService: TypeService,
     private translateService: TranslateService,
     private breakpointObserver: BreakpointObserver,
-  ) { }
+    ) {
+      breakpointObserver
+      .observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+        Breakpoints.Handset,
+        Breakpoints.Tablet,
+        Breakpoints.Web,
+        Breakpoints.HandsetPortrait,
+        Breakpoints.TabletPortrait,
+        Breakpoints.WebPortrait,
+        Breakpoints.HandsetLandscape,
+        Breakpoints.TabletLandscape,
+        Breakpoints.WebLandscape,
+      ])
+      .pipe(takeUntil(this.destroyed))
+      .subscribe((result) => {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            this.currentScreenSize =
+              this.displayNameMap.get(query) ?? 'Unknown';
+          }
+        }
+      });
+    }
+  
+  
+    destroyed = new Subject<void>();
+    currentScreenSize!: string;
+    
+    displayNameMap = new Map([
+      [Breakpoints.XSmall, 'XSmall'],
+      [Breakpoints.Small, 'Small'],
+      [Breakpoints.Medium, 'Medium'],
+      [Breakpoints.Large, 'Large'],
+      [Breakpoints.XLarge, 'XLarge'],
+      [Breakpoints.Handset, 'Handset'],
+      [Breakpoints.Tablet, 'Tablet'],
+      [Breakpoints.Web, 'Web'],
+      [Breakpoints.HandsetPortrait, 'Handset'],
+      [Breakpoints.TabletPortrait, 'Tablet'],
+      [Breakpoints.WebPortrait, 'Web'],
+      [Breakpoints.HandsetLandscape, 'Handset'],
+      [Breakpoints.TabletLandscape, 'Tablet'],
+      [Breakpoints.WebLandscape, 'Web'],
+    ]);
+
+
+
+    isDisplay(option: string){
+      if(option==this.currentScreenSize) return true;
+      else return false    
+    }
+
+
   
   totalLength!: number;
   pageSize = 10;

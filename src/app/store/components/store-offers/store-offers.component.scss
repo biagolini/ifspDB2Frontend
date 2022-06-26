@@ -1,3 +1,23 @@
+.cl-disable-move {
+  color: rgba(184, 184, 184, 0.521);
+}
+
+.highlight-container-handset {
+  margin-bottom: 1.5%;
+  * {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .highlight-cover-img-handset {
+    width: 100%;
+  }
+  .highlight-cover-container-handset {
+    height: 30vh;
+  }
+}
+
 .store-cover-img {
   height: 95%;
   width: auto;
@@ -5,22 +25,35 @@
   object-fit: contain;
 }
 
-.card-container-large {
-  padding: 1% 0;
-  margin: 0.5%;
-  height: auto;
-  width: 15%;
+.mat-paginator {
+  display: flex;
+  justify-content: center;
+}
+
+.card-container-handset {
+  padding: 2% 0;
+  margin: 2% 0;
+  height: 60%;
+  width: 100%;
   align-items: center;
-  background-color: transparent;
+  border-bottom: solid 1px #707070;
+
   * {
-    font-size: medium;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
   }
+
   .image-container {
-    height: 25vh;
+    width: 100vw;
+  }
+
+  .offer-description-container {
+    width: 100vw;
   }
 }
 
-.card-container-small {
+.card-container-tablet {
   padding: 2% 0;
   margin: 2%;
   height: 60%;
@@ -32,6 +65,21 @@
   }
   .image-container {
     height: 20vh;
+  }
+}
+
+.card-container-web {
+  padding: 1% 0;
+  margin: 0.5%;
+  height: auto;
+  width: 17%;
+  align-items: center;
+  background-color: transparent;
+  * {
+    font-size: medium;
+  }
+  .image-container {
+    height: 25vh;
   }
 }
 
@@ -53,6 +101,7 @@ mat-paginator {
   position: static;
   height: 35vh;
   padding: 1%;
+  max-width: 92vw;
 
   .highlight-move:hover {
     background-color: rgb(225, 225, 225, 0.5);

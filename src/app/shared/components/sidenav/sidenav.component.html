@@ -1,5 +1,5 @@
 <div class="toolbar-container">
-  <mat-toolbar color="primary" routerLink="/">
+  <mat-toolbar color="primary" routerLink="/" *ngIf="isDisplay('Web')">
     <button mat-button>{{ "toolbar.announcement" | translate }}</button>
   </mat-toolbar>
   <mat-toolbar
@@ -7,11 +7,26 @@
     fxLayoutAlign="space-between center"
     color="accent"
   >
+    <div fxLayout="row" fxLayoutAlign="center center" *ngIf="!isDisplay('Web')">
+      <button
+        fxLayoutAlign="start"
+        class="menu-button"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
     <div fxLayout="row" fxLayoutAlign="center center" routerLink="/">
       <img
         class="logo-size"
         src="assets/images/ecommerce_logo_outlined.svg"
         alt="Logo empresa"
+        [ngClass]="{
+          'toolbar-img-handset ': isDisplay('Handset'),
+          'toolbar-img-tablet ': isDisplay('Tablet'),
+          'toolbar-img-Web ': isDisplay('Web')
+        }"
       />
     </div>
 
@@ -23,12 +38,14 @@
   <mat-sidenav-container autosize class="navegation-container">
     <mat-sidenav
       #sidenav
+      #drawer
       position="start"
       class="nave-container"
       opened="true"
       mode="side"
       attr.role="navigation"
       fixedInViewport="false"
+      [opened]="!isDisplay('Web') === false"
     >
       <mat-nav-list>
         <mat-list-item (click)="openClose()">

@@ -1,13 +1,81 @@
-<div
-  class="page full-width"
-  fxFlex
-  fxLayout="column"
-  fxLayoutAlign="space-around start"
->
-  <mat-toolbar color="primary">
-    <h1>{{ "store.highlight" | translate }}</h1>
-  </mat-toolbar>
-  <div fxLayout="column" fxLayoutAlign="start none" class="highlight-container">
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <div
+    fxLayout="column"
+    fxLayoutAlign="space-around center"
+    class="highlight-container-handset"
+    *ngIf="isDisplay('Handset')"
+  >
+    <mat-toolbar color="primary">
+      <h1>{{ "store.highlight" | translate }}</h1>
+    </mat-toolbar>
+
+    <div routerLink="/details/{{ highlight[highlightItem]?.game }}">
+      <div
+        class="highlight-cover-container-handset"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+      >
+        <img
+          src="{{ highlight[highlightItem]?.cover }}"
+          alt="Game cover image"
+          class="highlight-cover-img-handset"
+        />
+      </div>
+      <h3>{{ highlight[highlightItem]?.header }}</h3>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="highlight-move" (click)="previusHighlight()">
+        <button
+          mat-button
+          [ngClass]="{
+            'cl-disable-move ': !showPreviusButton
+          }"
+        >
+          <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+      </div>
+      <div
+        class="check-container"
+        fxLayout="row"
+        fxLayoutAlign="center stretch"
+      >
+        <mat-icon>{{
+          highlightItem == 0 ? "radio_button_checked" : "radio_button_unchecked"
+        }}</mat-icon>
+        <mat-icon>{{
+          highlightItem == 1 ? "radio_button_checked" : "radio_button_unchecked"
+        }}</mat-icon>
+        <mat-icon>{{
+          highlightItem == 2 ? "radio_button_checked" : "radio_button_unchecked"
+        }}</mat-icon>
+        <mat-icon>{{
+          highlightItem == 3 ? "radio_button_checked" : "radio_button_unchecked"
+        }}</mat-icon>
+        <mat-icon>{{
+          highlightItem == 4 ? "radio_button_checked" : "radio_button_unchecked"
+        }}</mat-icon>
+      </div>
+
+      <div class="highlight-move" (click)="nextHighlight()">
+        <button
+          mat-button
+          [ngClass]="{
+            'cl-disable-move ': !showNextButton
+          }"
+        >
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    fxLayout="column"
+    fxLayoutAlign="start none"
+    class="highlight-container"
+    *ngIf="!isDisplay('Handset')"
+  >
     <div
       class="highlight-item"
       fxLayout="row"
@@ -21,11 +89,15 @@
         fxLayoutAlign="center stretch"
         (click)="previusHighlight()"
       >
-        <button mat-button *ngIf="showPreviusButton">
+        <button
+          mat-button
+          [ngClass]="{
+            'cl-disable-move ': !showPreviusButton
+          }"
+        >
           <mat-icon>arrow_back_ios</mat-icon>
         </button>
       </div>
-
       <div
         class="highlight-cover"
         fxFlex="45"
@@ -41,7 +113,7 @@
       <div
         class="highlight-description"
         fxLayout="column"
-        fxLayoutAlign="start stretch"
+        fxLayoutAlign="space-around center"
         fxFlex="45"
       >
         <h1>{{ highlight[highlightItem]?.header }}</h1>
@@ -65,7 +137,12 @@
         fxLayoutAlign="center stretch"
         (click)="nextHighlight()"
       >
-        <button mat-button *ngIf="showNextButton">
+        <button
+          mat-button
+          [ngClass]="{
+            'cl-disable-move ': !showNextButton
+          }"
+        >
           <mat-icon>arrow_forward_ios</mat-icon>
         </button>
       </div>
@@ -88,7 +165,9 @@
       }}</mat-icon>
     </div>
   </div>
+</div>
 
+<div class="offer-container full-width" *ngIf="true">
   <mat-toolbar color="primary" class="offer-item-header">
     <h1>{{ "store.allGames" | translate }}</h1>
   </mat-toolbar>
@@ -101,8 +180,9 @@
       <div
         class="card-container"
         [ngClass]="{
-          'card-container-small ': (isHandset$ | async),
-          'card-container-large': !(isHandset$ | async)
+          'card-container-handset ': isDisplay('Handset'),
+          'card-container-tablet ': isDisplay('Tablet'),
+          'card-container-web ': isDisplay('Web')
         }"
         *ngFor="let item of games"
         fxLayout="column"
@@ -121,8 +201,7 @@
           />
         </div>
 
-        <div>
-          <div fxLayout="column" fxLayoutAlign="start start"></div>
+        <div class="offer-description-container">
           <h2>
             {{ item?.name }}
           </h2>
@@ -157,13 +236,15 @@
         </div>
       </div>
     </div>
-    <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center">
       <mat-paginator
+        *ngIf="totalLength"
         [length]="totalLength"
         [pageSize]="pageSize"
+        [pageIndex]="0"
         [pageSizeOptions]="[5, 10, 50, 100]"
+        [showFirstLastButtons]="true"
         (page)="pageChange($event)"
-        showFirstLastButtons
       >
       </mat-paginator>
     </div>
