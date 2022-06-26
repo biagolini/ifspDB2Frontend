@@ -1,11 +1,11 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { TranslateService } from '@ngx-translate/core';
-import { debounceTime, map, Observable, shareReplay, Subject, takeUntil } from 'rxjs';
+import { debounceTime } from 'rxjs';
 import { TypesModelDual } from 'src/app/shared/models/models';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import { ScreenMonitorService } from 'src/app/shared/services/screen-monitor.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 
 import { StoreService } from '../../services/store.service';
@@ -22,64 +22,9 @@ export class StoreOffersComponent implements OnInit {
     private feedback: FeedbackService,    
     private typeService: TypeService,
     private translateService: TranslateService,
-    private breakpointObserver: BreakpointObserver,
-    ) {
-      breakpointObserver
-      .observe([
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge,
-        Breakpoints.Handset,
-        Breakpoints.Tablet,
-        Breakpoints.Web,
-        Breakpoints.HandsetPortrait,
-        Breakpoints.TabletPortrait,
-        Breakpoints.WebPortrait,
-        Breakpoints.HandsetLandscape,
-        Breakpoints.TabletLandscape,
-        Breakpoints.WebLandscape,
-      ])
-      .pipe(takeUntil(this.destroyed))
-      .subscribe((result) => {
-        for (const query of Object.keys(result.breakpoints)) {
-          if (result.breakpoints[query]) {
-            this.currentScreenSize =
-              this.displayNameMap.get(query) ?? 'Unknown';
-          }
-        }
-      });
-    }
+    private screenMonitorService: ScreenMonitorService,
+    ) {  }
   
-  
-    destroyed = new Subject<void>();
-    currentScreenSize!: string;
-    
-    displayNameMap = new Map([
-      [Breakpoints.XSmall, 'XSmall'],
-      [Breakpoints.Small, 'Small'],
-      [Breakpoints.Medium, 'Medium'],
-      [Breakpoints.Large, 'Large'],
-      [Breakpoints.XLarge, 'XLarge'],
-      [Breakpoints.Handset, 'Handset'],
-      [Breakpoints.Tablet, 'Tablet'],
-      [Breakpoints.Web, 'Web'],
-      [Breakpoints.HandsetPortrait, 'Handset'],
-      [Breakpoints.TabletPortrait, 'Tablet'],
-      [Breakpoints.WebPortrait, 'Web'],
-      [Breakpoints.HandsetLandscape, 'Handset'],
-      [Breakpoints.TabletLandscape, 'Tablet'],
-      [Breakpoints.WebLandscape, 'Web'],
-    ]);
-
-
-
-    isDisplay(option: string){
-      if(option==this.currentScreenSize) return true;
-      else return false    
-    }
-
 
   
   totalLength!: number;
@@ -101,13 +46,6 @@ export class StoreOffersComponent implements OnInit {
   // Options
   listGenre: TypesModelDual[] = []; //  Lista de estados e seus codigos
 
-  // Monitor do tipo de tela
-  isHandset$: Observable<boolean> = this.breakpointObserver
-  .observe(Breakpoints.Handset)
-  .pipe(
-    map((result) => result.matches),
-    shareReplay()
-  );
 
   ngOnInit(): void {
       this.typeService.updateListGenre().subscribe({
@@ -140,6 +78,10 @@ export class StoreOffersComponent implements OnInit {
       pageSize: this.pageSize,
       length: this.totalLength,
     });
+  }
+
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
   }
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScreenMonitorService } from '../../services/screen-monitor.service';
 
 @Component({
   selector: 'app-about-us',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private screenMonitorService: ScreenMonitorService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
   }
 
 }

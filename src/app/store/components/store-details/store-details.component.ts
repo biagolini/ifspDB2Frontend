@@ -1,9 +1,8 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { map, Observable, shareReplay } from 'rxjs';
 import {
   DetailCartItensModel,
   GameOfferWrapper,
@@ -12,6 +11,7 @@ import {
   TypeModelSingle,
   TypesModelDual,
 } from 'src/app/shared/models/models';
+import { ScreenMonitorService } from 'src/app/shared/services/screen-monitor.service';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 
@@ -26,7 +26,7 @@ import { StoreService } from '../../services/store.service';
 export class StoreDetailsComponent  {
 
   constructor(
-    private breakpointObserver: BreakpointObserver,
+    private screenMonitorService: ScreenMonitorService,
     private route: ActivatedRoute,    
     private translateService: TranslateService,
     private shoppingCartService: ShoppingCartService,
@@ -64,13 +64,7 @@ export class StoreDetailsComponent  {
   // Preços
   prices: PricesModel[] = []  //  Lista de plataformas
 
-  // Monitor do tipo de tela
-  isHandset$: Observable<boolean> = this.breakpointObserver
-  .observe(Breakpoints.Handset)
-  .pipe(
-    map((result) => result.matches),
-    shareReplay()
-  );
+
   
   // Iten order form
   itemForm = this.form.group({
@@ -107,6 +101,10 @@ export class StoreDetailsComponent  {
     this.patchGame();
   }
 
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
+  }
+  
   patchGame(){
     this.storeService.getGameProfile(this.gameId).subscribe({
       next: (response) =>{    

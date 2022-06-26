@@ -1,1 +1,108 @@
-<p>about-us works!</p>
+<div>
+  <h1 class="titulo">Sobre Nós</h1>
+  <div class="primeiro-container">
+    <div
+      class="imagem-container"
+      [ngClass]="{
+        'imagem-container-handset': !isDisplay('Web'),
+        'imagem-container-web': isDisplay('Web')
+      }"
+    >
+      <img
+        class="ilustration-handset"
+        src="/assets/images/aboutUs/celular.jpg"
+        alt="Pessoa utilizando celular"
+        *ngIf="isDisplay('Handset')"
+      />
+
+      <img
+        class="ilustration-handset"
+        src="/assets/images/aboutUs/tablet.jpg"
+        alt="Pessoa utilizando tablet"
+        *ngIf="isDisplay('Tablet')"
+      />
+
+      <img
+        class="ilustration-web"
+        src="/assets/images/aboutUs/notebook.jpg"
+        alt="Pessoa utilizando notebook"
+        *ngIf="isDisplay('Web')"
+      />
+    </div>
+    <div
+      class="texto-container"
+      [ngClass]="{
+        'texto-container-handset': !isDisplay('Web'),
+        'texto-container-web': isDisplay('Web')
+      }"
+    >
+      O termo e-commerce representa a abreviação do termo, em inglês,
+      “electronic commerce” (comércio eletrônico, em português). Essa modalidade
+      de comercio surgiu na década de 1990, sendo o ano de 1995 uma referência,
+      uma vez que esse foi o ano de fundamento de dois gigantes do comércio
+      eletrônico, a Amazon e o eBay. Do ponto de vista operacional, esta
+      modalidade de comercio, representa a metodologia de comercio que ocorre em
+      transações realizadas totalmente on-line.No século XX, houve o surgimento
+      de máquinas de jogos, conhecidas no Brasil como fliperamas. A princípio,
+      tais máquinas eram instaladas em ambientes públicos como parques, centros
+      comerciais, restaurantes e bares, e tinham como objetivo prover alguns
+      minutos de entretenimento, em troca de moedas. Atualmente, após anos de
+      avanços técnicos, artísticos e tecnológicos, a indústria dos games é um
+      completo sucesso entre fãs de todas as idades.
+    </div>
+  </div>
+  <div
+    class="primeiro-container"
+    style="background-image: linear-gradient(to right, #001030, #013294)"
+  >
+    <div
+      [ngClass]="{
+        'texto-container-handset': !isDisplay('Web'),
+        'texto-container-web': isDisplay('Web')
+      }"
+      style="color: white"
+    >
+      Em meio a este cenário, em 2022, nasceu o e-commerce XYZ, fundado
+      inicialmente com um propósito mais experimental e didático, onde os
+      fundadores Alisson Kauan, Carlos Biagolini e Rodrigo Shimizu Passos
+      buscavam aprofundar alguns conhecimentos sobre desenvolvimento web e
+      comércios de jogos online no final do primeiro semestre de 2022, o projeto
+      foi ganhando mais desenvolvimento do que era esperado no início, e deixou
+      de ser apenas uma ideia e foi se concretizando cada vez mais. Em 30 de
+      junho de 2022, foi inaugurada a plataforma online do e-commerce XYZ,
+      totalmente operacional e pronta para atender aos nossos clientes! <br />
+      Atualmente, contamos com um amplo catálogo de games e buscamos aprimorar
+      nossa plataforma e nossos serviços cada vez mais. Para isso, também
+      contamos com a sua ajuda! Conte-nos sobre sua experiência com a loja
+      Clicando aqui.
+    </div>
+    <div
+      class="imagem-container"
+      [ngClass]="{
+        'imagem-container-handset': !isDisplay('Web'),
+        'imagem-container-web': isDisplay('Web')
+      }"
+    >
+      <img
+        class="ilustration-handset"
+        src="/assets/images/aboutUs/celular2.jpg"
+        alt="Pessoa utilizando celular"
+        *ngIf="isDisplay('Handset')"
+      />
+
+      <img
+        class="ilustration-handset"
+        src="/assets/images/aboutUs/tablet2.jpg"
+        alt="Pessoa utilizando tablet"
+        *ngIf="isDisplay('Tablet')"
+      />
+
+      <img
+        class="ilustration-web"
+        src="/assets/images/aboutUs/notebook2.jpg"
+        alt="Pessoa utilizando notebook"
+        *ngIf="isDisplay('Web')"
+      />
+    </div>
+  </div>
+</div>

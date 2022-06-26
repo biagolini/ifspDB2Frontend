@@ -1,0 +1,50 @@
+.titulo {
+  width: 100%;
+  text-align: center;
+  color: #013294;
+  padding: 1.5%;
+  background-color: rgb(240, 240, 240);
+}
+.primeiro-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.imagem-container {
+  padding: 1.5%;
+}
+
+/*Web*/
+
+.imagem-container-web {
+  width: 47%;
+}
+
+.ilustration-web {
+  width: 100%;
+  height: auto;
+}
+
+.texto-container-web {
+  line-height: 1.6;
+  width: 40%;
+  font-size: 1.5rem;
+  padding: 1% 5% 5% 5%;
+}
+
+/*Celular/tablet*/
+.imagem-container-handset {
+  width: 97%;
+}
+
+.ilustration-handset {
+  width: 100%;
+  height: auto;
+}
+
+.texto-container-handset {
+  line-height: 1.6;
+  width: 90%;
+  font-size: 1.5rem;
+  padding: 5%;
+}
