@@ -10,12 +10,17 @@
     </h1>
   </div>
 
-  <div fxLayout="row" class="full-width">
+  <!-- DIV PARA IMAGEM -->
+
+  <div fxLayout="row wrap " class="full-width">
     <div
       fxLayout="row"
       fxLayoutAlign="center center"
       class="image-container"
-      fxFlex="60"
+      [ngClass]="{
+        'imagem-container-handset': !isDisplay('Web'),
+        'imagem-container-web': isDisplay('Web')
+      }"
       *ngIf="disableMenu"
     >
       <img
@@ -28,7 +33,10 @@
     <div
       fxLayout="row"
       class="image-container"
-      fxFlex="60"
+      [ngClass]="{
+        'imagem-container-handset': !isDisplay('Web'),
+        'imagem-container-web': isDisplay('Web')
+      }"
       *ngIf="!disableMenu"
     >
       <div fxFlex="10" fxLayout="column" class="select-image-container">
@@ -82,7 +90,14 @@
         </a>
       </div>
     </div>
-    <div class="shop-options-container" fxFlex>
+    <div
+      class="shop-options-container"
+      fxFlex
+      [ngClass]="{
+        'offer-details-container-handset': !isDisplay('Web'),
+        'offer-details-container-web': isDisplay('Web')
+      }"
+    >
       <h2 class="page-title">
         {{ gameOfferWrappers?.game?.name }}
       </h2>
