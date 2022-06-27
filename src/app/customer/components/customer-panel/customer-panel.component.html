@@ -10,30 +10,20 @@
     fxLayoutAlign=" center"
     fxFlexFill
   >
-    <div fxFlex="85">
+    <div fxFlex="50">
       <mat-form-field fxFill appearance="legacy">
         <mat-label>{{ "general.filter" | translate }}</mat-label>
         <input matInput type="text" [formControl]="filterControl" />
       </mat-form-field>
     </div>
-    <div fxFlex="15">
-      <button
-        mat-stroked-button
-        class="add-button-color"
-        (click)="searchCustomer()"
-        style="width: 100%"
-      >
+    <div fxFlex="25">
+      <button mat-stroked-button (click)="searchCustomer()" style="width: 100%">
         {{ "customer.findDescription" | translate }}
       </button>
     </div>
 
-    <div fxFlex="15">
-      <button
-        mat-stroked-button
-        class="add-button-color"
-        routerLink="new"
-        style="width: 100%"
-      >
+    <div fxFlex="25">
+      <button mat-stroked-button routerLink="new" style="width: 100%">
         {{ "general.add" | translate }}
       </button>
     </div>
