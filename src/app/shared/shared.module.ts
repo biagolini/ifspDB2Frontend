@@ -45,6 +45,7 @@ import { SafePipe } from './pipe/safe.pipe';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { SiteMapComponent } from './components/site-map/site-map.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { WorkerRequestComponent } from './components/worker-request/worker-request.component';
 
 
 
@@ -99,7 +100,8 @@ var module = [
     ShoppingCartComponent,
     AboutUsComponent,
     SiteMapComponent,
-    ContactComponent
+    ContactComponent,
+    WorkerRequestComponent
   ],
   imports: [
     module,

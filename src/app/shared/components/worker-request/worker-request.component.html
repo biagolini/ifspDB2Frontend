@@ -1,6 +1,6 @@
 <div class="page" fxLayout="column" fxLayoutGap="30px">
   <div class="page-header">
-    <h1 class="page-title">SAC</h1>
+    <h1 class="page-title">Suporte interno</h1>
   </div>
   <section class="support">
     <form class="support-form">
@@ -10,9 +10,7 @@
         class="full-width"
         fxLayoutGap="1em"
       >
-        <h1 class="support-title">
-          Possui alguma dúvida ou reclamação? Contate nosso suporte!
-        </h1>
+        <h1 class="support-title">Chamado para suporte técnico</h1>
         <div class="support-area">
           <label for="name">Seu nome:</label>
           <input class="support-text" type="text" id="name" required />
@@ -21,13 +19,13 @@
 
         <div class="support-area">
           <label for="email">Seu e-mail</label>
-          <input class="support-text" type="email" id="email" required />
+          <input class="support-text" type="text" id="email" required />
           <br />
         </div>
 
         <div class="support-area">
           <label for="title">Assunto</label>
-          <input class="support-text" type="email" id="email" required />
+          <input class="support-text" type="text" id="titulo" required />
           <br />
         </div>
 
@@ -46,9 +44,7 @@
         </div>
 
         <div class="support-area">
-          <button class="x" mat-raised-button type="submit" value="Enviar">
-            Enviar
-          </button>
+          <input type="submit" value="Enviar" (click)="validacaoEmail()" />
         </div>
       </div>
     </form>

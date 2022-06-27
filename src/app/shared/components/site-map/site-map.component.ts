@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
 
 @Component({
   selector: 'app-site-map',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteMapComponent implements OnInit {
 
-  constructor() { }
+  constructor(    
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    ) { }
 
   ngOnInit(): void {
+  }
+  openLink(url: string){
+    this.router.navigate([url]);
+  }
+
+  isRole(role: string): boolean {
+    return this.authenticationService.isRole(role);
   }
 
 }

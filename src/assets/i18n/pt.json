@@ -75,7 +75,8 @@
     "siteMap": "Mapa do site",
     "contactUs": "Fale conosco",
     "chooseColumns": "Escolha colunas para apresentação",
-    "choosedColumns": "Colunas selecionadas"
+    "choosedColumns": "Colunas selecionadas",
+    "workerRequest": "Suporte técnico"
   },
   "customer": {
     "customer": "Cliente",

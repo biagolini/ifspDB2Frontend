@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/authentication/services/authentic
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
 
 import { DetailCartItensModel, TypeModelSingle, TypesModelDual } from '../../models/models';
+import { ScreenMonitorService } from '../../services/screen-monitor.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { TypeService } from '../../services/type.service';
 import { CartItensModel } from './../../models/models';
@@ -25,6 +26,7 @@ export class ShoppingCartComponent implements OnInit {
     private router: Router,
     private feedback: FeedbackService,
     private authenticationService: AuthenticationService,
+    private screenMonitorService: ScreenMonitorService,
   ) {}
 
 
@@ -33,7 +35,13 @@ export class ShoppingCartComponent implements OnInit {
   listPlatform: TypeModelSingle[] = []  //  Lista de plataformas
 
   cart = new MatTableDataSource();
-  displayedColumns = ['gameCover','gameName','idPlatform','quantity','unityPrice','subTotal', 'removeIten'];
+
+  choosedColumns = new FormControl( [ 'gameName','quantity','unityPrice','subTotal']);
+
+  optionsColumns: string[] = ['gameCover','gameName','idPlatform','quantity','unityPrice','subTotal', 'removeIten'];
+
+
+  
 
   totalOrderControl = new FormControl();
 
@@ -42,6 +50,11 @@ export class ShoppingCartComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    if(this.isDisplay("Web"))this.choosedColumns.setValue( ['gameCover','gameName','idPlatform','quantity','unityPrice','subTotal', 'removeIten'])
+
+    if(this.isDisplay("Tablet"))this.choosedColumns.setValue( ['gameCover','gameName','idPlatform','quantity','unityPrice','subTotal', 'removeIten'])
+
+
     this.cart.data = this.shoppingCartService.cart;
        this.calcTotalOrder();
 
@@ -51,6 +64,11 @@ export class ShoppingCartComponent implements OnInit {
       }
     }); 
   }
+
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
+  }
+
 
   resolveEnumSingle (id: number, typeModel: TypeModelSingle [] ){
     return typeModel.find( x=>x.id == id)?.description;

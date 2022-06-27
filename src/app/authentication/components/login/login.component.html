@@ -13,9 +13,20 @@
       'login-container-dark-mode': darkModeCondition
     }"
   >
-    <h1 class="title">
-      {{ "application.name" | translate }}
-    </h1>
+    <img
+      class="logo-size"
+      src="assets/images/ecommerce_logo_full_filled_dark_mode.svg"
+      alt="Logo empresa"
+      *ngIf="darkModeCondition"
+    />
+
+    <img
+      class="logo-size"
+      src="assets/images/ecommerce_logo_full_filled_light_mode.svg"
+      alt="Logo empresa"
+      *ngIf="!darkModeCondition"
+    />
+
     <h2>{{ "login.login" | translate }}</h2>
 
     <form

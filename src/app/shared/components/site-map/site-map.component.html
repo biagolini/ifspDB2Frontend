@@ -1,1 +1,197 @@
-<p>site-map works!</p>
+<div class="page" fxLayout="column" fxLayoutGap="30px">
+  <div class="page-header">
+    <h1 class="page-title">Sitemap</h1>
+  </div>
+  <div fxLayout="column" fxLayoutAlign=" start">
+    <ul>
+      <li>
+        Autenticação
+        <ul>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/login')"
+            >
+              Login
+            </button>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        Loja
+        <ul>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/')"
+            >
+              Painel de produtos
+            </button>
+          </li>
+
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/details/1')"
+            >
+              Detalhes de um jogo
+            </button>
+          </li>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/shopping_cart')"
+            >
+              Carrinho de compras
+            </button>
+          </li>
+        </ul>
+      </li>
+
+      <li *ngIf="isRole('admin')">
+        Clientes
+        <ul>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/customer')"
+            >
+              Painel de clientes
+            </button>
+          </li>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/customer/new')"
+            >
+              Cadastro de clientes
+            </button>
+          </li>
+
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/customer/1')"
+            >
+              Detalhes de um cliente
+            </button>
+          </li>
+        </ul>
+      </li>
+
+      <li *ngIf="isRole('admin')">
+        Pedidos
+        <ul>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/order')"
+            >
+              Painel de pedidos
+            </button>
+          </li>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/order/1')"
+            >
+              Revisão de um pedido
+            </button>
+          </li>
+        </ul>
+      </li>
+
+      <li *ngIf="isRole('admin') || isRole('estoque')">
+        Estoque
+        <ul>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/warehouse')"
+            >
+              Painel de balanço de estoque
+            </button>
+          </li>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/warehouse/entrance')"
+            >
+              Painel de Entradas
+            </button>
+          </li>
+
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/warehouse/exit')"
+            >
+              Painel de saídas
+            </button>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        Informações & Suporte
+        <ul>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/about')"
+            >
+              Sobre nós
+            </button>
+          </li>
+          <li>
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/contact')"
+            >
+              Fale consoco
+            </button>
+          </li>
+          <li *ngIf="isRole('admin') || isRole('estoque')">
+            <button
+              mat-button
+              class="full-width"
+              style="text-align: left"
+              (click)="openLink('/workerRequest')"
+            >
+              Suporte técnico
+            </button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

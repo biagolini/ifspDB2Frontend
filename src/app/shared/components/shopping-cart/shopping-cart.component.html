@@ -14,12 +14,6 @@
 
       <div class="subtitle full-width">
         <h2>
-          {{ "cart.highligths" | translate }}
-        </h2>
-      </div>
-
-      <div class="subtitle full-width">
-        <h2>
           {{ "cart.itens" | translate }}
         </h2>
       </div>
@@ -124,11 +118,18 @@
             </button>
           </td>
         </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="choosedColumns.value"></tr>
+        <tr mat-row *matRowDef="let row; columns: choosedColumns.value"></tr>
       </table>
       <div class="total-container" fxLayout="row" fxLayoutAlign="end center">
-        <mat-form-field fxFlex="35%" appearance="outline">
+        <mat-form-field
+          appearance="outline"
+          [ngClass]="{
+            'form-field-item-handset ': isDisplay('Handset'),
+            'form-field-item-tablet ': isDisplay('Tablet'),
+            'form-field-item-web  ': isDisplay('Web')
+          }"
+        >
           <mat-label>
             {{ "cart.totalValue" | translate }}
           </mat-label>
@@ -149,11 +150,16 @@
       </div>
     </div>
   </div>
-  <div class="full-width">
+  <div class="full-width" fxLayout="column" fxLayoutAlign="center end">
     <button
       mat-raised-button
       color="accent"
-      class="full-width action-button"
+      class="action-button"
+      [ngClass]="{
+        'form-field-item-handset ': isDisplay('Handset'),
+        'form-field-item-tablet ': isDisplay('Tablet'),
+        'form-field-item-web  ': isDisplay('Web')
+      }"
       (click)="statusLogin() ? placeOrder() : goToLogin()"
     >
       {{
@@ -165,8 +171,12 @@
     <button
       mat-raised-button
       color="primary"
-      class="full-width action-button"
       routerLink="/"
+      [ngClass]="{
+        'form-field-item-handset ': isDisplay('Handset'),
+        'form-field-item-tablet ': isDisplay('Tablet'),
+        'form-field-item-web  ': isDisplay('Web')
+      }"
     >
       {{ "cart.backStore" | translate }}
     </button>

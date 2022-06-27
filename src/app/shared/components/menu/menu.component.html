@@ -64,6 +64,18 @@
           </div>
         </button>
 
+        <button
+          class="houver-black"
+          mat-menu-item
+          routerLink="./workerRequest"
+          *ngIf="isRole('admin') || isRole('estoque')"
+        >
+          <div>
+            <mat-icon class="houver-black">help_center</mat-icon>
+            {{ "general.workerRequest" | translate }}
+          </div>
+        </button>
+
         <button mat-menu-item routerLink="/login" *ngIf="!statusLogin()">
           <div>
             <mat-icon>login</mat-icon>
