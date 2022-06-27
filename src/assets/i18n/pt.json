@@ -73,7 +73,9 @@
     "increase": "Aumentar",
     "aboutUs": "Sobre nós",
     "siteMap": "Mapa do site",
-    "contactUs": "Fale conosco"
+    "contactUs": "Fale conosco",
+    "chooseColumns": "Escolha colunas para apresentação",
+    "choosedColumns": "Colunas selecionadas"
   },
   "customer": {
     "customer": "Cliente",

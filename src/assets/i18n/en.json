@@ -73,7 +73,9 @@
     "increase": "Increase",
     "aboutUs": "About us",
     "siteMap": "Site map",
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "chooseColumns": "Choose columns to show",
+    "choosedColumns": "Selected columns"
   },
   "customer": {
     "customer": "Customer",

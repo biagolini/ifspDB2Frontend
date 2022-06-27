@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { debounceTime, map, startWith } from 'rxjs/operators';
 import { GameSummaryModel, TypeModelSingle, TypesModelDual } from 'src/app/shared/models/models';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import { ScreenMonitorService } from 'src/app/shared/services/screen-monitor.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 
 import { WarehouseService } from '../../services/warehouse.service';
@@ -24,6 +25,7 @@ export class WarehouseBalanceComponent implements OnInit {
     private warehouseService: WarehouseService,
     private feedback: FeedbackService,
     private form: FormBuilder,
+    private screenMonitorService: ScreenMonitorService,
   ) {
     this.filteredGames = this.gameCtrl.valueChanges.pipe(
       startWith(''),
@@ -47,10 +49,19 @@ export class WarehouseBalanceComponent implements OnInit {
   page = 0;
   // Table
   warehouseDataTable = new MatTableDataSource();
-  displayedColumns = ['gameCover','gameName','idPlatform', 'quantity','lastUpdate'];
+
   loadingTable:boolean = true;
+
+  choosedColumns = new FormControl( [ 'gameName','idPlatform', 'quantity']);
+
+  optionsColumns: string[] = ['gameCover','gameName','idPlatform', 'quantity','lastUpdate'];
+
+
   
   ngOnInit(): void {    
+    if(this.isDisplay("Web"))this.choosedColumns.setValue( ['gameCover','gameName','idPlatform', 'quantity','lastUpdate'])
+
+
     this.typeService.fillTypesIfEmpty();
     // Pegar lista atualizada de estados
     this.typeService.updateListWarehouseMovement().subscribe({
@@ -96,7 +107,10 @@ export class WarehouseBalanceComponent implements OnInit {
         pageSize: this.pageSize,
         length: this.totalLength,
       });
+  }
 
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
   }
 
   pageChange(pageEvent: PageEvent) {

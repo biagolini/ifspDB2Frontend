@@ -8,6 +8,7 @@ import { StatesModel } from 'src/app/shared/models/models';
 
 
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import { ScreenMonitorService } from 'src/app/shared/services/screen-monitor.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 import { CustomerService } from '../../services/customer.service';
 import { SearchCustomerDialogComponent } from '../search-customer-dialog/search-customer-dialog.component';
@@ -25,7 +26,7 @@ export class CustomerPanelComponent implements OnInit {
     private feedback: FeedbackService,
     private  dialog: MatDialog,
     private form: FormBuilder,
-
+    private screenMonitorService: ScreenMonitorService,
   ) {}
 
   filterControl = new FormControl('');
@@ -46,16 +47,21 @@ export class CustomerPanelComponent implements OnInit {
 
   selectedState = new FormControl();
 
-
   totalLength!: number;
   pageSize = 10;
   page = 0;
 
-
   customerDataTable = new MatTableDataSource();
-  displayedColumns = ['firstName', 'lastName', 'email', 'birthDate', 'cpf', 'street', 'city','state', 'action'];
+
+  choosedColumns = new FormControl( [ 'email', 'action']);
+
+  optionsColumns: string[] = ['firstName', 'lastName', 'email', 'birthDate', 'cpf', 'street', 'city','state', 'action'];
+
   loadingTable:boolean = true;
 
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
+  }
 
   searchCustomer(){
     const dialogConfig = new MatDialogConfig();
@@ -86,6 +92,11 @@ export class CustomerPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.isDisplay("Web"))this.choosedColumns.setValue( ['firstName', 'lastName', 'email', 'birthDate', 'cpf', 'street', 'city','state', 'action'])
+
+    if(this.isDisplay("Tablet"))this.choosedColumns.setValue( ['firstName', 'lastName', 'email', 'action'])
+
+
     this.typeService.fillTypesIfEmpty();
 
     // Pegar lista atualizada de estados

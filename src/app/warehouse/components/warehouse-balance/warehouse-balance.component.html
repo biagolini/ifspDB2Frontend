@@ -23,6 +23,28 @@
     <h1 class="page-title">{{ "warehouse.balance" | translate }}</h1>
   </div>
 
+  <div class="select-columns" *ngIf="!isDisplay('Web')">
+    {{ "general.chooseColumns" | translate }}
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label> {{ "general.choosedColumns" | translate }}</mat-label>
+      <mat-select [formControl]="choosedColumns" multiple>
+        <mat-select-trigger>
+          {{choosedColumns.value?.[0] || ''}}
+          <span
+            *ngIf="(choosedColumns.value?.length || 0) > 1"
+            class="example-additional-selection"
+          >
+            (+{{ (choosedColumns.value?.length || 0) - 1 }}
+            {{ choosedColumns.value?.length === 2 ? "other" : "others" }})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let topping of optionsColumns" [value]="topping">{{
+          topping
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
   <div
     class="full-width"
     fxLayout="row"
@@ -114,12 +136,22 @@
       </ng-container>
 
       <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          style="text-align: center !important"
+        >
           <span class="table-header">{{
             "warehouse.quantity" | translate
           }}</span>
         </th>
-        <td mat-cell *matCellDef="let element">{{ element?.quantity }}</td>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          style="text-align: center !important"
+        >
+          {{ element?.quantity }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="lastUpdate">
@@ -131,8 +163,8 @@
         <td mat-cell *matCellDef="let element">{{ element?.lastUpdate }}</td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="choosedColumns.value"></tr>
+      <tr mat-row *matRowDef="let row; columns: choosedColumns.value"></tr>
     </table>
 
     <mat-paginator

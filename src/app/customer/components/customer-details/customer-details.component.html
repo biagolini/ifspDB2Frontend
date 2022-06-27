@@ -39,7 +39,12 @@
                 <mat-label>
                   {{ "customer.firstName" | translate }}
                 </mat-label>
-                <input type="text" matInput formControlName="firstName" />
+                <input
+                  type="text"
+                  matInput
+                  formControlName="firstName"
+                  placeholder="ex.: ABC API Integration"
+                />
               </mat-form-field>
 
               <mat-form-field fxFlex="49.5%" appearance="outline">
@@ -104,7 +109,12 @@
                 <mat-label>
                   {{ "customer.number" | translate }}
                 </mat-label>
-                <input type="text" matInput formControlName="number" />
+                <input
+                  type="text"
+                  matInput
+                  formControlName="number"
+                  placeholder="ex.: ABC API Integration"
+                />
               </mat-form-field>
             </div>
 
@@ -135,6 +145,7 @@
                   matInput
                   formControlName="zip"
                   [textMask]="{ mask: cepMask }"
+                  placeholder="ex.: ABC API Integration"
                 />
               </mat-form-field>
             </div>

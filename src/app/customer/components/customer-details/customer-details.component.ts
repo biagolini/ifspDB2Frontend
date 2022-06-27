@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StatesModel } from 'src/app/shared/models/models';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import { ScreenMonitorService } from 'src/app/shared/services/screen-monitor.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 
 import { CustomerService } from '../../services/customer.service';
@@ -25,6 +26,7 @@ export class CustomerDetailsComponent implements OnInit {
     private feedback: FeedbackService,
     private router: Router,
     private typeService: TypeService,
+    private screenMonitorService: ScreenMonitorService,
   ) {}
 
   isEdit = false;
@@ -49,10 +51,11 @@ export class CustomerDetailsComponent implements OnInit {
     city: ['', Validators.required],
     state: ['', Validators.required],
     zip: ['', Validators.required],
-});
+  });
 
-
-
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe({

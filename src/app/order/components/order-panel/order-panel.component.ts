@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { debounceTime } from 'rxjs/operators';
 import { TypesModelDual } from 'src/app/shared/models/models';
 import { FeedbackService } from 'src/app/shared/services/feedback.service';
+import { ScreenMonitorService } from 'src/app/shared/services/screen-monitor.service';
 import { TypeService } from 'src/app/shared/services/type.service';
 
 import { OrderService } from '../../services/order.service';
@@ -27,6 +28,7 @@ export class OrderPanelComponent implements OnInit {
     private dialog: MatDialog,
     private form: FormBuilder,
     private translateService: TranslateService,
+    private screenMonitorService: ScreenMonitorService,
   
   ) {}
 
@@ -55,9 +57,20 @@ export class OrderPanelComponent implements OnInit {
 
 
   orderDataTable = new MatTableDataSource();
-  displayedColumns = ['id', 'firstName', 'lastName', 'email', 'dateTimeOrder', 'idTypeStatusOrder', 'trackingCode','totalValue', 'action'];
+
+
+  choosedColumns = new FormControl( [ 'email', 'action']);
+
+  optionsColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'dateTimeOrder', 'idTypeStatusOrder', 'trackingCode','totalValue', 'action'];
+
+
+
+
   loadingTable:boolean = true;
 
+  isDisplay(option: string){
+    return this.screenMonitorService.isDisplay(option);  
+  }
 
   searchOrder(){
     const dialogConfig = new MatDialogConfig();
@@ -88,6 +101,13 @@ export class OrderPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if(this.isDisplay("Web"))this.choosedColumns.setValue( ['id', 'firstName', 'lastName', 'email', 'dateTimeOrder', 'idTypeStatusOrder', 'trackingCode','totalValue', 'action'])
+
+    if(this.isDisplay("Tablet"))this.choosedColumns.setValue( ['firstName', 'lastName', 'email', 'action'])
+
+
+
     this.typeService.fillTypesIfEmpty();
 
     // Pegar lista de status
