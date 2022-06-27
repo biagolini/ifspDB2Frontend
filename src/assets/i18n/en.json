@@ -172,13 +172,32 @@
     "warehouse": "Warehouse",
     "balance": "Balance",
     "backBalance": "Back to warehouse balance",
+    "entry": "Entry",
     "entries": "Entries",
+    "exit": "Exit",
     "exits": "Exits",
     "findDescription": "Find by game",
     "gameCover": "Cover",
     "gameName": "Title",
     "idPlatform": "Platform",
     "quantity": "Available quantity",
-    "lastUpdate": "Last update"
+    "lastUpdate": "Last update",
+    "quantityMovement": "Quantity movemented",
+    "entranceMovement": "Entrance origin",
+    "exitMovement": "Exit origin",
+    "timeMovement": "Time of movement",
+    "newmovement": "Add newe movement",
+    "movement": {
+      "provideProfile": "Describe movement",
+      "typeMovement": "Type of movement",
+      "originMovement": "Origin of movement",
+      "quantity": "Quantity movemented",
+      "movementType1": "Manufacturer",
+      "movementType2": "Return",
+      "movementType3": "Sale",
+      "movementType4": "Perda operacional",
+      "successfullyCreated": "Movement saved successfully",
+      "creationError": "Error in the movement record save"
+    }
   }
 }

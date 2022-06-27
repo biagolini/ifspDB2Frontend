@@ -6,13 +6,15 @@ import { WarehouseBalanceComponent } from './components/warehouse-balance/wareho
 import { WarehouseEntranceComponent } from './components/warehouse-entrance/warehouse-entrance.component';
 import { WarehouseExitComponent } from './components/warehouse-exit/warehouse-exit.component';
 import { SharedModule } from '../shared/shared.module';
+import { MovementDialogComponent } from './components/movement-dialog/movement-dialog.component';
 
 
 @NgModule({
   declarations: [
     WarehouseBalanceComponent,
     WarehouseEntranceComponent,
-    WarehouseExitComponent
+    WarehouseExitComponent,
+    MovementDialogComponent
   ],
   imports: [
     CommonModule,

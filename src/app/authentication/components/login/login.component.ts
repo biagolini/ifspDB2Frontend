@@ -56,8 +56,7 @@ export class LoginComponent implements OnInit {
         this.feedback.showMessage('login.message.loginFail').subscribe();
       }
       });
-    }
-    
+    }    
   }
 
   EnterSubmit(event: KeyboardEvent): void {

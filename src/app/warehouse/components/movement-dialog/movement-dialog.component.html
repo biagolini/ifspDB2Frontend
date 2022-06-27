@@ -1,0 +1,111 @@
+<button (click)="verForm()">VER FORM</button>
+<div
+  fxLayoutGap="20px"
+  fxLayout="column"
+  fxLayoutAlign="space-between start"
+  class="full-width"
+>
+  <div class="full-width" fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>{{ "warehouse.provideProfile" | translate }}</h1>
+  </div>
+
+  <div class="full-width">
+    <form
+      [formGroup]="movementForm"
+      fxLayout="column"
+      class="full-width"
+      (keyup.enter)="save()"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "warehouse.gameName" | translate }}</mat-label>
+        <input formControlName="gameName" name="gameName" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ "warehouse.idPlatform" | translate }}</mat-label>
+
+        <mat-select formControlName="idPlatform" [disabled]="true">
+          <mat-option *ngFor="let item of listGamePlatform" [value]="item.id">
+            {{ resolveEnumSingle(item.id, listGamePlatform) }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{
+          "warehouse.movement.typeMovement" | translate
+        }}</mat-label>
+        <mat-select formControlName="movementType">
+          <mat-option [value]="null">--</mat-option>
+          <mat-option [value]="'entry'">
+            {{ "warehouse.entry" | translate }}
+          </mat-option>
+          <mat-option [value]="'exit'">
+            {{ "warehouse.exit" | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{
+          "warehouse.movement.originMovement" | translate
+        }}</mat-label>
+        <mat-select
+          formControlName="idTypeWarehouseMovement"
+          [disabled]="!isMovementTypeSelected"
+        >
+          <mat-option [value]="">--</mat-option>
+          <mat-option [value]="1"
+            >Fornecedor {{ "warehouse.entry" | translate }}</mat-option
+          >
+          <mat-option [value]="2">Troca-Defeito</mat-option>
+          <mat-option [value]="3" disabled="{{ !exitOnly }}">Venda</mat-option>
+          <mat-option [value]="4" disabled="{{ !exitOnly }}"
+            >Perda operacional</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "warehouse.movement.quantity" | translate }}</mat-label>
+
+        <input
+          type="number"
+          min="1"
+          (keypress)="numberOnly($event)"
+          formControlName="quantity"
+          name="quantity"
+          matInput
+        />
+      </mat-form-field>
+    </form>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="end"
+    fxLayoutGap="15px"
+    class="full-width button-container"
+  >
+    <span class="spacer"></span>
+    <button
+      mat-stroked-button
+      color="warn"
+      class="button-size"
+      mat-dialog-close
+      (click)="close()"
+    >
+      {{ "general.cancel" | translate }}
+    </button>
+    <button
+      mat-stroked-button
+      class="button-size"
+      color="accent"
+      mat-dialog-close
+      type="submit"
+      (click)="save()"
+      [disabled]="!movementForm.valid"
+    >
+      {{ "general.save" | translate }}
+    </button>
+  </div>
+</div>

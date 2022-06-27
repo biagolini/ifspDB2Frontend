@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
@@ -10,6 +11,7 @@ import { ScreenMonitorService } from 'src/app/shared/services/screen-monitor.ser
 import { TypeService } from 'src/app/shared/services/type.service';
 
 import { WarehouseService } from '../../services/warehouse.service';
+import { MovementDialogComponent } from '../movement-dialog/movement-dialog.component';
 
 
 
@@ -26,6 +28,7 @@ export class WarehouseBalanceComponent implements OnInit {
     private feedback: FeedbackService,
     private form: FormBuilder,
     private screenMonitorService: ScreenMonitorService,
+    private  dialog: MatDialog,
   ) {
     this.filteredGames = this.gameCtrl.valueChanges.pipe(
       startWith(''),
@@ -54,12 +57,12 @@ export class WarehouseBalanceComponent implements OnInit {
 
   choosedColumns = new FormControl( [ 'gameName','idPlatform', 'quantity']);
 
-  optionsColumns: string[] = ['gameCover','gameName','idPlatform', 'quantity','lastUpdate'];
+  optionsColumns: string[] = ['gameCover','gameName','idPlatform', 'quantity','lastUpdate','action'];
 
 
   
   ngOnInit(): void {    
-    if(this.isDisplay("Web"))this.choosedColumns.setValue( ['gameCover','gameName','idPlatform', 'quantity','lastUpdate'])
+    if(this.isDisplay("Web"))this.choosedColumns.setValue( ['gameCover','gameName','idPlatform', 'quantity','lastUpdate','action'])
 
 
     this.typeService.fillTypesIfEmpty();
@@ -138,6 +141,54 @@ export class WarehouseBalanceComponent implements OnInit {
     this.gamesForm.setValue(filterValue );
       console.log(this.gamesForm.value);
     return this.listAllGames.filter(game => game.name.toLowerCase().includes(filterValue));
+  }
+
+  addMovement(element: any){
+    const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true; // Permite que ESC ou clicar fora da caixa feche o dialog
+        dialogConfig.autoFocus = true; // True, meaning that the focus will be set automatically on the first form field of the dialog
+        dialogConfig.width = "75%";
+        dialogConfig.data = element;
+        let dialogRef = this.dialog.open(MovementDialogComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(res => {
+          this.loadingTable = false;
+            if(res){
+              if(res?.movementType=="entry" ){
+                let postData: any = { "idGamePlatform": res?.gamePlatform, "idTypeWarehouseMovement": res?.idTypeWarehouseMovement, "quantity": res?.quantity } ;
+                this.warehouseService.postEntrance(postData).subscribe({
+                  next: () => {
+                    this.feedback.showMessage('warehouse.movement.successfullyCreated').subscribe();               
+                  },
+                  error: error => {
+                    this.feedback.showMessage('warehouse.movement.creationError').subscribe();
+                  }
+                });                
+              } else {
+                let postData: any = { "idGamePlatform": res?.gamePlatform, "idTypeWarehouseMovement": res?.idTypeWarehouseMovement, "quantity": res?.quantity } ;
+                this.warehouseService.postExity(postData).subscribe({
+                  next: () => {
+                    this.feedback.showMessage('warehouse.movement.successfullyCreated').subscribe(); 
+                    this.ngOnInit();              
+                  },
+                  error: error => {
+                    this.feedback.showMessage('warehouse.movement.creationError').subscribe();
+                    this.ngOnInit();    
+                  }
+                });  
+              }
+      
+
+
+
+
+
+
+
+
+              // FAZ POSTAGEM DO ITEM
+
+            }
+        })
   }
 
 }

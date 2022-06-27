@@ -40,5 +40,13 @@ export class WarehouseService {
     return this.http.get<any>(`${environment.apiUrl}/api/warehouse/gameList`).pipe(take(1));
   }
 
+  postEntrance(formData: Object) {
+    return this.http.post<any>(`${environment.apiUrl}/api/warehouse/entrance/`, formData);
+  }
+
+  postExity(formData: Object) {
+    return this.http.post<any>(`${environment.apiUrl}/api/warehouse/exit/`, formData);
+  }
+
 
 }

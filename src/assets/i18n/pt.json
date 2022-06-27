@@ -170,7 +170,9 @@
     "warehouse": "Estoque",
     "balance": "Balanço",
     "backBalance": "Voltar para balanço de estoque",
+    "entry": "Entrada",
     "entries": "Entradas",
+    "exit": "Saida",
     "exits": "Saídas",
     "findDescription": "Bucar por jogo",
     "gameCover": "Capa",
@@ -178,9 +180,22 @@
     "idPlatform": "Plataforma",
     "quantity": "Quantidade no estoque",
     "lastUpdate": "Ultima atualização",
-    "quantityMovement": "Quantidade movimentada",
+    "quantityMovement": "Quantidade movementada",
     "entranceMovement": "Origem da entrada",
     "exitMovement": "Origem da saída",
-    "timeMovement": "Horario da movimentação"
+    "timeMovement": "Horario da movementação",
+    "newmovement": "Inserir movementação",
+    "movement": {
+      "provideProfile": "Descreva a movementação",
+      "typeMovement": "Tipo de movementação",
+      "originMovement": "Origem da movementação",
+      "quantity": "Quantidade movementada",
+      "movementType1": "Fornecedor",
+      "movementType2": "Troca-Defeito",
+      "movementType3": "Venda",
+      "movementType4": "Perda operacional",
+      "successfullyCreated": "Movimentação salva com sucesso",
+      "creationError": "Erro no registro da movimentação "
+    }
   }
 }

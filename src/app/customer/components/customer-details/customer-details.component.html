@@ -34,8 +34,15 @@
         </div>
         <form class="full-width" [formGroup]="customerForm">
           <div fxLayout="column" class="full-width">
-            <div fxLayout="row" fxLayoutGap="1%" id="row1">
-              <mat-form-field fxFlex="49.5%" appearance="outline">
+            <div fxLayout="row wrap" fxLayoutGap="1%" id="row1">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.firstName" | translate }}
                 </mat-label>
@@ -43,27 +50,51 @@
                   type="text"
                   matInput
                   formControlName="firstName"
-                  placeholder="ex.: ABC API Integration"
+                  placeholder="ex.: Maria"
                 />
               </mat-form-field>
 
-              <mat-form-field fxFlex="49.5%" appearance="outline">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.lastName" | translate }}
                 </mat-label>
-                <input type="text" matInput formControlName="lastName" />
+                <input
+                  type="text"
+                  matInput
+                  formControlName="lastName"
+                  placeholder="ex.: Silva"
+                />
               </mat-form-field>
-            </div>
 
-            <div fxLayout="row" fxLayoutGap="1%" id="row2">
-              <mat-form-field fxFlex="49.5%" appearance="outline">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.email" | translate }}
                 </mat-label>
                 <input type="text" matInput formControlName="email" />
               </mat-form-field>
 
-              <mat-form-field fxFlex="49.5%" appearance="outline">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.cpf" | translate }}
                 </mat-label>
@@ -73,9 +104,15 @@
                   [textMask]="{ mask: cpfMask }"
                 />
               </mat-form-field>
-            </div>
-            <div fxLayout="row" fxLayoutGap="1%" id="row3">
-              <mat-form-field fxFlex="49.5%" appearance="outline">
+
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>{{ "customer.birthDate" | translate }}</mat-label>
                 <input
                   matInput
@@ -96,8 +133,15 @@
                 {{ "customer.personal" | translate }}
               </h3>
             </div>
-            <div fxLayout="row" fxLayoutGap="1%" id="row4">
-              <mat-form-field fxFlex="79%" appearance="outline">
+            <div fxLayout="row wrap" fxLayoutGap="1%" id="row4">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset-large': isDisplay('Handset'),
+                  'form-field-item-tablet-large': isDisplay('Tablet'),
+                  'form-field-item-web-large': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.street" | translate }}
                 </mat-label>
@@ -105,28 +149,42 @@
                 <input type="text" matInput formControlName="street" />
               </mat-form-field>
 
-              <mat-form-field fxFlex="20%" appearance="outline">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset-small ': isDisplay('Handset'),
+                  'form-field-item-tablet-small ': isDisplay('Tablet'),
+                  'form-field-item-web-small': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.number" | translate }}
                 </mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="number"
-                  placeholder="ex.: ABC API Integration"
-                />
+                <input type="text" matInput formControlName="number" />
               </mat-form-field>
-            </div>
 
-            <div fxLayout="row" fxLayoutGap="1%" id="row5">
-              <mat-form-field fxFlex="33%" appearance="outline">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.city" | translate }}
                 </mat-label>
                 <input type="text" matInput formControlName="city" />
               </mat-form-field>
 
-              <mat-form-field fxFlex="33%" appearance="outline">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>{{ "customer.state" | translate }}</mat-label>
                 <mat-select formControlName="state">
                   <mat-option [value]="">--</mat-option>
@@ -136,7 +194,14 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field fxFlex="33%" appearance="outline">
+              <mat-form-field
+                appearance="outline"
+                [ngClass]="{
+                  'form-field-item-handset ': isDisplay('Handset'),
+                  'form-field-item-tablet ': isDisplay('Tablet'),
+                  'form-field-item-web ': isDisplay('Web')
+                }"
+              >
                 <mat-label>
                   {{ "customer.zip" | translate }}
                 </mat-label>
