@@ -89,11 +89,6 @@ export class MovementDialogComponent implements OnInit {
     return typeModel.find( x=>x.id == id)?.description;
   }
 
-  verForm(){
-    console.log(this.movementForm.value);
-  }
-
-
   numberOnly(event:any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {

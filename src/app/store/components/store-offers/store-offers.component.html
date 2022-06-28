@@ -76,6 +76,10 @@
     class="highlight-container"
     *ngIf="!isDisplay('Handset')"
   >
+    <mat-toolbar color="primary">
+      <h1>{{ "store.highlight" | translate }}</h1>
+    </mat-toolbar>
+
     <div
       class="highlight-item"
       fxLayout="row"
