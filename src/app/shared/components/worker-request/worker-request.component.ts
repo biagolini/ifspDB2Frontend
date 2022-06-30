@@ -12,8 +12,7 @@ export class WorkerRequestComponent implements OnInit {
     private router: Router,
   ) { }
 
-  validacaoEmail() {
-    
+  validacaoEmail() {    
     const field: any = document.getElementById("email")
     const usuario: string = field.value.substring(0, field.value.indexOf("@"));
     const dominio: string = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);

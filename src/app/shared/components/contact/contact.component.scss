@@ -45,3 +45,38 @@ textarea {
   border: 1px solid rgba(0, 0, 0, 0.35);
   border-radius: 5px;
 }
+
+.imagem-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+// Web
+.imagem-container-web {
+  width: 100%;
+}
+
+.ilustration-web {
+  width: 40%;
+  height: auto;
+}
+
+// Celular
+.imagem-container-handset {
+  width: 100%;
+}
+
+.ilustration-handset {
+  width: 100%;
+  height: auto;
+}
+
+// Tablet
+.imagem-container-tablet {
+  width: 65%;
+}
+
+.ilustration-tablet {
+  width: 65%;
+  height: auto;
+}
