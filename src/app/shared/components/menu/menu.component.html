@@ -1,6 +1,5 @@
 <div fxLayoutGap="10px" fxLayout="row" fxLayoutAlign="space-around center">
   <div
-    [matMenuTriggerFor]="userMenu"
     class="button"
     fxLayoutGap="10px"
     fxLayout="row"
@@ -16,6 +15,7 @@
         fxLayout="row"
         fxLayoutAlign="center center"
         *ngIf="isDisplay('Web')"
+        [matMenuTriggerFor]="userMenu"
       >
         <mat-icon>person_outline</mat-icon>
         {{ currentUser() }}
@@ -25,7 +25,7 @@
       <button
         mat-menu-item
         routerLink="/shopping_cart"
-        *ngIf="!isRole('admin') || !isRole('estoque')"
+        *ngIf="!isRole('admin') && !isRole('estoque')"
       >
         <div>
           <mat-icon matBadge="{{ getCartSize() }}" class="houver-black"
@@ -38,6 +38,7 @@
         fxLayout="row"
         fxLayoutAlign="center center"
         *ngIf="!isDisplay('Web')"
+        [matMenuTriggerFor]="userMenu"
       >
         <mat-icon class="fc-white">settings</mat-icon>
       </div>
